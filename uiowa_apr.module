@@ -1,0 +1,52 @@
+<?php
+
+/**
+* Implements hook_permission().
+*/
+function uiowa_apr_permission() {
+  return array(
+    'administer uiowa apr' => array(
+      'title' => t('Administer University of Iowa APR'),
+      'description' => t('Perform administration tasks for the University of Iowa APR module.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function uiowa_apr_menu() {
+  $items['admin/config/user-interface/uiowa-apr'] = array(
+  'title' => 'University of Iowa APR',
+  'description' => 'Configuration for the University of Iowa APR module',
+  'page callback' => 'drupal_get_form',
+  'page arguments' => array('uiowa_apr_config_form'),
+  'access arguments' => array('administer uiowa apr'),
+  'type' => MENU_NORMAL_ITEM,
+  'file' => 'includes/uiowa_apr.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_node_info()
+ */
+function uiowa_apr_node_info() {
+    return array(
+        'product' => array(
+            'name' => t('APR Profile'),
+            'base' => 'apr_profile',
+            'description' => t('Web Profile from APR'),
+            'has_title' => TRUE,
+            'title_label' => t('HawkID')
+         )
+    );
+}
+
+/**
+ * Implement hook_form()
+ */
+function apr_profile_form($node, $form_state) {
+    return node_content_form($node, $form_state);
+}

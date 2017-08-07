@@ -1,0 +1,15 @@
+<?php
+/**
+ * Implements hook_install().
+ */
+function uiowa_apr_install() {
+    node_types_rebuild();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function uiowa_apr_uninstall() {
+  variable_del('uiowa_apr_api_key');
+  variable_del('uiowa_apr_population_id');
+}
