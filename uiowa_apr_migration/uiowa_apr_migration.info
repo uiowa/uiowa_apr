@@ -1,0 +1,10 @@
+name = University of Iowa APR Migration
+description = Imports people from APR
+core = 7.x
+version = 7.x-1.0
+package = University of Iowa
+dependencies[] = migrate
+dependencies[] = uiowa_apr
+
+files[] = uiowa_apr_migration.module
+files[] = uiowa_apr_migration.migrate.inc
