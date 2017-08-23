@@ -30,22 +30,81 @@ function uiowa_apr_uninstall() {
 function _apr_profile_installed_fields() {
     $t = get_t();
     return array(
+        'apr_profile_hawkid' => array(
+            'field_name' => 'apr_profile_hawkid',
+            'label' => $t('HawkID'),
+            'type' => 'text'
+        ),
         'apr_profile_first_name' => array(
             'field_name' => 'apr_profile_first_name',
             'label' => $t('First Name'),
+            'type' => 'text'
+        ),
+        'apr_profile_middle_name' => array(
+            'field_name' => 'apr_profile_middle_name',
+            'label' => $t('Middle Name'),
             'type' => 'text'
         ),
         'apr_profile_last_name' => array(
             'field_name' => 'apr_profile_last_name',
             'label' => $t('Last Name'),
             'type' => 'text'
-        )
+        ),
+        'apr_profile_credentials' => array(
+            'field_name' => 'apr_profile_credentials',
+            'label' => $t('Credentials'),
+            'type' => 'text'
+        ),
+        'apr_profile_email' => array(
+            'field_name' => 'apr_profile_email',
+            'label' => $t('Email'),
+            'type' => 'email'
+        ),
+        'apr_profile_appointments' => array(
+            'field_name' => 'apr_profile_appointments',
+            'label' => $t('Appointments'),
+            'type' => 'field_collection',
+            'cardinality' => -1
+        ),
+        'apr_profile_appointments_type' => array(
+            'field_name' => 'apr_profile_appointments_type',
+            'label' => $t('Type'),
+            'type' => 'text'
+        ),
+        'apr_profile_appointments_rank' => array(
+            'field_name' => 'apr_profile_appointments_rank',
+            'label' => $t('Rank'),
+            'type' => 'text'
+        ),
+        'apr_profile_appointments_department' => array(
+            'field_name' => 'apr_profile_appointments_dept',
+            'label' => $t('Department'),
+            'type' => 'text'
+        ),
+        'apr_profile_appointments_college' => array(
+            'field_name' => 'apr_profile_appointments_college',
+            'label' => $t('College'),
+            'type' => 'text'
+        ),
+        'apr_profile_appointments_division' => array(
+            'field_name' => 'apr_profile_appointments_div',
+            'label' => $t('Division'),
+            'type' => 'text'
+        )    
     );
 }
 
 function _apr_profile_installed_instances() {
     $t = get_t();
     return array(
+        'apr_profile_hawkid' => array(
+            'field_name' => 'apr_profile_hawkid',
+            'type' => 'text',
+            'label' => $t('HawkID'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
         'apr_profile_first_name' => array(
             'field_name' => 'apr_profile_first_name',
             'type' => 'text',
@@ -54,10 +113,88 @@ function _apr_profile_installed_instances() {
                 'type' => 'text_textfield'
             )
         ),
+        'apr_profile_middle_name' => array(
+            'field_name' => 'apr_profile_middle_name',
+            'type' => 'text',
+            'label' => $t('Middle Name'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
         'apr_profile_last_name' => array(
             'field_name' => 'apr_profile_last_name',
             'type' => 'text',
             'label' => $t('Last Name'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
+        'apr_profile_credentials' => array(
+            'field_name' => 'apr_profile_credentials',
+            'type' => 'text',
+            'label' => $t('Credentials'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
+        'apr_profile_email' => array(
+            'field_name' => 'apr_profile_email',
+            'type' => 'text',
+            'label' => $t('Email'),
+            'widget' => array(
+                'type' => 'email_textfield'
+            )
+        ),
+        'apr_profile_appointments' => array(
+            'field_name' => 'apr_profile_appointments',
+            'type' => 'field_collection',
+            'label' => $t('Appointments'),
+            'widget' => array(
+                'type' => 'field_collection_embed'
+            )
+        )
+    );
+}
+
+function _apr_profile_fc_installed_instances() {
+    $t = get_t();
+    return array(
+        'apr_profile_appointments_type' => array(
+            'field_name' => 'apr_profile_appointments_type',
+            'type' => 'text',
+            'label' => $t('Type'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
+        'apr_profile_appointments_rank' => array(
+            'field_name' => 'apr_profile_appointments_rank',
+            'type' => 'text',
+            'label' => $t('Rank'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
+        'apr_profile_appointments_dept' => array(
+            'field_name' => 'apr_profile_appointments_dept',
+            'type' => 'text',
+            'label' => $t('Department'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
+        'apr_profile_appointments_college' => array(
+            'field_name' => 'apr_profile_appointments_college',
+            'type' => 'text',
+            'label' => $t('College'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            )
+        ),
+        'apr_profile_appointments_div' => array(
+            'field_name' => 'apr_profile_appointments_div',
+            'type' => 'text',
+            'label' => $t('Division'),
             'widget' => array(
                 'type' => 'text_textfield'
             )
@@ -74,14 +211,25 @@ function add_custom_fields() {
         $fieldinstance['bundle'] = 'apr_profile';
         field_create_instance($fieldinstance);
     }
+
+    foreach (_apr_profile_fc_installed_instances() as $fieldinstance) {
+        $fieldinstance['entity_type'] = 'field_collection_item';
+        $fieldinstance['bundle'] = 'apr_profile_appointments';
+        field_create_instance($fieldinstance);
+    }
 }
 
 function delete_custom_fields() {
     foreach (array_keys(_apr_profile_installed_fields()) as $field) {
         field_delete_field($field);
     }
+    $instances = field_info_instances('field_collection_item', 'apr_profile_appointments');
+    foreach ($instances as $instance_name => $fieldinstance) {
+        field_delete_instance($fieldinstance);
+    }
     $instances = field_info_instances('node', 'apr_profile');
     foreach ($instances as $instance_name => $fieldinstance) {
         field_delete_instance($fieldinstance);
     }
+
 }
