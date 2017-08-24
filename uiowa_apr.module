@@ -39,7 +39,7 @@ function uiowa_apr_node_info() {
             'base' => 'apr_profile',
             'description' => t('Web Profile from APR'),
             'has_title' => TRUE,
-            'title_label' => t('HawkID')
+            'title_label' => t('Name')
          )
     );
 }
@@ -92,7 +92,8 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
       $api_key = variable_get('uiowa_apr_api_key');
       $population_id = variable_get('uiowa_apr_population_id');
 
-      $request = drupal_http_request('https://apps.its.uiowa.edu/facadmin/api/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$node->title);  
+      $request = drupal_http_request('https://apps.its.uiowa.edu/facadmin/api/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$node->apr_profile_hawkid[LANGUAGE_NONE][0]['value']
+);  
       $person = drupal_json_decode($request->data);    
 
       dpm($person);

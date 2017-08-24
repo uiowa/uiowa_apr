@@ -7,9 +7,19 @@
 function uiowa_apr_migration_migrate_api() {
   $api = array(
     'api' => 2,
+    'groups' => array(
+      'apr_people' => array(
+        'title' => t('APR People'),
+      ),
+    ),
     'migrations' => array(
       'APRPeople' => array(
         'class_name' => 'APRPeopleNodeMigration',
+        'group_name' => 'apr_people',
+      ),
+      'APRPeopleAppointments' => array(
+        'class_name' => 'APRPeopleAppointmentFieldCollectionMigration',
+        'group_name' => 'apr_people',
       )
     )
   );

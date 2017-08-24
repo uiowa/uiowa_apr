@@ -7,4 +7,5 @@ dependencies[] = migrate
 dependencies[] = uiowa_apr
 
 files[] = uiowa_apr_migration.module
-files[] = uiowa_apr_migration.migrate.inc
+files[] = inc/apr_people.inc
+files[] = inc/apr_people_appointments.inc
