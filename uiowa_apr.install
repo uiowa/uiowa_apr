@@ -4,6 +4,9 @@
  */
 function uiowa_apr_install() {
     node_types_rebuild();
+    $settings = field_bundle_settings('node', 'apr_profile');
+    $settings['view_modes']['full']['custom_settings'] = TRUE;
+    field_bundle_settings('node', 'apr_profile', $settings);
     add_custom_fields();
 }
 
@@ -103,7 +106,7 @@ function _apr_profile_installed_instances() {
             'label' => $t('HawkID'),
             'widget' => array(
                 'type' => 'text_textfield'
-            )
+            ),
         ),
         'apr_profile_first_name' => array(
             'field_name' => 'apr_profile_first_name',
@@ -143,6 +146,11 @@ function _apr_profile_installed_instances() {
             'label' => $t('Email'),
             'widget' => array(
                 'type' => 'email_textfield'
+            ),
+            'display' => array(
+                'full' => array(
+                    'label' => 'hidden'
+                ) 
             )
         ),
         'apr_profile_appointments' => array(
@@ -151,6 +159,11 @@ function _apr_profile_installed_instances() {
             'label' => $t('Appointments'),
             'widget' => array(
                 'type' => 'field_collection_embed'
+            ),
+            'display' => array(
+                'full' => array(
+                    'label' => 'hidden'
+                ) 
             )
         )
     );
@@ -165,6 +178,11 @@ function _apr_profile_fc_installed_instances() {
             'label' => $t('Type'),
             'widget' => array(
                 'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline'
+                ) 
             )
         ),
         'apr_profile_appointments_rank' => array(
@@ -173,6 +191,11 @@ function _apr_profile_fc_installed_instances() {
             'label' => $t('Rank'),
             'widget' => array(
                 'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline'
+                ) 
             )
         ),
         'apr_profile_appointments_dept' => array(
@@ -181,6 +204,11 @@ function _apr_profile_fc_installed_instances() {
             'label' => $t('Department'),
             'widget' => array(
                 'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline'
+                ) 
             )
         ),
         'apr_profile_appointments_college' => array(
@@ -189,6 +217,11 @@ function _apr_profile_fc_installed_instances() {
             'label' => $t('College'),
             'widget' => array(
                 'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline'
+                ) 
             )
         ),
         'apr_profile_appointments_div' => array(
@@ -197,6 +230,11 @@ function _apr_profile_fc_installed_instances() {
             'label' => $t('Division'),
             'widget' => array(
                 'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline'
+                ) 
             )
         )
     );
