@@ -20,6 +20,7 @@
       'apr_profile_appointments_dept' => 'Department',
       'apr_profile_appointments_college' => 'College',
       'apr_profile_appointments_div' => 'Division',
+      'apr_profile_appointments_jobcode' => 'Job Code',
     );
 
     $this->source = new MigrateSourceList(new APRPeopleAppointmentsListJSON($source_url),
@@ -44,6 +45,7 @@
     $this->addFieldMapping('apr_profile_appointments_dept', 'dep');
     $this->addFieldMapping('apr_profile_appointments_college', 'college');
     $this->addFieldMapping('apr_profile_appointments_div', 'division');
+    $this->addFieldMapping('apr_profile_appointments_jobcode', 'job_code');
   }
 }
 

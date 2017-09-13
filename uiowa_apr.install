@@ -98,7 +98,13 @@ function _apr_profile_installed_fields() {
             'field_name' => 'apr_profile_appointments_div',
             'label' => $t('Division'),
             'type' => 'text'
-        )    
+        )   
+        ,
+        'apr_profile_appointments_jobcode' => array(
+            'field_name' => 'apr_profile_appointments_jobcode',
+            'label' => $t('Job Code'),
+            'type' => 'text'
+        )     
     );
 }
 
@@ -246,6 +252,19 @@ function _apr_profile_fc_installed_instances() {
             'field_name' => 'apr_profile_appointments_div',
             'type' => 'text',
             'label' => $t('Division'),
+            'widget' => array(
+                'type' => 'text_textfield'
+            ),
+            'display' => array(
+                'default' => array(
+                    'label' => 'inline'
+                ) 
+            )
+        ),
+        'apr_profile_appointments_jobcode' => array(
+            'field_name' => 'apr_profile_appointments_jobcode',
+            'type' => 'text',
+            'label' => $t('Job Code'),
             'widget' => array(
                 'type' => 'text_textfield'
             ),
