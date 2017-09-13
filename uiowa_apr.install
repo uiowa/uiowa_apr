@@ -63,6 +63,11 @@ function _apr_profile_installed_fields() {
             'label' => $t('Email'),
             'type' => 'email'
         ),
+        'apr_profile_phone' => array(
+            'field_name' => 'apr_profile_phone',
+            'label' => $t('Phone'),
+            'type' => 'telephone'
+        ),
         'apr_profile_appointments' => array(
             'field_name' => 'apr_profile_appointments',
             'label' => $t('Appointments'),
@@ -146,6 +151,19 @@ function _apr_profile_installed_instances() {
             'label' => $t('Email'),
             'widget' => array(
                 'type' => 'email_textfield'
+            ),
+            'display' => array(
+                'full' => array(
+                    'label' => 'hidden'
+                ) 
+            )
+        ),
+        'apr_profile_phone' => array(
+            'field_name' => 'apr_profile_phone',
+            'type' => 'text',
+            'label' => $t('Phone'),
+            'widget' => array(
+                'type' => 'telephone_default'
             ),
             'display' => array(
                 'full' => array(

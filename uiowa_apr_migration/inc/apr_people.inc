@@ -23,6 +23,7 @@
       'apr_profile_last_name' => 'Last Name',
       'apr_profile_credentials' => 'Credentials',
       'apr_profile_email' => 'Email',
+      'apr_profile_phone' => 'Phone',
     );
 
     $this->source = new MigrateSourceList(new APRPeopleListJSON($source_url),
@@ -49,6 +50,7 @@
     $this->addFieldMapping('apr_profile_last_name', 'lname');
     $this->addFieldMapping('apr_profile_credentials', 'credentials');
     $this->addFieldMapping('apr_profile_email', 'email');
+    $this->addFieldMapping('apr_profile_phone', 'phone');
   }
 
   public function preImport() {

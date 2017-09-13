@@ -96,7 +96,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
       $request = drupal_http_request('https://apps.its.uiowa.edu/facadmin/api/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$node->apr_profile_hawkid[LANGUAGE_NONE][0]['value']
 );  
       $person = drupal_json_decode($request->data);    
-      dpm($person);
       $extra = uiowa_apr_field_extra_fields();
 
       $config = field_bundle_settings('node', $node->type);

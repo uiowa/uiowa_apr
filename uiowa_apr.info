@@ -5,4 +5,5 @@ version = 7.x-1.0
 package = University of Iowa
 
 dependencies[] = email
+dependencies[] = telephone
 dependencies[] = field_collection
