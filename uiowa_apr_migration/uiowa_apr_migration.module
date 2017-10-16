@@ -20,8 +20,8 @@ function uiowa_apr_migration_migrate_api() {
       'APRPeopleAppointments' => array(
         'class_name' => 'APRPeopleAppointmentFieldCollectionMigration',
         'group_name' => 'apr_people',
-      )
-    )
+      ),
+    ),
   );
   return $api;
 }

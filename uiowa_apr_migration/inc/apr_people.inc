@@ -14,6 +14,7 @@
 
     // Source url.
     $source_url = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
+//    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
       'apr_profile_id' => 'Unique ID',
@@ -24,6 +25,12 @@
       'apr_profile_credentials' => 'Credentials',
       'apr_profile_email' => 'Email',
       'apr_profile_phone' => 'Phone',
+      'apr_profile_room' => 'Room',
+      'apr_profile_building' => 'Building',
+      'apr_profile_address' => 'Address',
+      'apr_profile_city' => 'City',
+      'apr_profile_state' => 'State',
+      'apr_profile_zip' => 'Zip',
     );
 
     $this->source = new MigrateSourceList(new APRPeopleListJSON($source_url),
@@ -51,6 +58,12 @@
     $this->addFieldMapping('apr_profile_credentials', 'credentials');
     $this->addFieldMapping('apr_profile_email', 'email');
     $this->addFieldMapping('apr_profile_phone', 'phone');
+    $this->addFieldMapping('apr_profile_room', 'room');
+    $this->addFieldMapping('apr_profile_building', 'building');
+    $this->addFieldMapping('apr_profile_address', 'address');
+    $this->addFieldMapping('apr_profile_city', 'city');
+    $this->addFieldMapping('apr_profile_state', 'state');
+    $this->addFieldMapping('apr_profile_zip', 'zip');
   }
 
   public function preImport() {

@@ -7,3 +7,9 @@ package = University of Iowa
 dependencies[] = email
 dependencies[] = telephone
 dependencies[] = field_collection
+dependencies[] = pathauto:pathauto
+dependencies[] = views:views
+
+;Views Includes
+files[] = includes/uiowa_apr.views.inc
+files[] = includes/uiowa_apr.views_default.inc

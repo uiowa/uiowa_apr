@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file apr_profile_resprog.tpl.php
+ * Default theme implementation for the areas of research interest fields.
+ *
+ * @see uiowa_apr_node_view()
+ *
+ * Available variables:
+ *
+ * $data
+ *   Array of areas of research interest information.
+ */
+?>
+
+<?php if (!empty($data)): ?>
+
+<div class="field field-name-apr-profile-resprog"<?php print $attributes; ?>>
+  <div class="field-label">Areas of Research Interest</div>
+  <div class="field-items">
+    <?php foreach ($data as $delta => $item): ?>
+      <!-- $data contains the resprog[] array -->
+      <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
+        <?php
+          $output = $item['title'];
+          if ($item['desc']) $output .= ": " . $item['desc'];
+          print $output;
+        ?>
+      </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+
+<?php endif; ?>
