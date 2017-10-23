@@ -22,7 +22,9 @@
       <!-- $data contains the education[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['deg'];
+          $output = "";
+          if ($item['deg']) $output .= $item['deg'];
+          else if ($item['deg_title']) $output .= $item['deg_title'];
           if ($item['major']) $output .= " in " . $item['major'] . "";
           if ($item['school']) $output .= " - " . $item['school'];
           if ($item['city']) {
