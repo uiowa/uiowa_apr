@@ -22,10 +22,10 @@
       <!-- $data contains the liccert[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['title'];
-          if ($item['org']) $output .= ", " . $item['org'];
-          if ($item['certnum']) $output .= " (" . $item['certnum'] . ")";
-          $output .= ".";
+          $output = "";
+          if (!empty($item['title'])) $output .= $item['title'];
+          if (!empty($item['org'])) $output .= ", " . $item['org'];
+          if (!empty($item['certnum'])) $output .= " (" . $item['certnum'] . ")";
           print $output;
         ?>
       </div>

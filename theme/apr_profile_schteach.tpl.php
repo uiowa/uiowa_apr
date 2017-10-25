@@ -22,14 +22,15 @@
       <!-- $data contains the schteach[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['title'];
-          if ($item['coursepre']) $output .= ", " . $item['coursepre'];
-          if ($item['coursenum']) $output .= ":" . $item['coursenum'];
-//          if ($item['section']) $output .= ":" . $item['section'];
-          if ($item['term']) {
+          $output = "";
+          if (!empty($item['title'])) $output .= $item['title'];
+          if (!empty($item['coursepre'])) $output .= ", " . $item['coursepre'];
+          if (!empty($item['coursenum'])) $output .= ":" . $item['coursenum'];
+//          if (!empty($item['section'])) $output .= ":" . $item['section'];
+          if (!empty($item['term'])) {
             $output .= ", " . $item['term'];
-            if ($item['year']) $output .= " " . $item['year'];
-          } else if ($item['year']) {
+            if (!empty($item['year'])) $output .= " " . $item['year'];
+          } else if (!empty($item['year'])) {
             $output .= $item['year'];
           }
           print $output;

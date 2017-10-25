@@ -37,7 +37,7 @@ function uiowa_apr_node_info() {
     'apr_profile' => array(
       'name' => t('APR Profile'),
       'base' => 'apr_profile',
-      'description' => t('Web Profile from APR'),
+      'description' => t('Use <em>APR Profiles</em> for web profiles imported from the University of Iowa APR system.'),
       'has_title' => TRUE,
       'title_label' => t('Name'),
       'node-submitted' => 0,
@@ -59,7 +59,6 @@ function apr_profile_form($node, $form_state) {
  * Otherwise prefix the field_name with the entity_type.
  */
 function uiowa_apr_field_extra_fields() {
-  // Jobs.
   $extra['node']['apr_profile'] = array(
     'display' => array(
       'apr_profile_admin_perms' => array(
@@ -289,7 +288,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['pasthist']) > 0) {
               foreach ($person['pasthist'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -304,7 +303,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['education']) > 0) {
               foreach ($person['education'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -319,7 +318,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['education_postgrad']) > 0) {
               foreach ($person['education_postgrad'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -333,7 +332,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
           case 'apr_profile_training_affil':
             $data = array();
             if (!empty($person['pci']['info']['training_affil'])) {
-              $data = $person['pci']['info']['training_affil'];
+              $data[] = $person['pci']['info']['training_affil'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_training_affil',
                 '#markup' => theme('apr_profile_training_affil', array('data' => $data)),
@@ -344,7 +343,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
           case 'apr_profile_center_affil':
             $data = array();
             if (!empty($person['pci']['info']['center_affil'])) {
-              $data = $person['pci']['info']['center_affil'];
+              $data[] = $person['pci']['info']['center_affil'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_center_affil',
                 '#markup' => theme('apr_profile_center_affil', array('data' => $data)),
@@ -367,7 +366,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
 
           case 'apr_profile_bio':
             $data = array();
-            if (!empty($person['pci']['info']['bio']) > 0) {
+            if (!empty($person['pci']['info']['bio'])) {
               $data[] = $person['pci']['info']['bio'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_bio',
@@ -392,7 +391,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
           case 'apr_profile_teaching_interests':
             $data = array();
             if (!empty($person['pci']['info']['teaching_interests'])) {
-              $data = $person['pci']['info']['teaching_interests'];
+              $data[] = $person['pci']['info']['teaching_interests'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_teaching_interests',
                 '#markup' => theme('apr_profile_teaching_interests', array('data' => $data)),
@@ -403,7 +402,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
           case 'apr_profile_research_narrative':
             $data = array();
             if (!empty($person['pci']['info']['research_narrative'])) {
-              $data = $person['pci']['info']['research_narrative'];
+              $data[] = $person['pci']['info']['research_narrative'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_research_narrative',
                 '#markup' => theme('apr_profile_research_narrative', array('data' => $data)),
@@ -414,7 +413,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
           case 'apr_profile_clinical_narrative':
             $data = array();
             if (!empty($person['pci']['info']['clinical_narrative'])) {
-              $data = $person['pci']['info']['clinical_narrative'];
+              $data[] = $person['pci']['info']['clinical_narrative'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_clinical_narrative',
                 '#markup' => theme('apr_profile_clinical_narrative', array('data' => $data)),
@@ -478,7 +477,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['intellcont']) > 0) {
               foreach ($person['intellcont'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Top Ten' || $item['include_on_profile'] == 'Show All') {
+                if (!empty($item['include_on_profile']) && ($item['include_on_profile'] == 'Top Ten' || $item['include_on_profile'] == 'Show All')) {
                   $data[] = $item;
                 }
               };
@@ -493,7 +492,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['present']) > 0) {
               foreach ($person['present'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -508,7 +507,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['perform_exhibit']) > 0) {
               foreach ($person['perform_exhibit'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -523,7 +522,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['creative_works']) > 0) {
               foreach ($person['creative_works'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -538,7 +537,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['congrant']) > 0) {
               foreach ($person['congrant'] as $i => $item) {
-                if ($item['include_on_profile'] == 'Yes') {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
@@ -551,7 +550,7 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
 
           case 'apr_profile_last_modified':
             $data = array();
-            if (!empty($person['last_modified_date']) > 0) {
+            if (!empty($person['last_modified_date'])) {
               $data[] = $person['last_modified_date'];
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_last_modified',

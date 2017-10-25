@@ -22,7 +22,8 @@
       <!-- $data contains the creative_works[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['formatted'];
+          $output = "";
+          if (!empty($item['formatted'])) $output .= $item['formatted'];
           print $output;
         ?>
       </div>

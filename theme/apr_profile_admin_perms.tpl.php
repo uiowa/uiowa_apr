@@ -22,9 +22,10 @@
       <!-- $data contains the pci.admin_perms[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['rank'];
-          if ($item['dep']) $output .= " of " . $item['dep'];
-          if ($item['college']) $output .= ", " . $item['college'];
+          $output = "";
+          if (!empty($item['rank'])) $output .= $item['rank'];
+          if (!empty($item['dep'])) $output .= " of " . $item['dep'];
+          if (!empty($item['college'])) $output .= ", " . $item['college'];
           print $output;
         ?>
       </div>

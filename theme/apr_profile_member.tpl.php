@@ -22,10 +22,10 @@
       <!-- $data contains the member[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['org'];
-          if ($item['orgabbr']) $output .= " (" . $item['orgabbr'] . ")";
-          if ($item['start_date']) $output .= ", " . date("Y", strtotime($item['start_date']));
-          $output .= ".";
+          $output = "";
+          if (!empty($item['org'])) $output .= $item['org'];
+          if (!empty($item['orgabbr'])) $output .= " (" . $item['orgabbr'] . ")";
+          if (!empty($item['start_date'])) $output .= ", " . date("Y", strtotime($item['start_date']));
           print $output;
         ?>
       </div>

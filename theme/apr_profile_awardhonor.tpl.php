@@ -22,18 +22,23 @@
       <!-- $data contains the awardhonor[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['name'];
-          if ($item['org']) $output .= ", " . $item['org'];
-          if ($item['city']) {
+          $output = "";
+          if (!empty($item['name'])) {
+            $output .= $item['name'];
+            if (!empty($item['org'])) $output .= ", " . $item['org'];
+          } else if (!empty($item['org'])) {
+            $output .= $item['org'];
+          }
+          if (!empty($item['city'])) {
             $output .= " - " . $item['city'];
-            if ($item['state']) $output .= ", " . $item['state'];
-          } else if ($item['state']) {
+            if (!empty($item['state'])) $output .= ", " . $item['state'];
+          } else if (!empty($item['state'])) {
             $output .= " - " . $item['state'];
           }
-          if ($item['start_date']) {
+          if (!empty($item['start_date'])) {
             $output .= ", " . date("Y", strtotime($item['start_date']));
-            if (isset($item['end_date']) && (date("Y", strtotime($item['start_date'])) !== date("Y", strtotime($item['end_date'])))) $output .= " - " . date("Y", strtotime($item['end_date']));
-          } else if ($item['end_date']) {
+            if (!empty($item['end_date']) && (date("Y", strtotime($item['start_date'])) !== date("Y", strtotime($item['end_date'])))) $output .= " - " . date("Y", strtotime($item['end_date']));
+          } else if (!empty($item['end_date'])) {
             $output .= ", " . date("Y", strtotime($item['end_date']));
           }
           print $output;

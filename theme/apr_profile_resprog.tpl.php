@@ -22,8 +22,9 @@
       <!-- $data contains the resprog[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['title'];
-          if ($item['desc']) $output .= ": " . $item['desc'];
+          $output = "";
+          if (!empty($item['title'])) $output .= $item['title'];
+          if (!empty($item['desc'])) $output .= ": " . $item['desc'];
           print $output;
         ?>
       </div>

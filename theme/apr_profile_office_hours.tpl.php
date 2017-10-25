@@ -23,11 +23,11 @@
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if ($item['day']) $output .= $item['day'] . ": ";
-          if ($item['from']) {
+          if (!empty($item['day'])) $output .= $item['day'] . ": ";
+          if (!empty($item['from'])) {
             $output .= $item['from'];
-            if (isset($item['to']) && ($item['from'] !== $item['to'])) $output .= " - " . $item['to'];
-          } else if ($item['to']) {
+            if (!empty($item['to']) && ($item['from'] !== $item['to'])) $output .= " - " . $item['to'];
+          } else if (!empty($item['to'])) {
             $output .= $item['to'];
           }
           print $output;

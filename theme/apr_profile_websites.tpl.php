@@ -23,9 +23,9 @@
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if ($item['url']) $output .= "<a href='" . $item['url'] . "'>";
-          if ($item['desc']) $output .= $item['desc'];
-          if ($item['url']) $output .= "</a>";
+          if (!empty($item['url'])) $output .= "<a href='" . $item['url'] . "'>";
+          if (!empty($item['desc'])) $output .= $item['desc'];
+          if (!empty($item['url'])) $output .= "</a>";
           print $output;
         ?>
       </div>

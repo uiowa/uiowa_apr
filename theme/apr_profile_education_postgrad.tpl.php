@@ -23,20 +23,20 @@
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if ($item['deg']) $output .= $item['deg'];
-          else if ($item['desc']) $output .= $item['desc'];
-          if ($item['major']) $output .= " in " . $item['major'] . "";
-          if ($item['school']) $output .= " - " . $item['school'];
-          if ($item['city']) {
+          if (!empty($item['deg'])) $output .= $item['deg'];
+          else if (!empty($item['desc'])) $output .= $item['desc'];
+          if (!empty($item['major'])) $output .= " in " . $item['major'] . "";
+          if (!empty($item['school'])) $output .= " - " . $item['school'];
+          if (!empty($item['city'])) {
             $output .= ", " . $item['city'];
-            if ($item['state']) $output .= ", " . $item['state'];
-          } else if ($item['state']) {
+            if (!empty($item['state'])) $output .= ", " . $item['state'];
+          } else if (!empty($item['state'])) {
             $output .= ", " . $item['state'];
           }
-          if ($item['start_date']) {
+          if (!empty($item['start_date'])) {
             $output .= ", " . date("Y", strtotime($item['start_date']));
-            if (isset($item['end_date']) && (date("Y", strtotime($item['start_date'])) !== date("Y", strtotime($item['end_date'])))) $output .= " - " . date("Y", strtotime($item['end_date']));
-          } else if ($item['end_date']) {
+            if (!empty($item['end_date']) && (date("Y", strtotime($item['start_date'])) !== date("Y", strtotime($item['end_date'])))) $output .= " - " . date("Y", strtotime($item['end_date']));
+          } else if (!empty($item['end_date'])) {
             $output .= ", " . date("Y", strtotime($item['end_date']));
           }
           print $output;

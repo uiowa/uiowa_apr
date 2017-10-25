@@ -22,24 +22,25 @@
       <!-- $data contains the pasthist[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = $item['title'];
-          if ($item['org']) {
+          $output = "";
+          if (!empty($item['title'])) $output .= $item['title'];
+          if (!empty($item['org'])) {
             $output .= ", " . $item['org'];
-            if ($item['dep']) $output .= " - " . $item['dep'];
-          } else if ($item['dep']) {
+            if (!empty($item['dep'])) $output .= " - " . $item['dep'];
+          } else if (!empty($item['dep'])) {
             $output .= ", " . $item['dep'];
           }
-          if ($item['city']) {
+          if (!empty($item['city'])) {
             $output .= ", " . $item['city'];
-            if ($item['state']) $output .= ", " . $item['state'];
-          } else if ($item['state']) {
+            if (!empty($item['state'])) $output .= ", " . $item['state'];
+          } else if (!empty($item['state'])) {
             $output .= ", " . $item['state'];
           }
-          if ($item['start_date']) {
+          if (!empty($item['start_date'])) {
             $output .= ", " . date("F Y", strtotime($item['start_date']));
-            if (isset($item['end_date']) && (date("F Y", strtotime($item['start_date'])) !== date("F Y", strtotime($item['end_date'])))) $output .= " - " . date("F Y", strtotime($item['end_date']));
+            if (!empty($item['end_date']) && (date("F Y", strtotime($item['start_date'])) !== date("F Y", strtotime($item['end_date'])))) $output .= " - " . date("F Y", strtotime($item['end_date']));
             if (empty($item['end_date'])) $output .= " - Present";
-          } else if ($item['end_date']) {
+          } else if (!empty($item['end_date'])) {
             $output .= ", " . date("F Y", strtotime($item['end_date']));
           }
           print $output;

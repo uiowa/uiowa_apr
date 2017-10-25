@@ -21,7 +21,6 @@ date_default_timezone_set('America/Chicago');
 
 <div class="field field-name-apr-profile-last-modified"<?php print $attributes; ?>>
   <div class="field-items">
-    <!-- $data contains the last_modified_date value -->
     <?php foreach ($data as $delta => $item): ?>
       <!-- $data contains the last_modified_date value -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">

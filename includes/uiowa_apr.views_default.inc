@@ -628,6 +628,203 @@ function uiowa_apr_views_default_views() {
   );
   $handler->display->display_options['attachment_position'] = 'after';
 
+  /* Display: Graduate Students */
+  $handler = $view->new_display('page', 'Graduate Students', 'page_apr_profiles_graduate_students');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Graduate Students';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'apr_profile_phone' => 'apr_profile_phone',
+    'apr_profile_email' => 'apr_profile_email',
+    'apr_profile_room' => 'apr_profile_room',
+    'apr_profile_building' => 'apr_profile_building',
+    'apr_profile_appointments_rank' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_room' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_building' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_appointments_rank' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'List of Graduate Students';
+  $handler->display->display_options['style_options']['summary'] = 'List of Graduate Student phone, email and campus addresses';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'apr_profile' => 'apr_profile',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field collection item: Rank (apr_profile_appointments_rank) */
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['id'] = 'apr_profile_appointments_rank_value';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['table'] = 'field_data_apr_profile_appointments_rank';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['field'] = 'apr_profile_appointments_rank_value';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['relationship'] = 'apr_profile_appointments_value';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['value'] = 'student';
+  $handler->display->display_options['path'] = 'people/graduate-students';
+
+  /* Display: Graduate Students Attachment */
+  $handler = $view->new_display('attachment', 'Graduate Students Attachment', 'attachment_apr_profiles_graduate_students');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Graduate Students Attachment';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'apr_profile_phone' => 'apr_profile_phone',
+    'apr_profile_email' => 'apr_profile_email',
+    'apr_profile_room' => 'apr_profile_room',
+    'apr_profile_building' => 'apr_profile_building',
+    'apr_profile_appointments_rank' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_room' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_building' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_appointments_rank' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'List of Graduate Students';
+  $handler->display->display_options['style_options']['summary'] = 'List of Graduate Student phone, email and campus addresses';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>Graduate Students</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'filtered_html';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'apr_profile' => 'apr_profile',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Field collection item: Rank (apr_profile_appointments_rank) */
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['id'] = 'apr_profile_appointments_rank_value';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['table'] = 'field_data_apr_profile_appointments_rank';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['field'] = 'apr_profile_appointments_rank_value';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['relationship'] = 'apr_profile_appointments_value';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['operator'] = 'contains';
+  $handler->display->display_options['filters']['apr_profile_appointments_rank_value']['value'] = 'student';
+  $handler->display->display_options['displays'] = array(
+    'page_apr_profiles' => 'page_apr_profiles',
+    'default' => 0,
+    'page_apr_profiles_faculty' => 0,
+    'page_apr_profiles_emeritus' => 0,
+    'page_apr_profiles_staff' => 0,
+  );
+  $handler->display->display_options['attachment_position'] = 'after';
+
   // Add view to list of views to provide.
   $views[$view->name] = $view;
 
