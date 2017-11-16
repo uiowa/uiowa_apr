@@ -28,6 +28,15 @@ function uiowa_apr_config_form($form, &$form_state) {
     '#required' => TRUE,
   );
 
+  if(!empty(variable_get('uiowa_apr_api_key', '')) && !empty(variable_get('uiowa_apr_population_id', '')) && module_exists('uiowa_apr_migration')){
+    $form['uiowa_apr_run_migration'] = array(
+      '#type' => 'submit',
+      '#value' => t('Run Import'),
+      '#submit' => array('uiowa_apr_config_form_run_migration'),
+    );
+  }
+
+
   $form = system_settings_form($form);
   $form['#submit'][] = 'uiowa_apr_config_form_submit';
   return $form;
@@ -39,4 +48,14 @@ function uiowa_apr_config_form($form, &$form_state) {
 function uiowa_apr_config_form_submit($form, &$form_state) {
   drupal_flush_all_caches();
   drupal_set_message(t('All caches have been cleared.'), 'status');
+}
+
+function uiowa_apr_config_form_run_migration($form, &$form_state) {
+    // Get migration objects
+    $people = Migration::getInstance('APRPeople');
+    $appointments = Migration::getInstance('APRPeopleAppointments');
+
+    $result = $people->processImport();
+    $result = $appointments->processImport();
+
 }
