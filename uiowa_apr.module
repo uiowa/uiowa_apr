@@ -40,7 +40,6 @@ function uiowa_apr_node_info() {
       'description' => t('Use <em>APR Profiles</em> for web profiles imported from the University of Iowa APR system.'),
       'has_title' => TRUE,
       'title_label' => t('Name'),
-      'node-submitted' => 0,
      )
   );
 }

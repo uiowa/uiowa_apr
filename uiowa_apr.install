@@ -8,12 +8,10 @@ function uiowa_apr_install() {
   $settings['view_modes']['full']['custom_settings'] = TRUE;
   field_bundle_settings('node', 'apr_profile', $settings);
   add_custom_fields();
-  // Close comments for all uiowa_apr nodes by default.
-  variable_set('comment_uiowa_apr', COMMENT_NODE_CLOSED);
-  // Do not display submitted (date and author) for all uiowa_apr nodes.
-  variable_set('node_submitted_uiowa_apr', FALSE);
-  // Set default pathauto pattern for all uiowa_apr nodes.
-  variable_set('pathauto_node_uiowa_apr_pattern', 'people/[node:title]');
+  variable_set('comment_apr_profile', 1);
+  variable_set('node_submitted_apr_profile', 0);
+  variable_set('node_options_apr_profile', array('status'));
+  variable_set('pathauto_node_apr_profile_pattern', 'profile/[node:title]');
 }
 
 /**
