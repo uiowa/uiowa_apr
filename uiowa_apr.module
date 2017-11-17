@@ -219,11 +219,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
       $config = field_bundle_settings('node', $node->type);
 
       foreach ($extra['node'][$node->type]['display'] as $field_name => $field_info) {
-        // Check to make sure this field is visible in this view mode.
-        if (empty($config['extra_fields']['display'][$field_name][$view_mode]['visible'])) {
-          continue;
-        }
-
         switch ($field_name) {
           case 'apr_profile_assets':
             $data = array();

@@ -4,14 +4,15 @@
  */
 function uiowa_apr_install() {
   node_types_rebuild();
+  add_custom_fields();
   $settings = field_bundle_settings('node', 'apr_profile');
   $settings['view_modes']['full']['custom_settings'] = TRUE;
   field_bundle_settings('node', 'apr_profile', $settings);
-  add_custom_fields();
+  
   variable_set('comment_apr_profile', 1);
   variable_set('node_submitted_apr_profile', 0);
   variable_set('node_options_apr_profile', array('status'));
-  variable_set('pathauto_node_apr_profile_pattern', 'profile/[node:title]');
+  variable_set('pathauto_node_apr_profile_pattern', 'people/[node:title]');
 }
 
 /**
