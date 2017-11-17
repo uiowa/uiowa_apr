@@ -2,7 +2,7 @@ name = University of Iowa APR Profiles
 description = Provides web profile displays from APR.
 core = 7.x
 version = 7.x-1.0
-package = University of Iowa
+package = UIowa
 
 dependencies[] = email
 dependencies[] = telephone

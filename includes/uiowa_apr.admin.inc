@@ -50,12 +50,14 @@ function uiowa_apr_config_form_submit($form, &$form_state) {
   drupal_set_message(t('All caches have been cleared.'), 'status');
 }
 
+/**
+ * Additional migration handler for uiowa_apr_config_form().
+ */
 function uiowa_apr_config_form_run_migration($form, &$form_state) {
-    // Get migration objects
-    $people = Migration::getInstance('APRPeople');
-    $appointments = Migration::getInstance('APRPeopleAppointments');
+  // Get migration objects
+  $people = Migration::getInstance('APRPeople');
+  $appointments = Migration::getInstance('APRPeopleAppointments');
 
-    $result = $people->processImport();
-    $result = $appointments->processImport();
-
+  $result = $people->processImport();
+  $result = $appointments->processImport();
 }
