@@ -16,9 +16,19 @@ function uiowa_apr_permission() {
  * Implements hook_menu().
  */
 function uiowa_apr_menu() {
-  $items['admin/config/user-interface/uiowa-apr'] = array(
+  $items['admin/config/uiowa'] = array(
+    'title' => 'University of Iowa',
+    'description' => 'Configuration settings related to University of Iowa custom modules.',
+    'position' => 'right',
+    'weight' => 50, 
+    'page callback' => 'system_admin_menu_block_page',
+    'access arguments' => array('access administration pages'),
+    'file' => 'system.admin.inc',
+  );
+
+  $items['admin/config/uiowa/uiowa-apr'] = array(
   'title' => 'University of Iowa APR',
-  'description' => 'Configuration for the University of Iowa APR module',
+  'description' => 'Configuration for the University of Iowa APR module.',
   'page callback' => 'drupal_get_form',
   'page arguments' => array('uiowa_apr_config_form'),
   'access arguments' => array('administer uiowa apr'),
@@ -70,29 +80,29 @@ function uiowa_apr_field_extra_fields() {
         'description' => t('Appointments.'),
         'weight' => 74,
       ),
-      'apr_profile_contact_information' => array(
+      'apr_profile_pasthist' => array(
+        'label' => t('Past History'),
+        'description' => t('Past History.'),
+        'weight' => 75,
+      ),
+      'apr_profile_alt_contacts' => array(
         'label' => t('Contact Information'),
         'description' => t('Contact Information.'),
-        'weight' => 75,
+        'weight' => 76,
       ),
       'apr_profile_email' => array(
         'label' => t('Email'),
         'description' => t('Email.'),
-        'weight' => 76,
+        'weight' => 77,
       ),
       'apr_profile_websites' => array(
         'label' => t('Websites'),
         'description' => t('Websites.'),
-        'weight' => 77,
+        'weight' => 78,
       ),
       'apr_profile_office_hours' => array(
         'label' => t('Office Hours'),
         'description' => t('Office Hours.'),
-        'weight' => 78,
-      ),
-      'apr_profile_pasthist' => array(
-        'label' => t('Past History'),
-        'description' => t('Past History.'),
         'weight' => 79,
       ),
       'apr_profile_education' => array(
@@ -246,15 +256,30 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
-          case 'apr_profile_contact_information':
+          case 'apr_profile_pasthist':
+            $data = array();
+            if (count($person['pasthist']) > 0) {
+              foreach ($person['pasthist'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_pasthist',
+                '#markup' => theme('apr_profile_pasthist', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_alt_contacts':
             $data = array();
             if (count($person['pci']['alt_contacts']) > 0) {
               foreach ($person['pci']['alt_contacts'] as $i => $item) {
                 $data[] = $item;
               }
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_contact_information',
-                '#markup' => theme('apr_profile_contact_information', array('data' => $data)),
+                '#field_name' => 'apr_profile_alt_contacts',
+                '#markup' => theme('apr_profile_alt_contacts', array('data' => $data)),
               );
             }
             break;
@@ -292,21 +317,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_office_hours',
                 '#markup' => theme('apr_profile_office_hours', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_pasthist':
-            $data = array();
-            if (count($person['pasthist']) > 0) {
-              foreach ($person['pasthist'] as $i => $item) {
-                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
-                  $data[] = $item;
-                }
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_pasthist',
-                '#markup' => theme('apr_profile_pasthist', array('data' => $data)),
               );
             }
             break;
@@ -592,9 +602,14 @@ function uiowa_apr_theme() {
       'template' => 'theme/apr_profile_admin_perms',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_contact_information' => array(
+    'apr_profile_pasthist' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_contact_information',
+      'template' => 'theme/apr_profile_pasthist',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_alt_contacts' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_alt_contacts',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_email' => array(
@@ -610,11 +625,6 @@ function uiowa_apr_theme() {
     'apr_profile_office_hours' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_office_hours',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_pasthist' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_pasthist',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_education' => array(

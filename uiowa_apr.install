@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Implements hook_install().
  */
@@ -8,11 +9,10 @@ function uiowa_apr_install() {
   $settings = field_bundle_settings('node', 'apr_profile');
   $settings['view_modes']['full']['custom_settings'] = TRUE;
   field_bundle_settings('node', 'apr_profile', $settings);
-  
   variable_set('comment_apr_profile', 1);
   variable_set('node_submitted_apr_profile', 0);
   variable_set('node_options_apr_profile', array('status'));
-  variable_set('pathauto_node_apr_profile_pattern', 'people/[node:title]');
+  variable_set('pathauto_node_apr_profile_pattern', 'people/[node:apr_profile_first_name]-[node:apr_profile_last_name]');
 }
 
 /**
@@ -60,6 +60,21 @@ function _apr_profile_installed_fields() {
       'label' => $t('Last Name'),
       'type' => 'text',
     ),
+    'apr_profile_pref_first_name' => array(
+      'field_name' => 'apr_profile_pref_first_name',
+      'label' => $t('Preferred First Name'),
+      'type' => 'text',
+    ),
+    'apr_profile_pref_last_name' => array(
+      'field_name' => 'apr_profile_pref_last_name',
+      'label' => $t('Preferred Last Name'),
+      'type' => 'text',
+    ),
+    'apr_profile_suffix' => array(
+      'field_name' => 'apr_profile_suffix',
+      'label' => $t('Suffix'),
+      'type' => 'text',
+    ),
     'apr_profile_credentials' => array(
       'field_name' => 'apr_profile_credentials',
       'label' => $t('Credentials'),
@@ -103,6 +118,16 @@ function _apr_profile_installed_fields() {
     'apr_profile_zip' => array(
       'field_name' => 'apr_profile_zip',
       'label' => $t('Zip'),
+      'type' => 'text',
+    ),
+    'apr_profile_rank' => array(
+      'field_name' => 'apr_profile_rank',
+      'label' => $t('Rank'),
+      'type' => 'text',
+    ),
+    'apr_profile_working_title' => array(
+      'field_name' => 'apr_profile_working_title',
+      'label' => $t('Working Title'),
       'type' => 'text',
     ),
     'apr_profile_appointments' => array(
@@ -179,6 +204,30 @@ function _apr_profile_installed_instances() {
         'type' => 'text_textfield',
       ),
     ),
+    'apr_profile_pref_first_name' => array(
+      'field_name' => 'apr_profile_pref_first_name',
+      'type' => 'text',
+      'label' => $t('Preferred First Name'),
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    ),
+    'apr_profile_pref_last_name' => array(
+      'field_name' => 'apr_profile_pref_last_name',
+      'type' => 'text',
+      'label' => $t('Preferred Last Name'),
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    ),
+    'apr_profile_suffix' => array(
+      'field_name' => 'apr_profile_suffix',
+      'type' => 'text',
+      'label' => $t('Suffix'),
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    ),
     'apr_profile_credentials' => array(
       'field_name' => 'apr_profile_credentials',
       'type' => 'text',
@@ -247,6 +296,22 @@ function _apr_profile_installed_instances() {
       'field_name' => 'apr_profile_zip',
       'type' => 'text',
       'label' => $t('Zip'),
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    ),
+    'apr_profile_rank' => array(
+      'field_name' => 'apr_profile_rank',
+      'type' => 'text',
+      'label' => $t('Rank'),
+      'widget' => array(
+        'type' => 'text_textfield',
+      ),
+    ),
+    'apr_profile_working_title' => array(
+      'field_name' => 'apr_profile_working_title',
+      'type' => 'text',
+      'label' => $t('Working Title'),
       'widget' => array(
         'type' => 'text_textfield',
       ),

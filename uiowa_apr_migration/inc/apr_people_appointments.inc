@@ -1,13 +1,14 @@
 <?php
+
 /**
  * @file
- * Using migrate to import people nodes from APR
+ * Using migrate to import people nodes from APR for the University of Iowa APR module.
  **/
 
 /**
  * NodeMigration class extension from Migration.
  */
- class APRPeopleAppointmentFieldCollectionMigration extends Migration {
+class APRPeopleAppointmentFieldCollectionMigration extends Migration {
   public function __construct($arguments) {
     parent::__construct($arguments);
     $this->description = t('Import APR Profile Appointments.');

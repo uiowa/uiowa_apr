@@ -23,9 +23,19 @@
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['rank'])) $output .= $item['rank'];
-          if (!empty($item['dep'])) $output .= " of " . $item['dep'];
-          if (!empty($item['college'])) $output .= ", " . $item['college'];
+          if (!empty($item['title'])) {
+            $output .= $item['title'];
+          }
+          elseif (!empty($item['rank'])) {
+            $output .= $item['rank'];
+          }
+          if (!empty($item['rank']) && ($item['rank'] == 'Staff' || $item['rank'] == 'Student')) {
+            if (!empty($item['college'])) $output .= ", " . $item['college'];
+          }
+          else {
+            if (!empty($item['dep'])) $output .= " of " . $item['dep'];
+            if (!empty($item['college'])) $output .= ", " . $item['college'];
+          }
           print $output;
         ?>
       </div>

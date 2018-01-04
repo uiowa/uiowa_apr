@@ -26,13 +26,10 @@
           if (!empty($item['deg'])) $output .= $item['deg'];
           else if (!empty($item['desc'])) $output .= $item['desc'];
           if (!empty($item['major'])) $output .= " in " . $item['major'] . "";
-          if (!empty($item['school'])) $output .= " - " . $item['school'];
-          if (!empty($item['city'])) {
-            $output .= ", " . $item['city'];
-            if (!empty($item['state'])) $output .= ", " . $item['state'];
-          } else if (!empty($item['state'])) {
-            $output .= ", " . $item['state'];
-          }
+          if (!empty($item['school'])) $output .= ", " . $item['school'];
+          if (!empty($item['city'])) $output .= ", " . $item['city'];
+          if (!empty($item['state'])) $output .= ", " . $item['state'];
+          if (!empty($item['country'])) $output .= ", " . $item['country'];
           if (!empty($item['start_date'])) {
             $output .= ", " . date("Y", strtotime($item['start_date']));
             if (!empty($item['end_date']) && (date("Y", strtotime($item['start_date'])) !== date("Y", strtotime($item['end_date'])))) $output .= " - " . date("Y", strtotime($item['end_date']));

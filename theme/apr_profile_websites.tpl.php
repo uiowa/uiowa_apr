@@ -24,7 +24,15 @@
         <?php
           $output = "";
           if (!empty($item['url'])) $output .= "<a href='" . $item['url'] . "'>";
-          if (!empty($item['desc'])) $output .= $item['desc'];
+          if (!empty($item['desc'])) {
+            $output .= $item['desc'];
+          }
+          elseif (!empty($item['type'])) {
+            $output .= $item['type'];
+          }
+          else {
+            $output .= $item['url'];
+          }
           if (!empty($item['url'])) $output .= "</a>";
           print $output;
         ?>

@@ -1,0 +1,18 @@
+.node-apr-profile .field {
+    padding-bottom: 1em;
+}
+
+.node-apr-profile .field-name-apr-profile-admin-perms,
+.node-apr-profile .field-name-apr-profile-alt-contacts,
+.node-apr-profile .field-name-apr-profile-last-modified {
+    padding-bottom: 0;
+}
+
+.node-apr-profile .field-name-apr-profile-intellcont .field-item,
+.node-apr-profile .field-name-apr-profile-present .field-item,
+.node-apr-profile .field-name-apr-profile-perform_exhibit .field-item,
+.node-apr-profile .field-name-apr-profile-creative_works .field-item,
+.node-apr-profile .field-name-apr-profile-congrant .field-item,
+{
+    padding-bottom: 0;
+}

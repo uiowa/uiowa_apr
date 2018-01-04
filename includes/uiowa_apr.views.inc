@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Views integration for the University of Iowa APR Profiles module.
+ * Views integration for the University of Iowa APR module.
  */
 
 /**

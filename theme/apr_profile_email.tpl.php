@@ -1,15 +1,15 @@
 <?php
 
 /**
- * @file apr_profile_contact_email.tpl.php
- * Default theme implementation for the contact email field.
+ * @file apr_profile_email.tpl.php
+ * Default theme implementation for the email field.
  *
  * @see uiowa_apr_node_view()
  *
  * Available variables:
  *
  * $data
- *   Array of contact email.
+ *   Array of email.
  */
 ?>
 

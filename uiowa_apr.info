@@ -13,3 +13,5 @@ dependencies[] = views:views
 ;Views Includes
 files[] = includes/uiowa_apr.views.inc
 files[] = includes/uiowa_apr.views_default.inc
+
+stylesheets[all][] = uiowa_apr.css

@@ -1,13 +1,14 @@
 <?php
+
 /**
  * @file
- * Using migrate to import people nodes from APR
+ * Using migrate to import people nodes from APR for the University of Iowa APR module.
  **/
 
 /**
  * NodeMigration class extension from Migration.
  */
- class APRPeopleNodeMigration extends Migration {
+class APRPeopleNodeMigration extends Migration {
   public function __construct($arguments) {
     parent::__construct($arguments);
     $this->description = t('Import APR Profile nodes.');
@@ -19,9 +20,12 @@
     $fields = array(
       'apr_profile_id' => 'Unique ID',
       'title' => 'Name',
+      'apr_profile_hawkid' => 'HawkID',
       'apr_profile_first_name' => 'First Name',
+      'apr_profile_pref_first_name' => 'Preferred First Name',
       'apr_profile_middle_name' => 'Middle Name',
       'apr_profile_last_name' => 'Last Name',
+      'apr_profile_suffix' => 'Suffix',
       'apr_profile_credentials' => 'Credentials',
       'apr_profile_email' => 'Email',
       'apr_profile_phone' => 'Phone',
@@ -31,6 +35,8 @@
       'apr_profile_city' => 'City',
       'apr_profile_state' => 'State',
       'apr_profile_zip' => 'Zip',
+      'apr_profile_rank' => 'Rank',
+      'apr_profile_working_title' => 'Working Title',
     );
 
     $this->source = new MigrateSourceList(new APRPeopleListJSON($source_url),
@@ -53,8 +59,10 @@
     $this->addFieldMapping('title', 'full_name');
     $this->addFieldMapping('apr_profile_hawkid', 'hawkid');
     $this->addFieldMapping('apr_profile_first_name', 'fname');
+    $this->addFieldMapping('apr_profile_pref_first_name', 'pfname');
     $this->addFieldMapping('apr_profile_middle_name', 'mname');
     $this->addFieldMapping('apr_profile_last_name', 'lname');
+    $this->addFieldMapping('apr_profile_suffix', 'suffix');
     $this->addFieldMapping('apr_profile_credentials', 'credentials');
     $this->addFieldMapping('apr_profile_email', 'email');
     $this->addFieldMapping('apr_profile_phone', 'phone');
@@ -64,11 +72,13 @@
     $this->addFieldMapping('apr_profile_city', 'city');
     $this->addFieldMapping('apr_profile_state', 'state');
     $this->addFieldMapping('apr_profile_zip', 'zip');
+    $this->addFieldMapping('apr_profile_rank', 'rank');
+    $this->addFieldMapping('apr_profile_working_title', 'working_title');
   }
 
   public function preImport() {
     parent::preImport();
-    if(!variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')){
+    if (!variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')){
       throw new MigrateException('No API and/or Population ID');
     }
   }
@@ -93,7 +103,16 @@ class APRPeopleItemJSON extends MigrateItemJSON {
       if ($data) {
         // Let's index the array by the ID for easy retrieval.
         foreach ($data as $item) {
-          $item->full_name = $item->fname.' '.$item->lname;
+          if (!empty($item->pfname)) {
+            $item->full_name = $item->pfname;
+          }
+          else {
+            $item->full_name = $item->fname;
+          }
+          if (!empty($item->mname)) $item->full_name .= ' '.substr($item->mname,0,1).'.';
+          if (!empty($item->lname)) $item->full_name .= ' '.$item->lname;
+          if (!empty($item->suffix)) $item->full_name .= ', '.$item->suffix;
+          if (!empty($item->credentials)) $item->full_name .= ', '.$item->credentials;
           $this->data[$item->uid] = $item;
         }
       }

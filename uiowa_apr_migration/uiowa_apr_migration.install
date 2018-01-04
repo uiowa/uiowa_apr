@@ -1,16 +1,15 @@
 <?php
 
-
 /**
  * Implements hook_disable().
  */
 function uiowa_apr_migration_disable() {
-    $people = Migration::getInstance('APRPeople');
-    $appointments = Migration::getInstance('APRPeopleAppointments');
+  $people = Migration::getInstance('APRPeople');
+  $appointments = Migration::getInstance('APRPeopleAppointments');
 
-    $appointments->processRollback();
-    $people->processRollback();
-    
-    Migration::deregisterMigration('APRPeopleAppointments');
-    Migration::deregisterMigration('APRPeople');
+  $appointments->processRollback();
+  $people->processRollback();
+
+  Migration::deregisterMigration('APRPeopleAppointments');
+  Migration::deregisterMigration('APRPeople');
 }

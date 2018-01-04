@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_contact_information.tpl.php
+ * @file apr_profile_alt_contacts.tpl.php
  * Default theme implementation for the contact information fields.
  *
  * @see uiowa_apr_node_view()
@@ -15,7 +15,7 @@
 
 <?php if (!empty($data)): ?>
 
-<div class="field field-name-apr-profile-contact-information"<?php print $attributes; ?>>
+<div class="field field-name-apr-profile-alt-contacts"<?php print $attributes; ?>>
   <div class="field-label">Contact Information</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
