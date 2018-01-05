@@ -153,8 +153,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Faculty members';
-  $handler->display->display_options['style_options']['summary'] = 'List of Faculty members\' phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all faculty members';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all faculty phone, email and campus addresses';
   /* Header: Global: Text area */
   $handler->display->display_options['header']['area']['id'] = 'area';
   $handler->display->display_options['header']['area']['table'] = 'views';
@@ -719,8 +719,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Emeritus members';
-  $handler->display->display_options['style_options']['summary'] = 'List of Emeritus members\' phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all emeritus faculty members';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all emeritus faculty phone and email addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -1016,8 +1016,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Emeritus members';
-  $handler->display->display_options['style_options']['summary'] = 'List of Emeritus members\' phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all emeritus faculty members';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all emeritus faculty phone and email addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -1210,12 +1210,11 @@ function uiowa_apr_views_default_views() {
     'apr_profile_pref_first_name' => 'apr_profile_pref_first_name',
     'apr_profile_middle_name' => 'apr_profile_middle_name',
     'apr_profile_last_name' => 'apr_profile_last_name',
-    'apr_profile_pref_last_name' => 'apr_profile_pref_last_name',
     'apr_profile_suffix' => 'apr_profile_suffix',
     'apr_profile_credentials' => 'apr_profile_credentials',
     'nothing' => 'nothing',
-    'apr_profile_working_title' => 'nothing',
-    'apr_profile_rank' => 'nothing',
+    'apr_profile_working_title' => 'title',
+    'apr_profile_rank' => 'title',
     'apr_profile_email' => 'apr_profile_email',
     'apr_profile_phone' => 'apr_profile_phone',
     'apr_profile_room' => 'apr_profile_room',
@@ -1257,13 +1256,6 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
     'apr_profile_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'apr_profile_pref_last_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1332,8 +1324,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Staff members';
-  $handler->display->display_options['style_options']['summary'] = 'List of Staff members\' phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all staff members';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all staff phone, email and campus addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -1379,12 +1371,11 @@ function uiowa_apr_views_default_views() {
     'apr_profile_pref_first_name' => 'apr_profile_pref_first_name',
     'apr_profile_middle_name' => 'apr_profile_middle_name',
     'apr_profile_last_name' => 'apr_profile_last_name',
-    'apr_profile_pref_last_name' => 'apr_profile_pref_last_name',
     'apr_profile_suffix' => 'apr_profile_suffix',
     'apr_profile_credentials' => 'apr_profile_credentials',
     'nothing' => 'nothing',
-    'apr_profile_working_title' => 'nothing',
-    'apr_profile_rank' => 'nothing',
+    'apr_profile_working_title' => 'title',
+    'apr_profile_rank' => 'title',
     'apr_profile_email' => 'apr_profile_email',
     'apr_profile_phone' => 'apr_profile_phone',
     'apr_profile_room' => 'apr_profile_room',
@@ -1426,13 +1417,6 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
     'apr_profile_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'apr_profile_pref_last_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1501,8 +1485,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Staff members';
-  $handler->display->display_options['style_options']['summary'] = 'List of Staff members\' phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all staff members';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all staff phone, email and campus addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -1559,12 +1543,11 @@ function uiowa_apr_views_default_views() {
     'apr_profile_pref_first_name' => 'apr_profile_pref_first_name',
     'apr_profile_middle_name' => 'apr_profile_middle_name',
     'apr_profile_last_name' => 'apr_profile_last_name',
-    'apr_profile_pref_last_name' => 'apr_profile_pref_last_name',
     'apr_profile_suffix' => 'apr_profile_suffix',
     'apr_profile_credentials' => 'apr_profile_credentials',
     'nothing' => 'nothing',
-    'apr_profile_working_title' => 'nothing',
-    'apr_profile_rank' => 'nothing',
+    'apr_profile_working_title' => 'title',
+    'apr_profile_rank' => 'title',
     'apr_profile_email' => 'apr_profile_email',
     'apr_profile_phone' => 'apr_profile_phone',
     'apr_profile_room' => 'apr_profile_room',
@@ -1606,13 +1589,6 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
     'apr_profile_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'apr_profile_pref_last_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1681,8 +1657,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Graduate Students';
-  $handler->display->display_options['style_options']['summary'] = 'List of Graduate Student phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all graduate students';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all graduate student phone, email and campus addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -1728,12 +1704,11 @@ function uiowa_apr_views_default_views() {
     'apr_profile_pref_first_name' => 'apr_profile_pref_first_name',
     'apr_profile_middle_name' => 'apr_profile_middle_name',
     'apr_profile_last_name' => 'apr_profile_last_name',
-    'apr_profile_pref_last_name' => 'apr_profile_pref_last_name',
     'apr_profile_suffix' => 'apr_profile_suffix',
     'apr_profile_credentials' => 'apr_profile_credentials',
     'nothing' => 'nothing',
-    'apr_profile_working_title' => 'nothing',
-    'apr_profile_rank' => 'nothing',
+    'apr_profile_working_title' => 'title',
+    'apr_profile_rank' => 'title',
     'apr_profile_email' => 'apr_profile_email',
     'apr_profile_phone' => 'apr_profile_phone',
     'apr_profile_room' => 'apr_profile_room',
@@ -1775,13 +1750,6 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
     'apr_profile_last_name' => array(
-      'sortable' => 0,
-      'default_sort_order' => 'asc',
-      'align' => '',
-      'separator' => '',
-      'empty_column' => 0,
-    ),
-    'apr_profile_pref_last_name' => array(
       'sortable' => 0,
       'default_sort_order' => 'asc',
       'align' => '',
@@ -1850,8 +1818,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Graduate Students';
-  $handler->display->display_options['style_options']['summary'] = 'List of Graduate Student phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all graduate students';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all graduate student phone, email and campus addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -3422,6 +3390,12 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['title'] = 'Faculty & Staff A-Z';
   $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'table';
   $handler->display->display_options['style_options']['columns'] = array(
@@ -3545,8 +3519,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'List of Faculty & Staff members';
-  $handler->display->display_options['style_options']['summary'] = 'List of Faculty and Staff members\' phone, email and campus addresses';
+  $handler->display->display_options['style_options']['caption'] = 'A list of all faculty and staff';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all faculty and staff phone, email and campus addresses';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -3741,8 +3715,8 @@ function uiowa_apr_views_default_views() {
       'empty_column' => 0,
     ),
   );
-  $handler->display->display_options['style_options']['caption'] = 'Faculty & Staff Glossary';
-  $handler->display->display_options['style_options']['summary'] = 'Glossary list of Faculty and Staff members\' last initials';
+  $handler->display->display_options['style_options']['caption'] = 'A glossary of all faculty and staff';
+  $handler->display->display_options['style_options']['summary'] = 'A glossary of all faculty and staff last initials';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['defaults']['row_options'] = FALSE;
@@ -3753,6 +3727,7 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['arguments']['apr_profile_last_name_value']['table'] = 'field_data_apr_profile_last_name';
   $handler->display->display_options['arguments']['apr_profile_last_name_value']['field'] = 'apr_profile_last_name_value';
   $handler->display->display_options['arguments']['apr_profile_last_name_value']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['exception']['title_enable'] = TRUE;
   $handler->display->display_options['arguments']['apr_profile_last_name_value']['default_argument_type'] = 'fixed';
   $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary']['number_of_records'] = '0';
   $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary']['format'] = 'unformatted_summary';
@@ -3816,7 +3791,396 @@ function uiowa_apr_views_default_views() {
     'page_apr_profiles_staff_list' => 0,
     'page_apr_profiles_graduate_students_list' => 0,
   );
-    
+  $handler->display->display_options['inherit_arguments'] = FALSE;
+  
+  /* Display: A-Z Page */
+  $handler = $view->new_display('page', 'A-Z Page', 'page_apr_profiles_atoz');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'People A-Z';
+  $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '50';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['pager']['options']['id'] = '0';
+  $handler->display->display_options['pager']['options']['quantity'] = '9';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'path' => 'path',
+    'apr_profile_first_name' => 'apr_profile_first_name',
+    'apr_profile_pref_first_name' => 'apr_profile_pref_first_name',
+    'apr_profile_middle_name' => 'apr_profile_middle_name',
+    'apr_profile_last_name' => 'apr_profile_last_name',
+    'apr_profile_suffix' => 'apr_profile_suffix',
+    'apr_profile_credentials' => 'apr_profile_credentials',
+    'nothing' => 'nothing',
+    'apr_profile_working_title' => 'title',
+    'apr_profile_rank' => 'title',
+    'apr_profile_email' => 'apr_profile_email',
+    'apr_profile_phone' => 'apr_profile_phone',
+    'apr_profile_room' => 'apr_profile_room',
+    'apr_profile_building' => 'apr_profile_building',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'path' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_first_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_pref_first_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_middle_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_last_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_suffix' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_credentials' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_working_title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_rank' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_room' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_building' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'A list of all faculty, staff and graduate students';
+  $handler->display->display_options['style_options']['summary'] = 'A list of all faculty, staff and graduate student phone, email and campus addresses';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  /* Header: Global: Text area */
+  $handler->display->display_options['header']['area']['id'] = 'area';
+  $handler->display->display_options['header']['area']['table'] = 'views';
+  $handler->display->display_options['header']['area']['field'] = 'area';
+  $handler->display->display_options['header']['area']['content'] = '<h2>A-Z Listing</h2>';
+  $handler->display->display_options['header']['area']['format'] = 'full_html';
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Last Name (apr_profile_last_name) */
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['id'] = 'apr_profile_last_name_value';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['table'] = 'field_data_apr_profile_last_name';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['field'] = 'apr_profile_last_name_value';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['glossary'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['limit'] = '1';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['case'] = 'upper';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['path_case'] = 'upper';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'apr_profile' => 'apr_profile',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  $handler->display->display_options['path'] = 'people';
+  
+  /* Display: A-Z Glossary Attachment */
+  $handler = $view->new_display('attachment', 'A-Z Glossary Attachment', 'attachment_apr_profiles_atoz_glossary');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['enabled'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+    'path' => 'path',
+    'apr_profile_first_name' => 'apr_profile_first_name',
+    'apr_profile_pref_first_name' => 'apr_profile_pref_first_name',
+    'apr_profile_middle_name' => 'apr_profile_middle_name',
+    'apr_profile_last_name' => 'apr_profile_last_name',
+    'apr_profile_suffix' => 'apr_profile_suffix',
+    'apr_profile_credentials' => 'apr_profile_credentials',
+    'nothing' => 'nothing',
+    'apr_profile_working_title' => 'title',
+    'apr_profile_rank' => 'title',
+    'apr_profile_email' => 'apr_profile_email',
+    'apr_profile_phone' => 'apr_profile_phone',
+    'apr_profile_room' => 'apr_profile_room',
+    'apr_profile_building' => 'apr_profile_building',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
+    'title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'path' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_first_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_pref_first_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_middle_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_last_name' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_suffix' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_credentials' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'nothing' => array(
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_working_title' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_rank' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_email' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_phone' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_room' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+    'apr_profile_building' => array(
+      'sortable' => 0,
+      'default_sort_order' => 'asc',
+      'align' => '',
+      'separator' => '',
+      'empty_column' => 0,
+    ),
+  );
+  $handler->display->display_options['style_options']['caption'] = 'A glossary of all faculty, staff and graduate students';
+  $handler->display->display_options['style_options']['summary'] = 'A glossary of all faculty, staff and graduate student last initials';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['header'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Content: Last Name (apr_profile_last_name) */
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['id'] = 'apr_profile_last_name_value';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['table'] = 'field_data_apr_profile_last_name';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['field'] = 'apr_profile_last_name_value';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['exception']['title_enable'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary']['format'] = 'unformatted_summary';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary_options']['base_path'] = 'people';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary_options']['count'] = FALSE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary_options']['inline'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['summary_options']['separator'] = ' | ';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['specify_validation'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['validate']['fail'] = 'summary';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['glossary'] = TRUE;
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['limit'] = '1';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['case'] = 'upper';
+  $handler->display->display_options['arguments']['apr_profile_last_name_value']['path_case'] = 'upper';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'apr_profile' => 'apr_profile',
+  );
+  $handler->display->display_options['filters']['type']['group'] = 1;
+  /* Filter criterion: Content: Rank (apr_profile_rank) */
+  $handler->display->display_options['filters']['apr_profile_rank_value_2']['id'] = 'apr_profile_rank_value_2';
+  $handler->display->display_options['filters']['apr_profile_rank_value_2']['table'] = 'field_data_apr_profile_rank';
+  $handler->display->display_options['filters']['apr_profile_rank_value_2']['field'] = 'apr_profile_rank_value';
+  $handler->display->display_options['filters']['apr_profile_rank_value_2']['operator'] = 'not';
+  $handler->display->display_options['filters']['apr_profile_rank_value_2']['value'] = 'student';
+  $handler->display->display_options['filters']['apr_profile_rank_value_2']['group'] = 1;
+  /* Filter criterion: Content: Rank (apr_profile_rank) */
+  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
+  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
+  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
+  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'not';
+  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'emeritus';
+  /* Filter criterion: Content: Rank (apr_profile_rank) */
+  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
+  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
+  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
+  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'not';
+  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emerita';
+  $handler->display->display_options['displays'] = array(
+    'page_apr_profiles_atoz' => 'page_apr_profiles_atoz',
+    'default' => 0,
+    'page_apr_profiles' => 0,
+    'page_apr_profiles_faculty' => 0,
+    'page_apr_profiles_emeritus' => 0,
+    'page_apr_profiles_staff' => 0,
+    'page_apr_profiles_graduate_students' => 0,
+    'page_apr_profiles_faculty_list' => 0,
+    'page_apr_profiles_emeritus_list' => 0,
+    'page_apr_profiles_staff_list' => 0,
+    'page_apr_profiles_graduate_students_list' => 0,
+    'page_apr_profiles_faculty_staff' => 0,
+  );
+  $handler->display->display_options['inherit_arguments'] = FALSE;
+
   // Add view to list of views to provide.
   $views[$view->name] = $view;
 
