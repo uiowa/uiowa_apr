@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of office hours information.
+ *   Array of office hours information from pci.office_hours[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Office Hours</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.office_hours[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

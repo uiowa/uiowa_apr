@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of professional membership information.
+ *   Array of professional membership information from member[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Professional Memberships</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the member[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

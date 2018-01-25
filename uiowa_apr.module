@@ -73,91 +73,96 @@ function uiowa_apr_field_extra_fields() {
       'apr_profile_assets' => array(
         'label' => t('Assets'),
         'description' => t('Assets.'),
-        'weight' => 73,
+        'weight' => 72,
       ),
       'apr_profile_admin_perms' => array(
         'label' => t('Appointments'),
         'description' => t('Appointments.'),
-        'weight' => 74,
+        'weight' => 73,
       ),
       'apr_profile_pasthist' => array(
         'label' => t('Past History'),
         'description' => t('Past History.'),
-        'weight' => 75,
+        'weight' => 74,
       ),
       'apr_profile_alt_contacts' => array(
         'label' => t('Contact Information'),
         'description' => t('Contact Information.'),
-        'weight' => 76,
+        'weight' => 75,
       ),
       'apr_profile_email' => array(
         'label' => t('Email'),
         'description' => t('Email.'),
-        'weight' => 77,
+        'weight' => 76,
       ),
       'apr_profile_websites' => array(
         'label' => t('Websites'),
         'description' => t('Websites.'),
-        'weight' => 78,
+        'weight' => 77,
       ),
       'apr_profile_office_hours' => array(
         'label' => t('Office Hours'),
         'description' => t('Office Hours.'),
-        'weight' => 79,
+        'weight' => 78,
       ),
       'apr_profile_education' => array(
         'label' => t('Education'),
         'description' => t('Education.'),
-        'weight' => 80,
+        'weight' => 79,
       ),
       'apr_profile_education_postgrad' => array(
         'label' => t('Education (Post Graduate)'),
         'description' => t('Education (Post Graduate).'),
-        'weight' => 81,
+        'weight' => 80,
       ),
       'apr_profile_training_affil' => array(
         'label' => t('Education/Training Program Affiliations'),
         'description' => t('Education/Training Program Affiliations.'),
-        'weight' => 82,
+        'weight' => 81,
       ),
       'apr_profile_center_affil' => array(
         'label' => t('Center, Program and Institute Affiliations'),
         'description' => t('Center, Program and Institute Affiliations.'),
-        'weight' => 83,
+        'weight' => 82,
       ),
       'apr_profile_centers' => array(
         'label' => t('Affiliated Centers'),
         'description' => t('Affiliated Centers.'),
-        'weight' => 84,
+        'weight' => 83,
       ),
       'apr_profile_bio' => array(
         'label' => t('Biography'),
         'description' => t('Biography.'),
-        'weight' => 85,
+        'weight' => 84,
       ),
       'apr_profile_resprog' => array(
         'label' => t('Areas of Research Interest'),
         'description' => t('Areas of Research Interest.'),
-        'weight' => 86,
+        'weight' => 85,
       ),
       'apr_profile_teaching_interests' => array(
         'label' => t('Teaching Interests'),
         'description' => t('Teaching Interests.'),
-        'weight' => 87,
+        'weight' => 86,
       ),
       'apr_profile_research_narrative' => array(
         'label' => t('Research Narrative'),
         'description' => t('Research Narrative.'),
-        'weight' => 88,
+        'weight' => 87,
       ),
       'apr_profile_clinical_narrative' => array(
         'label' => t('Clinical Narrative'),
         'description' => t('Clinical Narrative.'),
-        'weight' => 89,
+        'weight' => 88,
       ),
       'apr_profile_liccert' => array(
         'label' => t('Licensures and Certifications'),
         'description' => t('Licensures and Certifications.'),
+        'weight' => 89,
+      ),
+      'apr_profile_facdev' => array(
+        'label' => t('Professional Development Activities'),
+        'description' => t('Professional Development Activities.'),
         'weight' => 90,
       ),
       'apr_profile_member' => array(
@@ -275,7 +280,9 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['pci']['alt_contacts']) > 0) {
               foreach ($person['pci']['alt_contacts'] as $i => $item) {
-                $data[] = $item;
+                if (!empty($item['type']) && ($item['type'] !== 'Cell' && $item['type'] !== 'Home')) {
+                  $data[] = $item;
+                }
               }
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_alt_contacts',
@@ -447,7 +454,9 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['liccert']) > 0) {
               foreach ($person['liccert'] as $i => $item) {
-                $data[] = $item;
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
               };
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_liccert',
@@ -456,11 +465,28 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
-          case 'apr_profile_member':
+            case 'apr_profile_facdev':
+            $data = array();
+            if (count($person['facdev']) > 0) {
+              foreach ($person['facdev'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_facdev',
+                '#markup' => theme('apr_profile_facdev', array('data' => $data)),
+              );
+            }
+            break;
+      
+            case 'apr_profile_member':
             $data = array();
             if (count($person['member']) > 0) {
               foreach ($person['member'] as $i => $item) {
-                $data[] = $item;
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
               };
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_member',
@@ -473,7 +499,9 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['awardhonor']) > 0) {
               foreach ($person['awardhonor'] as $i => $item) {
-                $data[] = $item;
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
               };
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_awardhonor',
@@ -486,7 +514,9 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             $data = array();
             if (count($person['schteach']) > 0) {
               foreach ($person['schteach'] as $i => $item) {
-                $data[] = $item;
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
               };
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_schteach',
@@ -682,6 +712,11 @@ function uiowa_apr_theme() {
       'template' => 'theme/apr_profile_liccert',
       'variables' => array('data' => NULL),
     ),
+    'apr_profile_facdev' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_facdev',
+      'variables' => array('data' => NULL),
+    ),
     'apr_profile_member' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_member',
@@ -738,4 +773,28 @@ function uiowa_apr_views_api() {
     'api' => 3,
     'path' => drupal_get_path('module', 'uiowa_apr') . '/includes',
   );
+}
+
+/**
+ * Implements hook_image_default_styles().
+ */
+function uiowa_apr_image_default_styles() {
+  $styles = array();
+
+  $styles['apr_profile_image'] = array(
+    'label' => 'APR Profile Image',
+    'effects' => array(
+      array(
+        'name' => 'image_scale',
+        'data' => array(
+          'width' => 250,
+          'height' => '',
+          'upscale' => 0
+        ),
+        'weight' => 0,
+      ),
+    ),
+  );
+
+  return $styles;
 }

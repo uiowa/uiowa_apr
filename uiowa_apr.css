@@ -9,12 +9,12 @@
 
 /* Default styling for the default Views listings. */
 .view-apr-profiles .item-list ul { padding: 0; }
+.view-apr-profiles .item-list ul.pager { margin: 1rem 0; }
 .view-apr-profiles .item-list ul li.views-row {
     list-style-type: none;
-    padding-bottom: 10px;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #e6e6e6;
 }
-.view-apr-profiles .item-list ul.pager { margin: 1rem 0;}
 .view-apr-profiles .item-list ul li:last-child { border-bottom: none; }
 .view-apr-profiles table td.views-field-apr-profile-email { width: 20%; }
 .view-apr-profiles table td.views-field-apr-profile-phone { width: 15%; }
@@ -35,7 +35,10 @@
 .node-apr-profile .field-name-apr-profile-present .field-item,
 .node-apr-profile .field-name-apr-profile-perform_exhibit .field-item,
 .node-apr-profile .field-name-apr-profile-creative_works .field-item,
-.node-apr-profile .field-name-apr-profile-congrant .field-item,
-{
+.node-apr-profile .field-name-apr-profile-congrant .field-item {
     padding-bottom: 0;
+}
+.node-apr-profile .field-name-apr-profile-assets .field-item img {
+    float: right;
+    margin-left: 1rem;
 }

@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of education information.
+ *   Array of education information from education[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Education</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the education[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

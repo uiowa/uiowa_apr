@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of training affiliations information.
+ *   Array of training affiliations information from pci.info.training_affil.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Education/Training Program Affiliations</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.info.training_affil value -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = $item;

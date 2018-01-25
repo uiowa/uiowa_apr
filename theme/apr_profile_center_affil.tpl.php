@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of center affiliations information.
+ *   Array of center affiliations information from pci.info.center_affil.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Center, Program and Institute Affiliations</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.info.center_affil value -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = $item;

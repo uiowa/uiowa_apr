@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of bio information.
+ *   Array of bio information from pci.info.bio.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Biography</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.info.bio value -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = $item;

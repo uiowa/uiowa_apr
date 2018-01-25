@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of publications information.
+ *   Array of publication information from intellcont[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Publications</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the intellcont[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of awards and honors information.
+ *   Array of awards and honors information from awardhonor[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Awards and Honors</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the awardhonor[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

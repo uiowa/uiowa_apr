@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of grants and contracts information.
+ *   Array of grants and contracts information from congrant[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Grants and Contracts</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the congrant[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of assets information.
+ *   Array of assets information from pci.assets[] array.
  */
 ?>
 
@@ -19,11 +19,17 @@
   <div class="field-label"></div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.assets[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['uri'])) $output .= "<img src='" . $item['uri'] . "' alt='" . $item['hawkid'] . " photo'>";
+          if (!empty($item['uri'])) {
+            $node = menu_get_object();
+            $output = theme('imagecache_external', array(
+              'path' => $item['uri'],
+              'style_name'=> 'apr_profile_image',
+              'alt' => $node->title,
+            ));
+          }
           print $output;
         ?>
       </div>

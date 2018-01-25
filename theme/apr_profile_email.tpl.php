@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of email.
+ *   Array of email from pci.info.email.
  */
 ?>
 
@@ -18,7 +18,6 @@
 <div class="field field-name-apr-profile-email"<?php print $attributes; ?>>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.info.email value -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "<a href='mailto:" . $item . "'>" . $item . "</a>";

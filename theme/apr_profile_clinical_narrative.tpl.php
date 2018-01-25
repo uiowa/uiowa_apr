@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of clinical narrative information.
+ *   Array of clinical narrative information from pci.info.clinical_narrative.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Clinical Narrative</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.info.clinical_narrative value -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = $item;

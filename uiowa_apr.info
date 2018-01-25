@@ -7,6 +7,7 @@ package = UIowa
 dependencies[] = email
 dependencies[] = telephone
 dependencies[] = field_collection
+dependencies[] = imagecache_external
 dependencies[] = pathauto:pathauto
 dependencies[] = views:views
 

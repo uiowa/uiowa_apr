@@ -13,6 +13,9 @@ function uiowa_apr_install() {
   variable_set('node_submitted_apr_profile', 0);
   variable_set('node_options_apr_profile', array('status'));
   variable_set('pathauto_node_apr_profile_pattern', 'people/[node:apr_profile_first_name]-[node:apr_profile_last_name]');
+  variable_set('image_jpeg_quality', 100);
+  variable_set('imagecache_directory', 'apr_profiles');
+  variable_set('imagecache_external_hosts', 'uiowa.edu');
 }
 
 /**
@@ -23,6 +26,7 @@ function uiowa_apr_uninstall() {
   node_types_rebuild();
   variable_del('uiowa_apr_api_key');
   variable_del('uiowa_apr_population_id');
+  views_delete_view('apr_profiles');
 
   $ournewtype = 'apr_profile';
   $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';

@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of creative works information.
+ *   Array of creative works information from creative_works[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Creative Works</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the creative_works[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

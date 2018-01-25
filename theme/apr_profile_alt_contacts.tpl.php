@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of contact information.
+ *   Array of contact information from pci.alt_contacts[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Contact Information</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.alt_contacts[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

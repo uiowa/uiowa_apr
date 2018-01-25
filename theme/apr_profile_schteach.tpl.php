@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of courses taught information.
+ *   Array of courses taught information from schteach[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Courses Taught</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the schteach[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

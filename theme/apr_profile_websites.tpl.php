@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of website information.
+ *   Array of website information from pci.websites[] array.
  */
 ?>
 
@@ -19,7 +19,6 @@
   <div class="field-label">Websites</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the pci.websites[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";

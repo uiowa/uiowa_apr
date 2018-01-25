@@ -1,31 +1,33 @@
 <?php
 
 /**
- * @file apr_profile_education_postgrad.tpl.php
- * Default theme implementation for the post-graduate education fields.
+ * @file apr_profile_facdev.tpl.php
+ * Default theme implementation for the professional development activities fields.
  *
  * @see uiowa_apr_node_view()
  *
  * Available variables:
  *
  * $data
- *   Array of post-graduate education information from education_postgrad[] array.
+ *   Array of professional development activities information from facdev[] array.
  */
 ?>
 
 <?php if (!empty($data)): ?>
 
-<div class="field field-name-apr-profile-education-postgrad"<?php print $attributes; ?>>
-  <div class="field-label">Education (Post Graduate)</div>
+<div class="field field-name-apr-profile-facdev"<?php print $attributes; ?>>
+  <div class="field-label">Professional Development</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['deg'])) $output .= $item['deg'];
-          else if (!empty($item['desc'])) $output .= $item['desc'];
-          if (!empty($item['major'])) $output .= " in " . $item['major'] . "";
-          if (!empty($item['school'])) $output .= ", " . $item['school'];
+          if (!empty($item['title'])) {
+            $output .= $item['title'];
+            if (!empty($item['org'])) $output .= ", " . $item['org'];
+          } else if (!empty($item['org'])) {
+            $output .= $item['org'];
+          }
           if (!empty($item['city'])) $output .= ", " . $item['city'];
           if (!empty($item['state'])) $output .= ", " . $item['state'];
           if (!empty($item['country'])) $output .= ", " . $item['country'];

@@ -9,7 +9,7 @@
  * Available variables:
  *
  * $data
- *   Array of licensures and certifications information.
+ *   Array of licensures and certifications information from liccert[] array.
  */
 ?>
 
@@ -19,13 +19,10 @@
   <div class="field-label">Licensures and Certifications</div>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <!-- $data contains the liccert[] array -->
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['title'])) $output .= $item['title'];
-          if (!empty($item['org'])) $output .= ", " . $item['org'];
-          if (!empty($item['certnum'])) $output .= " (" . $item['certnum'] . ")";
+          if (!empty($item['formatted'])) $output .= $item['formatted'];
           print $output;
         ?>
       </div>
