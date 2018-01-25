@@ -1,6 +1,17 @@
 <?php
 
 /**
+ * Implements hook_help().
+ */
+function uiowa_apr_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#uiowa_apr":
+      return '<p>' . t("Provides web profile displays from APR system at the University of Iowa.") . '</p>';
+      break;
+  }
+}
+
+/**
 * Implements hook_permission().
 */
 function uiowa_apr_permission() {
@@ -19,21 +30,22 @@ function uiowa_apr_menu() {
   $items['admin/config/uiowa'] = array(
     'title' => 'University of Iowa',
     'description' => 'Configuration settings related to University of Iowa custom modules.',
+    'access arguments' => array('access administration pages'),
     'position' => 'right',
     'weight' => 50, 
     'page callback' => 'system_admin_menu_block_page',
-    'access arguments' => array('access administration pages'),
     'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
   );
 
   $items['admin/config/uiowa/uiowa-apr'] = array(
-  'title' => 'University of Iowa APR',
-  'description' => 'Configuration for the University of Iowa APR module.',
-  'page callback' => 'drupal_get_form',
-  'page arguments' => array('uiowa_apr_config_form'),
-  'access arguments' => array('administer uiowa apr'),
-  'type' => MENU_NORMAL_ITEM,
-  'file' => 'includes/uiowa_apr.admin.inc',
+    'title' => 'University of Iowa APR',
+    'description' => 'Configuration for the University of Iowa APR module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('uiowa_apr_config_form'),
+    'access arguments' => array('administer uiowa apr'),
+    'type' => MENU_NORMAL_ITEM,
+    'file' => 'includes/uiowa_apr.admin.inc',
   );
 
   return $items;
