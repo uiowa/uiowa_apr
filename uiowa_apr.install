@@ -26,7 +26,6 @@ function uiowa_apr_uninstall() {
   node_types_rebuild();
   variable_del('uiowa_apr_api_key');
   variable_del('uiowa_apr_population_id');
-  views_delete_view('apr_profiles');
 
   $ournewtype = 'apr_profile';
   $sql = 'SELECT nid FROM {node} n WHERE n.type = :type';
