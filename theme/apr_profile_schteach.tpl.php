@@ -25,7 +25,6 @@
           if (!empty($item['title'])) $output .= $item['title'];
           if (!empty($item['coursepre'])) $output .= ", " . $item['coursepre'];
           if (!empty($item['coursenum'])) $output .= ":" . $item['coursenum'];
-//          if (!empty($item['section'])) $output .= ":" . $item['section'];
           if (!empty($item['term'])) {
             $output .= ", " . $item['term'];
             if (!empty($item['year'])) $output .= " " . $item['year'];
