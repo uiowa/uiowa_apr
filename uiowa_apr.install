@@ -133,6 +133,19 @@ function _apr_profile_installed_fields() {
       'label' => $t('Working Title'),
       'type' => 'text',
     ),
+    'apr_profile_person_type' => array(
+      'field_name' => 'apr_profile_person_type',
+      'label' => $t('Person Type'),
+      'type' => 'list_text',
+      'settings' => array(
+        'allowed_values' => array(
+          'Faculty' => 'Faculty',
+          'Emeritus' => 'Emeritus',
+          'Staff' => 'Staff',
+          'Student' => 'Student',
+        ),
+      ),
+    ),
     'apr_profile_appointments' => array(
       'field_name' => 'apr_profile_appointments',
       'label' => $t('Appointments'),
@@ -317,6 +330,14 @@ function _apr_profile_installed_instances() {
       'label' => $t('Working Title'),
       'widget' => array(
         'type' => 'text_textfield',
+      ),
+    ),
+    'apr_profile_person_type' => array(
+      'field_name' => 'apr_profile_person_type',
+      'type' => 'list_text',
+      'label' => $t('Person Type'),
+      'widget' => array(
+        'type' => 'options_select',
       ),
     ),
     'apr_profile_appointments' => array(

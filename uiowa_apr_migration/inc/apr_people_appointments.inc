@@ -19,14 +19,14 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
 //    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
-      'appointments_id' => 'Unique ID',
-      'apr_person' => 'Person ID',
-      'apr_profile_appointments_type' => 'Type',
-      'apr_profile_appointments_rank' => 'Rank',
-      'apr_profile_appointments_dept' => 'Department',
-      'apr_profile_appointments_college' => 'College',
-      'apr_profile_appointments_div' => 'Division',
-      'apr_profile_appointments_jobcode' => 'Job Code',
+      'appointments_id' => t('Unique ID'),
+      'apr_person' => t('Person ID'),
+      'apr_profile_appointments_type' => t('Type'),
+      'apr_profile_appointments_rank' => t('Rank'),
+      'apr_profile_appointments_dept' => t('Department'),
+      'apr_profile_appointments_college' => t('College'),
+      'apr_profile_appointments_div' => t('Division'),
+      'apr_profile_appointments_jobcode' => t('Job Code'),
     );
 
     $this->source = new MigrateSourceList(new APRPeopleAppointmentsListJSON($source_url),

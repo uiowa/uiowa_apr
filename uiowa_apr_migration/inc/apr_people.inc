@@ -18,25 +18,26 @@ class APRPeopleNodeMigration extends Migration {
 //    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
-      'apr_profile_id' => 'Unique ID',
-      'title' => 'Name',
-      'apr_profile_hawkid' => 'HawkID',
-      'apr_profile_first_name' => 'First Name',
-      'apr_profile_pref_first_name' => 'Preferred First Name',
-      'apr_profile_middle_name' => 'Middle Name',
-      'apr_profile_last_name' => 'Last Name',
-      'apr_profile_suffix' => 'Suffix',
-      'apr_profile_credentials' => 'Credentials',
-      'apr_profile_email' => 'Email',
-      'apr_profile_phone' => 'Phone',
-      'apr_profile_room' => 'Room',
-      'apr_profile_building' => 'Building',
-      'apr_profile_address' => 'Address',
-      'apr_profile_city' => 'City',
-      'apr_profile_state' => 'State',
-      'apr_profile_zip' => 'Zip',
-      'apr_profile_rank' => 'Rank',
-      'apr_profile_working_title' => 'Working Title',
+      'apr_profile_id' => t('Unique ID'),
+      'title' => t('Name'),
+      'apr_profile_hawkid' => t('HawkID'),
+      'apr_profile_first_name' => t('First Name'),
+      'apr_profile_pref_first_name' => t('Preferred First Name'),
+      'apr_profile_middle_name' => t('Middle Name'),
+      'apr_profile_last_name' => t('Last Name'),
+      'apr_profile_suffix' => t('Suffix'),
+      'apr_profile_credentials' => t('Credentials'),
+      'apr_profile_email' => t('Email'),
+      'apr_profile_phone' => t('Phone'),
+      'apr_profile_room' => t('Room'),
+      'apr_profile_building' => t('Building'),
+      'apr_profile_address' => t('Address'),
+      'apr_profile_city' => t('City'),
+      'apr_profile_state' => t('State'),
+      'apr_profile_zip' => t('Zip'),
+      'apr_profile_rank' => t('Rank'),
+      'apr_profile_working_title' => t('Working Title'),
+      'apr_profile_person_type' => t('Person Type'),
     );
 
     $this->source = new MigrateSourceList(new APRPeopleListJSON($source_url),
@@ -74,6 +75,7 @@ class APRPeopleNodeMigration extends Migration {
     $this->addFieldMapping('apr_profile_zip', 'zip');
     $this->addFieldMapping('apr_profile_rank', 'rank');
     $this->addFieldMapping('apr_profile_working_title', 'working_title');
+    $this->addFieldMapping('apr_profile_person_type', 'person_type');
   }
 
   public function preImport() {

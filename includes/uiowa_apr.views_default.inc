@@ -286,6 +286,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   /* Sort criterion: Content: Last Name (apr_profile_last_name) */
   $handler->display->display_options['sorts']['apr_profile_last_name_value']['id'] = 'apr_profile_last_name_value';
   $handler->display->display_options['sorts']['apr_profile_last_name_value']['table'] = 'field_data_apr_profile_last_name';
@@ -507,27 +514,27 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['filters']['combine']['group_info']['group_items'] = array(
     1 => array(
       'title' => 'Faculty',
-      'operator' => 'regular_expression',
-      'value' => '^(Adj|Ass|Cli|Ins|Lec|Pro|Res|Vis).*',
+      'operator' => 'contains',
+      'value' => 'Faculty',
     ),
     2 => array(
       'title' => 'Emeritus',
-      'operator' => 'word',
-      'value' => 'emeritus emerita',
+      'operator' => 'contains',
+      'value' => 'Emeritus',
     ),
     3 => array(
       'title' => 'Staff',
-      'operator' => 'word',
-      'value' => 'staff',
+      'operator' => 'contains',
+      'value' => 'Staff',
     ),
     4 => array(
-      'title' => 'Graduate Student',
-      'operator' => 'word',
-      'value' => 'graduate student',
+      'title' => 'Student',
+      'operator' => 'contains',
+      'value' => 'Student',
     ),
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
-    'apr_profile_rank' => 'apr_profile_rank',
+    'apr_profile_person_type' => 'apr_profile_person_type',
   );
   $handler->display->display_options['path'] = 'people';
   
@@ -698,32 +705,21 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_3']['id'] = 'apr_profile_rank_value_3';
-  $handler->display->display_options['filters']['apr_profile_rank_value_3']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_3']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_3']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_3']['value'] = 'student';
-  $handler->display->display_options['filters']['apr_profile_rank_value_3']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['id'] = 'apr_profile_rank_value_2';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['value'] = 'emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Faculty' => 'Faculty',
+    'Staff' => 'Staff',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   /* Filter criterion: Content: Title */
   $handler->display->display_options['filters']['title']['id'] = 'title';
   $handler->display->display_options['filters']['title']['table'] = 'node';
   $handler->display->display_options['filters']['title']['field'] = 'title';
   $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['group'] = 1;
   $handler->display->display_options['filters']['title']['exposed'] = TRUE;
   $handler->display->display_options['filters']['title']['expose']['operator_id'] = 'title_op';
   $handler->display->display_options['filters']['title']['expose']['label'] = 'Search by Name';
@@ -738,6 +734,7 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['group'] = 1;
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Combine fields filter';
@@ -749,17 +746,17 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['filters']['combine']['group_info']['group_items'] = array(
     1 => array(
       'title' => 'Faculty',
-      'operator' => 'regular_expression',
-      'value' => '^(Adj|Ass|Cli|Ins|Lec|Pro|Res|Vis).*',
+      'operator' => 'contains',
+      'value' => 'Faculty',
     ),
-    3 => array(
+    2 => array(
       'title' => 'Staff',
-      'operator' => 'word',
-      'value' => 'staff',
+      'operator' => 'contains',
+      'value' => 'Staff',
     ),
   );
   $handler->display->display_options['filters']['combine']['fields'] = array(
-    'apr_profile_rank' => 'apr_profile_rank',
+    'apr_profile_person_type' => 'apr_profile_person_type',
   );
   $handler->display->display_options['path'] = 'people';
   
@@ -957,27 +954,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['id'] = 'apr_profile_rank_value_2';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['value'] = 'emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Faculty' => 'Faculty',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/faculty';
   
   /* Display: Faculty Attachment */
@@ -1011,27 +995,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['id'] = 'apr_profile_rank_value_2';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['value'] = 'emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Faculty' => 'Faculty',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -1304,6 +1275,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1321,20 +1299,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Emeritus' => 'Emeritus',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/emeritus';
   
   /* Display: Emeritus Attachment */
@@ -1608,6 +1580,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -1625,20 +1604,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Emeritus' => 'Emeritus',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -1799,13 +1772,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'staff';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Staff' => 'Staff',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/staff';
   
   /* Display: Staff Attachment */
@@ -1967,13 +1941,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'staff';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Staff' => 'Staff',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -2134,13 +2109,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'student';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Student' => 'Student',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/graduate-students';
   
   /* Display: Grad Students Attachment */
@@ -2302,13 +2278,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'student';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Student' => 'Student',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -2469,6 +2446,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2486,27 +2470,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['id'] = 'apr_profile_rank_value_2';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['value'] = 'emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Faculty' => 'Faculty',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/faculty';
   
   /* Display: Faculty List Attachment */
@@ -2668,6 +2639,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2685,27 +2663,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['id'] = 'apr_profile_rank_value_2';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['operator'] = 'not';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['value'] = 'emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_2']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Faculty' => 'Faculty',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -2868,6 +2833,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -2885,20 +2857,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Emeritus' => 'Emeritus',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/emeritus';
   
   /* Display: Emeritus List Attachment */
@@ -3062,6 +3028,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -3079,20 +3052,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'professor instructor instruction lecturer';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['id'] = 'apr_profile_rank_value_1';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['operator'] = 'word';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['value'] = 'emeritus emerita';
-  $handler->display->display_options['filters']['apr_profile_rank_value_1']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Emeritus' => 'Emeritus',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -3253,6 +3220,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -3270,13 +3244,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'staff';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Staff' => 'Staff',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/staff';
   
   /* Display: Staff List Attachment */
@@ -3438,6 +3413,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -3455,13 +3437,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'staff';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Staff' => 'Staff',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -3622,6 +3605,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -3639,13 +3629,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'student';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Student' => 'Student',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['path'] = 'people/graduate-students';
   
   /* Display: Grad Students List Attachment */
@@ -3807,6 +3798,13 @@ function uiowa_apr_views_default_views() {
   $handler->display->display_options['fields']['apr_profile_building']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['apr_profile_building']['alter']['text'] = '[apr_profile_room][apr_profile_building]';
   $handler->display->display_options['fields']['apr_profile_building']['hide_empty'] = TRUE;
+  /* Field: Content: Person Type */
+  $handler->display->display_options['fields']['apr_profile_person_type']['id'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['field'] = 'apr_profile_person_type';
+  $handler->display->display_options['fields']['apr_profile_person_type']['label'] = '';
+  $handler->display->display_options['fields']['apr_profile_person_type']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['apr_profile_person_type']['element_label_colon'] = FALSE;
   $handler->display->display_options['defaults']['filter_groups'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
@@ -3824,13 +3822,14 @@ function uiowa_apr_views_default_views() {
     'apr_profile' => 'apr_profile',
   );
   $handler->display->display_options['filters']['type']['group'] = 1;
-  /* Filter criterion: Content: Rank (apr_profile_rank) */
-  $handler->display->display_options['filters']['apr_profile_rank_value']['id'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['table'] = 'field_data_apr_profile_rank';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['field'] = 'apr_profile_rank_value';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['operator'] = 'contains';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['value'] = 'student';
-  $handler->display->display_options['filters']['apr_profile_rank_value']['group'] = 1;
+  /* Filter criterion: Content: Person Type (apr_profile_person_type) */
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['id'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['table'] = 'field_data_apr_profile_person_type';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['field'] = 'apr_profile_person_type_value';
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['value'] = array(
+    'Student' => 'Student',
+  );
+  $handler->display->display_options['filters']['apr_profile_person_type_value']['group'] = 1;
   $handler->display->display_options['displays'] = array(
     'page_apr_profiles' => 'page_apr_profiles',
     'default' => 0,
@@ -3839,6 +3838,7 @@ function uiowa_apr_views_default_views() {
     'page_apr_profiles_staff' => 0,
   );
   $handler->display->display_options['attachment_position'] = 'after';
+  
 
   // Add view to list of views to provide.
   $views[$view->name] = $view;
