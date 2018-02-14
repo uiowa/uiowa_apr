@@ -3,7 +3,7 @@ description = Provides web profile displays from APR.
 core = 7.x
 version = 7.x-1.0
 package = UIowa
-configure = admin/config/uiowa/uiowa-apr
+configure = admin/config/uiowa/uiowa_apr
 
 dependencies[] = email
 dependencies[] = telephone

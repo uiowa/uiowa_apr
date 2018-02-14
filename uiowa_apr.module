@@ -38,7 +38,7 @@ function uiowa_apr_menu() {
     'file path' => drupal_get_path('module', 'system'),
   );
 
-  $items['admin/config/uiowa/uiowa-apr'] = array(
+  $items['admin/config/uiowa/uiowa_apr'] = array(
     'title' => 'University of Iowa APR',
     'description' => 'Configuration for the University of Iowa APR module.',
     'page callback' => 'drupal_get_form',
@@ -85,61 +85,51 @@ function uiowa_apr_field_extra_fields() {
       'apr_profile_assets' => array(
         'label' => t('Assets'),
         'description' => t('Assets.'),
-        'weight' => 72,
+        'weight' => 74,
       ),
       'apr_profile_admin_perms' => array(
         'label' => t('Appointments'),
         'description' => t('Appointments.'),
-        'weight' => 73,
+        'weight' => 75,
       ),
       'apr_profile_pasthist' => array(
         'label' => t('Past History'),
         'description' => t('Past History.'),
-        'weight' => 74,
+        'weight' => 76,
       ),
       'apr_profile_alt_contacts' => array(
         'label' => t('Contact Information'),
         'description' => t('Contact Information.'),
-        'weight' => 75,
+        'weight' => 77,
       ),
       'apr_profile_email' => array(
         'label' => t('Email'),
         'description' => t('Email.'),
-        'weight' => 76,
+        'weight' => 78,
       ),
       'apr_profile_websites' => array(
         'label' => t('Websites'),
         'description' => t('Websites.'),
-        'weight' => 77,
+        'weight' => 79,
       ),
       'apr_profile_office_hours' => array(
         'label' => t('Office Hours'),
         'description' => t('Office Hours.'),
-        'weight' => 78,
+        'weight' => 80,
       ),
       'apr_profile_education' => array(
         'label' => t('Education'),
         'description' => t('Education.'),
-        'weight' => 79,
+        'weight' => 81,
       ),
       'apr_profile_education_postgrad' => array(
         'label' => t('Education (Post Graduate)'),
         'description' => t('Education (Post Graduate).'),
-        'weight' => 80,
-      ),
-      'apr_profile_training_affil' => array(
-        'label' => t('Education/Training Program Affiliations'),
-        'description' => t('Education/Training Program Affiliations.'),
-        'weight' => 81,
-      ),
-      'apr_profile_center_affil' => array(
-        'label' => t('Center, Program and Institute Affiliations'),
-        'description' => t('Center, Program and Institute Affiliations.'),
         'weight' => 82,
       ),
       'apr_profile_centers' => array(
-        'label' => t('Affiliated Centers'),
-        'description' => t('Affiliated Centers.'),
+        'label' => t('Center, Program and Institute Affiliations'),
+        'description' => t('Center, Program and Institute Affiliations.'),
         'weight' => 83,
       ),
       'apr_profile_bio' => array(
@@ -366,28 +356,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_education_postgrad',
                 '#markup' => theme('apr_profile_education_postgrad', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_training_affil':
-            $data = array();
-            if (!empty($person['pci']['info']['training_affil'])) {
-              $data[] = $person['pci']['info']['training_affil'];
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_training_affil',
-                '#markup' => theme('apr_profile_training_affil', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_center_affil':
-            $data = array();
-            if (!empty($person['pci']['info']['center_affil'])) {
-              $data[] = $person['pci']['info']['center_affil'];
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_center_affil',
-                '#markup' => theme('apr_profile_center_affil', array('data' => $data)),
               );
             }
             break;
@@ -677,16 +645,6 @@ function uiowa_apr_theme() {
     'apr_profile_education_postgrad' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_education_postgrad',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_training_affil' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_training_affil',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_center_affil' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_center_affil',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_centers' => array(
