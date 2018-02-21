@@ -1,10 +1,10 @@
 <?php
 
 /**
- * You must implement hook_migrate_api(), setting the API level to 2, for
- * your migration classes to be recognized by the Migrate module.
+ * Implements hook_migrate_api().
  */
 function uiowa_apr_migration_migrate_api() {
+  // Must set the API level to 2, for your migration classes to be recognized by the Migrate module
   $api = array(
     'api' => 2,
     'groups' => array(
@@ -27,7 +27,7 @@ function uiowa_apr_migration_migrate_api() {
 }
 
 /**
-* Implementation of hook_cron. Runs APR migrations.
+* Implements hook_cron().
 */
 function uiowa_apr_migration_cron() {
   // Get API Key and Population ID location
@@ -40,6 +40,9 @@ function uiowa_apr_migration_cron() {
 
   // Check if API key and population ID are set
   if(!empty($api_key) && !empty($population)){
+//    $update = $people->prepareUpdate();
+    $rollback = $appointments->processRollback();
+    $rollback = $people->processRollback();
     $result = $people->processImport();
     $result = $appointments->processImport();
   }

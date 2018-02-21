@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Using migrate to import people nodes from APR for the University of Iowa APR module.
+ * Using migrate to import web profile nodes from APR for the University of Iowa APR module.
  **/
 
 /**
@@ -18,7 +18,7 @@ class APRPeopleNodeMigration extends Migration {
 //    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
-      'apr_profile_id' => t('Unique ID'),
+      'apr_profile_id' => t('Profile ID'),
       'title' => t('Name'),
       'apr_profile_hawkid' => t('HawkID'),
       'apr_profile_first_name' => t('First Name'),
@@ -43,14 +43,15 @@ class APRPeopleNodeMigration extends Migration {
     $this->source = new MigrateSourceList(new APRPeopleListJSON($source_url),
       new APRPeopleItemJSON($source_url, array()), $fields);
 
-    // We migrate into "people" nodes.
     $this->destination = new MigrateDestinationNode('apr_profile');
-    // We instantiate the MigrateMap
-    $this->map = new MigrateSQLMap($this->machineName,
+
+    $this->map = new MigrateSQLMap(
+      $this->machineName,
       array(
         'apr_profile_id' => array(
           'type' => 'varchar',
           'length' => 255,
+          'description' => 'Profile ID',
           'not null' => TRUE,
           )
       ),

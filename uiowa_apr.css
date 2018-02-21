@@ -26,11 +26,14 @@
 
 /* Default styling for the profile nodes. */
 .node-apr-profile .field { padding-bottom: 1rem; }
+.node-apr-profile .field-name-apr-profile-assets,
 .node-apr-profile .field-name-apr-profile-admin-perms,
 .node-apr-profile .field-name-apr-profile-alt-contacts,
+.node-apr-profile .field-name-apr-profile-pasthist,
 .node-apr-profile .field-name-apr-profile-last-modified {
     padding-bottom: 0;
 }
+.node-apr-profile .field-name-apr-profile-alt-contacts { padding-top: 1rem; }
 .node-apr-profile .field-name-apr-profile-intellcont .field-item,
 .node-apr-profile .field-name-apr-profile-present .field-item,
 .node-apr-profile .field-name-apr-profile-perform_exhibit .field-item,
@@ -40,5 +43,9 @@
 }
 .node-apr-profile .field-name-apr-profile-assets .field-item img {
     float: right;
-    margin-left: 1rem;
+    margin: 0 0 1rem 1rem;
 }
+.node-apr-profile .field-name-apr-profile-alt-contacts .field-items .field-item {
+    padding-bottom: 0.3rem;
+}
+

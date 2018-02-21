@@ -44,98 +44,98 @@ function _apr_profile_installed_fields() {
   $t = get_t();
   return array(
     'apr_profile_hawkid' => array(
-      'field_name' => 'apr_profile_hawkid',
       'label' => $t('HawkID'),
+      'field_name' => 'apr_profile_hawkid',
       'type' => 'text',
     ),
     'apr_profile_first_name' => array(
-      'field_name' => 'apr_profile_first_name',
       'label' => $t('First Name'),
+      'field_name' => 'apr_profile_first_name',
       'type' => 'text',
     ),
     'apr_profile_middle_name' => array(
-      'field_name' => 'apr_profile_middle_name',
       'label' => $t('Middle Name'),
+      'field_name' => 'apr_profile_middle_name',
       'type' => 'text',
     ),
     'apr_profile_last_name' => array(
-      'field_name' => 'apr_profile_last_name',
       'label' => $t('Last Name'),
+      'field_name' => 'apr_profile_last_name',
       'type' => 'text',
     ),
     'apr_profile_pref_first_name' => array(
-      'field_name' => 'apr_profile_pref_first_name',
       'label' => $t('Preferred First Name'),
+      'field_name' => 'apr_profile_pref_first_name',
       'type' => 'text',
     ),
     'apr_profile_pref_last_name' => array(
-      'field_name' => 'apr_profile_pref_last_name',
       'label' => $t('Preferred Last Name'),
+      'field_name' => 'apr_profile_pref_last_name',
       'type' => 'text',
     ),
     'apr_profile_suffix' => array(
-      'field_name' => 'apr_profile_suffix',
       'label' => $t('Suffix'),
+      'field_name' => 'apr_profile_suffix',
       'type' => 'text',
     ),
     'apr_profile_credentials' => array(
-      'field_name' => 'apr_profile_credentials',
       'label' => $t('Credentials'),
+      'field_name' => 'apr_profile_credentials',
       'type' => 'text',
     ),
     'apr_profile_email' => array(
-      'field_name' => 'apr_profile_email',
       'label' => $t('Email'),
+      'field_name' => 'apr_profile_email',
       'type' => 'email',
     ),
     'apr_profile_phone' => array(
-      'field_name' => 'apr_profile_phone',
       'label' => $t('Phone'),
+      'field_name' => 'apr_profile_phone',
       'type' => 'telephone',
     ),
     'apr_profile_room' => array(
-      'field_name' => 'apr_profile_room',
       'label' => $t('Room'),
+      'field_name' => 'apr_profile_room',
       'type' => 'text',
     ),
     'apr_profile_building' => array(
-      'field_name' => 'apr_profile_building',
       'label' => $t('Building'),
+      'field_name' => 'apr_profile_building',
       'type' => 'text',
     ),
     'apr_profile_address' => array(
-      'field_name' => 'apr_profile_address',
       'label' => $t('Address'),
+      'field_name' => 'apr_profile_address',
       'type' => 'text',
     ),
     'apr_profile_city' => array(
-      'field_name' => 'apr_profile_city',
       'label' => $t('City'),
+      'field_name' => 'apr_profile_city',
       'type' => 'text',
     ),
     'apr_profile_state' => array(
-      'field_name' => 'apr_profile_state',
       'label' => $t('State'),
+      'field_name' => 'apr_profile_state',
       'type' => 'text',
     ),
     'apr_profile_zip' => array(
-      'field_name' => 'apr_profile_zip',
       'label' => $t('Zip'),
+      'field_name' => 'apr_profile_zip',
       'type' => 'text',
     ),
     'apr_profile_rank' => array(
-      'field_name' => 'apr_profile_rank',
       'label' => $t('Rank'),
+      'field_name' => 'apr_profile_rank',
       'type' => 'text',
     ),
     'apr_profile_working_title' => array(
-      'field_name' => 'apr_profile_working_title',
       'label' => $t('Working Title'),
+      'field_name' => 'apr_profile_working_title',
       'type' => 'text',
     ),
     'apr_profile_person_type' => array(
-      'field_name' => 'apr_profile_person_type',
       'label' => $t('Person Type'),
+      'field_name' => 'apr_profile_person_type',
       'type' => 'list_text',
       'settings' => array(
         'allowed_values' => array(
@@ -147,39 +147,39 @@ function _apr_profile_installed_fields() {
       ),
     ),
     'apr_profile_appointments' => array(
-      'field_name' => 'apr_profile_appointments',
       'label' => $t('Appointments'),
+      'field_name' => 'apr_profile_appointments',
       'type' => 'field_collection',
-      'cardinality' => -1,
+      'cardinality' => FIELD_CARDINALITY_UNLIMITED,
     ),
     'apr_profile_appointments_type' => array(
-      'field_name' => 'apr_profile_appointments_type',
       'label' => $t('Type'),
+      'field_name' => 'apr_profile_appointments_type',
       'type' => 'text',
     ),
     'apr_profile_appointments_rank' => array(
-      'field_name' => 'apr_profile_appointments_rank',
       'label' => $t('Rank'),
+      'field_name' => 'apr_profile_appointments_rank',
       'type' => 'text',
     ),
     'apr_profile_appointments_department' => array(
-      'field_name' => 'apr_profile_appointments_dept',
       'label' => $t('Department'),
+      'field_name' => 'apr_profile_appointments_dept',
       'type' => 'text',
     ),
     'apr_profile_appointments_college' => array(
-      'field_name' => 'apr_profile_appointments_college',
       'label' => $t('College'),
+      'field_name' => 'apr_profile_appointments_college',
       'type' => 'text',
     ),
     'apr_profile_appointments_division' => array(
-      'field_name' => 'apr_profile_appointments_div',
       'label' => $t('Division'),
+      'field_name' => 'apr_profile_appointments_div',
       'type' => 'text',
     ),
     'apr_profile_appointments_jobcode' => array(
-      'field_name' => 'apr_profile_appointments_jobcode',
       'label' => $t('Job Code'),
+      'field_name' => 'apr_profile_appointments_jobcode',
       'type' => 'text',
     ),
   );
@@ -189,161 +189,161 @@ function _apr_profile_installed_instances() {
   $t = get_t();
   return array(
     'apr_profile_hawkid' => array(
+      'label' => $t('HawkID'),
       'field_name' => 'apr_profile_hawkid',
       'type' => 'text',
-      'label' => $t('HawkID'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_first_name' => array(
+      'label' => $t('First Name'),
       'field_name' => 'apr_profile_first_name',
       'type' => 'text',
-      'label' => $t('First Name'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_middle_name' => array(
+      'label' => $t('Middle Name'),
       'field_name' => 'apr_profile_middle_name',
       'type' => 'text',
-      'label' => $t('Middle Name'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_last_name' => array(
+      'label' => $t('Last Name'),
       'field_name' => 'apr_profile_last_name',
       'type' => 'text',
-      'label' => $t('Last Name'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_pref_first_name' => array(
+      'label' => $t('Preferred First Name'),
       'field_name' => 'apr_profile_pref_first_name',
       'type' => 'text',
-      'label' => $t('Preferred First Name'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_pref_last_name' => array(
+      'label' => $t('Preferred Last Name'),
       'field_name' => 'apr_profile_pref_last_name',
       'type' => 'text',
-      'label' => $t('Preferred Last Name'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_suffix' => array(
+      'label' => $t('Suffix'),
       'field_name' => 'apr_profile_suffix',
       'type' => 'text',
-      'label' => $t('Suffix'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_credentials' => array(
+      'label' => $t('Credentials'),
       'field_name' => 'apr_profile_credentials',
       'type' => 'text',
-      'label' => $t('Credentials'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_email' => array(
+      'label' => $t('Email'),
       'field_name' => 'apr_profile_email',
       'type' => 'text',
-      'label' => $t('Email'),
       'widget' => array(
         'type' => 'email_textfield',
       ),
     ),
     'apr_profile_phone' => array(
+      'label' => $t('Phone'),
       'field_name' => 'apr_profile_phone',
       'type' => 'text',
-      'label' => $t('Phone'),
       'widget' => array(
         'type' => 'telephone_default',
       ),
     ),
     'apr_profile_room' => array(
+      'label' => $t('Room'),
       'field_name' => 'apr_profile_room',
       'type' => 'text',
-      'label' => $t('Room'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_building' => array(
+      'label' => $t('Building'),
       'field_name' => 'apr_profile_building',
       'type' => 'text',
-      'label' => $t('Building'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_address' => array(
+      'label' => $t('Address'),
       'field_name' => 'apr_profile_address',
       'type' => 'text',
-      'label' => $t('Address'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_city' => array(
+      'label' => $t('City'),
       'field_name' => 'apr_profile_city',
       'type' => 'text',
-      'label' => $t('City'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_state' => array(
+      'label' => $t('State'),
       'field_name' => 'apr_profile_state',
       'type' => 'text',
-      'label' => $t('State'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_zip' => array(
+      'label' => $t('Zip'),
       'field_name' => 'apr_profile_zip',
       'type' => 'text',
-      'label' => $t('Zip'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_rank' => array(
+      'label' => $t('Rank'),
       'field_name' => 'apr_profile_rank',
       'type' => 'text',
-      'label' => $t('Rank'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_working_title' => array(
+      'label' => $t('Working Title'),
       'field_name' => 'apr_profile_working_title',
       'type' => 'text',
-      'label' => $t('Working Title'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
     ),
     'apr_profile_person_type' => array(
+      'label' => $t('Person Type'),
       'field_name' => 'apr_profile_person_type',
       'type' => 'list_text',
-      'label' => $t('Person Type'),
       'widget' => array(
         'type' => 'options_select',
       ),
     ),
     'apr_profile_appointments' => array(
+      'label' => $t('Appointments'),
       'field_name' => 'apr_profile_appointments',
       'type' => 'field_collection',
-      'label' => $t('Appointments'),
       'widget' => array(
         'type' => 'field_collection_embed',
       ),
@@ -355,9 +355,9 @@ function _apr_profile_appointments_installed_instances() {
   $t = get_t();
   return array(
     'apr_profile_appointments_type' => array(
+      'label' => $t('Type'),
       'field_name' => 'apr_profile_appointments_type',
       'type' => 'text',
-      'label' => $t('Type'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
@@ -368,9 +368,9 @@ function _apr_profile_appointments_installed_instances() {
       ),
     ),
     'apr_profile_appointments_rank' => array(
+      'label' => $t('Rank'),
       'field_name' => 'apr_profile_appointments_rank',
       'type' => 'text',
-      'label' => $t('Rank'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
@@ -381,9 +381,9 @@ function _apr_profile_appointments_installed_instances() {
       ),
     ),
     'apr_profile_appointments_dept' => array(
+      'label' => $t('Department'),
       'field_name' => 'apr_profile_appointments_dept',
       'type' => 'text',
-      'label' => $t('Department'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
@@ -394,9 +394,9 @@ function _apr_profile_appointments_installed_instances() {
       ),
     ),
     'apr_profile_appointments_college' => array(
+      'label' => $t('College'),
       'field_name' => 'apr_profile_appointments_college',
       'type' => 'text',
-      'label' => $t('College'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
@@ -407,9 +407,9 @@ function _apr_profile_appointments_installed_instances() {
       ),
     ),
     'apr_profile_appointments_div' => array(
+      'label' => $t('Division'),
       'field_name' => 'apr_profile_appointments_div',
       'type' => 'text',
-      'label' => $t('Division'),
       'widget' => array(
         'type' => 'text_textfield',
       ),
@@ -420,9 +420,9 @@ function _apr_profile_appointments_installed_instances() {
       ),
     ),
     'apr_profile_appointments_jobcode' => array(
+      'label' => $t('Job Code'),
       'field_name' => 'apr_profile_appointments_jobcode',
       'type' => 'text',
-      'label' => $t('Job Code'),
       'widget' => array(
         'type' => 'text_textfield',
       ),

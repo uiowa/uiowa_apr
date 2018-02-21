@@ -2,11 +2,11 @@
 
 /**
  * @file
- * Using migrate to import people nodes from APR for the University of Iowa APR module.
+ * Using migrate to import web profile nodes from APR for the University of Iowa APR module.
  **/
 
 /**
- * NodeMigration class extension from Migration.
+ * FieldCollectionMigration class extension from Migration.
  */
 class APRPeopleAppointmentFieldCollectionMigration extends Migration {
   public function __construct($arguments) {
@@ -19,8 +19,8 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
 //    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
-      'appointments_id' => t('Unique ID'),
-      'apr_person' => t('Person ID'),
+      'apr_profile_appointments_id' => t('Appointment ID'),
+      'apr_profile' => t('Profile ID'),
       'apr_profile_appointments_type' => t('Type'),
       'apr_profile_appointments_rank' => t('Rank'),
       'apr_profile_appointments_dept' => t('Department'),
@@ -32,20 +32,25 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
     $this->source = new MigrateSourceList(new APRPeopleAppointmentsListJSON($source_url),
       new APRPeopleAppointmentsItemJSON($source_url, array()), $fields);
 
-    $this->destination = new MigrateDestinationFieldCollection('apr_profile_appointments', array('host_entity_type' => 'node'));
+    $this->destination = new MigrateDestinationFieldCollection(
+      'apr_profile_appointments',
+      array('host_entity_type' => 'node')
+    );
 
-    $this->map = new MigrateSQLMap($this->machineName,
+    $this->map = new MigrateSQLMap(
+      $this->machineName,
       array(
-        'appointments_id' => array(
+        'apr_profile_appointments_id' => array(
           'type' => 'varchar',
           'length' => 255,
+          'description' => 'Appointment ID',
           'not null' => TRUE,
           )
       ),
-      MigrateDestinationNode::getKeySchema()
+      MigrateDestinationFieldCollection::getKeySchema()
     );
 
-    $this->addFieldMapping('host_entity_id', 'apr_person')->sourceMigration('APRPeople');
+    $this->addFieldMapping('host_entity_id', 'apr_profile')->sourceMigration('APRPeople');
     $this->addFieldMapping('apr_profile_appointments_type', 'appointment_type');
     $this->addFieldMapping('apr_profile_appointments_rank', 'rank');
     $this->addFieldMapping('apr_profile_appointments_dept', 'dep');
@@ -77,7 +82,7 @@ class APRPeopleAppointmentsItemJSON extends MigrateItemJSON {
         // Let's index the array by the ID for easy retrieval.
         foreach ($data as $item) {
           foreach ($item->admin_perms as $appt) {
-            $appt->apr_person = $item->uid;
+            $appt->apr_profile = $item->uid;
             $this->data[$appt->id] = $appt;
           }
         }

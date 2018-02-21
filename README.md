@@ -4,11 +4,11 @@
    - API Key: iashdfi7sdf74evah23
    - Population ID: 1
 
-2. Click on 'Manage Display' next to 'APR Profile' under Home » Administration » Structure » Content types.
-   - Click on 'Full content' button and click 'Save'.
-
-3. Return to the University of Iowa APR admin interface and click the 'Run Import' button to import nodes.
+2. Return to the University of Iowa APR admin interface and click the 'Run Import' button in the 'Actions' fieldset to import nodes.
   For manual import, please use the drush migrate commands shown below.
+
+3. To remove all imported profiles, click the 'Rollback Migration' button in the 'Actions' fieldset.
+  For manual deletion, please use the drush migrate commands shown below.
 
 ### Drush Migrate Commands
 

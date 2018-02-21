@@ -30,13 +30,26 @@ function uiowa_apr_config_form($form, &$form_state) {
   );
 
   if(!empty(variable_get('uiowa_apr_api_key', '')) && !empty(variable_get('uiowa_apr_population_id', '')) && module_exists('uiowa_apr_migration')){
-    $form['uiowa_apr_run_migration'] = array(
+    $form['uiowa_apr_actions_fieldset'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Actions'),
+      '#description' => t('Click the \'Run Import\' button below to IMPORT all APR entries from the feed detailed above.<br>To REMOVE all existing entries, click the \'Rollback Migration\' button below.'),
+      '#collapsible' => TRUE,
+      '#collapsed' => TRUE,
+    );
+  
+    $form['uiowa_apr_actions_fieldset']['uiowa_apr_run_migration'] = array(
       '#type' => 'submit',
       '#value' => t('Run Import'),
       '#submit' => array('uiowa_apr_config_form_run_migration'),
     );
-  }
 
+    $form['uiowa_apr_actions_fieldset']['uiowa_apr_rollback_migration'] = array(
+      '#type' => 'submit',
+      '#value' => t('Rollback Migration'),
+      '#submit' => array('uiowa_apr_config_form_rollback_migration'),
+    );
+  }
 
   $form = system_settings_form($form);
   $form['#submit'][] = 'uiowa_apr_config_form_submit';
@@ -59,6 +72,21 @@ function uiowa_apr_config_form_run_migration($form, &$form_state) {
   $people = Migration::getInstance('APRPeople');
   $appointments = Migration::getInstance('APRPeopleAppointments');
 
+//  $update = $people->prepareUpdate();
+  $rollback = $appointments->processRollback();
+  $rollback = $people->processRollback();
   $result = $people->processImport();
   $result = $appointments->processImport();
+}
+
+/**
+ * Additional migration handler for uiowa_apr_config_form().
+ */
+function uiowa_apr_config_form_rollback_migration($form, &$form_state) {
+  // Get migration objects
+  $people = Migration::getInstance('APRPeople');
+  $appointments = Migration::getInstance('APRPeopleAppointments');
+
+  $rollback = $appointments->processRollback();
+  $rollback = $people->processRollback();
 }
