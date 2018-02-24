@@ -18,7 +18,7 @@ class APRPeopleNodeMigration extends Migration {
 //    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
-      'apr_profile_id' => t('Profile ID'),
+      'apr_profile_id' => t('APR Profile ID'),
       'title' => t('Name'),
       'apr_profile_hawkid' => t('HawkID'),
       'apr_profile_first_name' => t('First Name'),
@@ -51,7 +51,7 @@ class APRPeopleNodeMigration extends Migration {
         'apr_profile_id' => array(
           'type' => 'varchar',
           'length' => 255,
-          'description' => 'Profile ID',
+          'description' => 'APR Profile ID',
           'not null' => TRUE,
           )
       ),
@@ -83,6 +83,24 @@ class APRPeopleNodeMigration extends Migration {
     parent::preImport();
     if (!variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')){
       throw new MigrateException('No API and/or Population ID');
+    }
+
+    $maptable = 'migrate_map_aprpeople';
+    $subquery = db_select($maptable, 'm');
+    $subquery->innerJoin('node', 'n', 'm.destid1 = n.nid');
+    $subquery->addField('m', 'destid1', 'destid1');
+    $subquery->isNotNull('m.destid1');
+
+    $query = db_select($maptable, 'm');
+    $query->addField('m', 'destid1', 'destid1');
+    $query->condition('m.destid1', $subquery, 'NOT IN');
+
+    $result = $query->execute();
+
+    while ($record = $result->fetchAssoc()) {
+      $delete = db_delete($maptable)
+        ->condition('destid1', $record['destid1'])
+        ->execute();
     }
   }
 }

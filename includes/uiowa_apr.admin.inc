@@ -47,6 +47,7 @@ function uiowa_apr_config_form($form, &$form_state) {
     $form['uiowa_apr_actions_fieldset']['uiowa_apr_rollback_migration'] = array(
       '#type' => 'submit',
       '#value' => t('Rollback Migration'),
+      '#attributes' => ['onclick' => 'if(!confirm("Are you sure you want to delete all APR entries from this site? This action cannot be undone.")){return false;}'],
       '#submit' => array('uiowa_apr_config_form_rollback_migration'),
     );
   }
@@ -72,9 +73,14 @@ function uiowa_apr_config_form_run_migration($form, &$form_state) {
   $people = Migration::getInstance('APRPeople');
   $appointments = Migration::getInstance('APRPeopleAppointments');
 
-//  $update = $people->prepareUpdate();
-  $rollback = $appointments->processRollback();
-  $rollback = $people->processRollback();
+  if ($appointments->processedCount() > 0) {
+    // Rollback existing appointments if appointments already exist
+    $rollback = $appointments->processRollback();
+  }
+  if ($people->processedCount() > 0) {
+    // Prepare update of existing profiles if profiles already exist
+    $update = $people->prepareUpdate();
+  }
   $result = $people->processImport();
   $result = $appointments->processImport();
 }

@@ -19,8 +19,8 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
 //    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
-      'apr_profile_appointments_id' => t('Appointment ID'),
-      'apr_profile' => t('Profile ID'),
+      'apr_profile_appointments_id' => t('APR Appointment ID'),
+      'apr_profile' => t('APR Profile ID'),
       'apr_profile_appointments_type' => t('Type'),
       'apr_profile_appointments_rank' => t('Rank'),
       'apr_profile_appointments_dept' => t('Department'),

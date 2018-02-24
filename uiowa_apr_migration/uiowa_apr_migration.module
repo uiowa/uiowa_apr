@@ -40,9 +40,8 @@ function uiowa_apr_migration_cron() {
 
   // Check if API key and population ID are set
   if(!empty($api_key) && !empty($population)){
-//    $update = $people->prepareUpdate();
     $rollback = $appointments->processRollback();
-    $rollback = $people->processRollback();
+    $update = $people->prepareUpdate();
     $result = $people->processImport();
     $result = $appointments->processImport();
   }
