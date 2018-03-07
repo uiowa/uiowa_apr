@@ -17,9 +17,9 @@
 
 <div class="field field-name-apr-profile-member"<?php print $attributes; ?>>
   <div class="field-label">Professional Memberships</div>
-  <div class="field-items">
+  <ul class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
+      <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
           if (!empty($item['org'])) $output .= $item['org'];
@@ -27,9 +27,9 @@
           if (!empty($item['start_date'])) $output .= ", " . date("Y", strtotime($item['start_date']));
           print $output;
         ?>
-      </div>
+      </li>
     <?php endforeach; ?>
-  </div>
+  </ul>
 </div>
 
 <?php endif; ?>

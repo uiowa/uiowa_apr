@@ -3,12 +3,16 @@
 /**
  * @file
  * Using migrate to import web profile nodes from APR for the University of Iowa APR module.
- **/
+ */
 
 /**
  * FieldCollectionMigration class extension from Migration.
  */
 class APRPeopleAppointmentFieldCollectionMigration extends Migration {
+
+  /**
+   * {@inheritdoc}
+   */
   public function __construct($arguments) {
     parent::__construct($arguments);
     $this->description = t('Import APR Profile Appointments.');
@@ -16,7 +20,6 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
 
     // Source url.
     $source_url = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
-//    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
       'apr_profile_appointments_id' => t('APR Appointment ID'),

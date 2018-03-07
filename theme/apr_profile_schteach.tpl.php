@@ -17,9 +17,9 @@
 
 <div class="field field-name-apr-profile-schteach"<?php print $attributes; ?>>
   <div class="field-label">Courses Taught</div>
-  <div class="field-items">
+  <ul class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
+      <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
           if (!empty($item['title'])) $output .= $item['title'];
@@ -33,9 +33,9 @@
           }
           print $output;
         ?>
-      </div>
+      </li>
     <?php endforeach; ?>
-  </div>
+  </ul>
 </div>
 
 <?php endif; ?>

@@ -17,17 +17,17 @@
 
 <div class="field field-name-apr-profile-liccert"<?php print $attributes; ?>>
   <div class="field-label">Licensures and Certifications</div>
-  <div class="field-items">
+  <ul class="field-items">
     <?php foreach ($data as $delta => $item): ?>
-      <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
+      <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
           if (!empty($item['formatted'])) $output .= $item['formatted'];
           print $output;
         ?>
-      </div>
+      </li>
     <?php endforeach; ?>
-  </div>
+  </ul>
 </div>
 
 <?php endif; ?>
