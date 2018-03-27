@@ -19,6 +19,7 @@ class APRPeopleNodeMigration extends Migration {
 
     // Source url.
     $source_url = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
+//    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
       'apr_profile_id' => t('APR Profile ID'),

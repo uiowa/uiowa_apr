@@ -8,7 +8,7 @@
 /**
  * FieldCollectionMigration class extension from Migration.
  */
-class APRPeopleAppointmentFieldCollectionMigration extends Migration {
+class APRPeopleAppointmentsFieldCollectionMigration extends Migration {
 
   /**
    * {@inheritdoc}
@@ -20,6 +20,7 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
 
     // Source url.
     $source_url = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
+//    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
 
     $fields = array(
       'apr_profile_appointments_id' => t('APR Appointment ID'),
@@ -30,6 +31,7 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
       'apr_profile_appointments_college' => t('College'),
       'apr_profile_appointments_div' => t('Division'),
       'apr_profile_appointments_jobcode' => t('Job Code'),
+      'apr_profile_appointments_ptype' => t('Person Type'),
     );
 
     $this->source = new MigrateSourceList(new APRPeopleAppointmentsListJSON($source_url),
@@ -60,6 +62,7 @@ class APRPeopleAppointmentFieldCollectionMigration extends Migration {
     $this->addFieldMapping('apr_profile_appointments_college', 'college');
     $this->addFieldMapping('apr_profile_appointments_div', 'division');
     $this->addFieldMapping('apr_profile_appointments_jobcode', 'job_code');
+    $this->addFieldMapping('apr_profile_appointments_ptype', 'person_type');
   }
 }
 

@@ -18,7 +18,7 @@ function uiowa_apr_migration_migrate_api() {
         'group_name' => 'apr_people',
       ),
       'APRPeopleAppointments' => array(
-        'class_name' => 'APRPeopleAppointmentFieldCollectionMigration',
+        'class_name' => 'APRPeopleAppointmentsFieldCollectionMigration',
         'group_name' => 'apr_people',
       ),
     ),
@@ -40,7 +40,10 @@ function uiowa_apr_migration_cron() {
 
   // Check if API key and population ID are set
   if(!empty($api_key) && !empty($population)){
-    $rollback = $appointments->processRollback();
+    if ($appointments->processedCount() > 0) {
+      // Rollback existing appointments if appointments already exist
+      $rollback = $appointments->processRollback();
+    }
     $update = $people->prepareUpdate();
     $result = $people->processImport();
     $result = $appointments->processImport();

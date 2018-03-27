@@ -182,6 +182,19 @@ function _apr_profile_installed_fields() {
       'field_name' => 'apr_profile_appointments_jobcode',
       'type' => 'text',
     ),
+    'apr_profile_appointments_ptype' => array(
+      'label' => $t('Person Type'),
+      'field_name' => 'apr_profile_appointments_ptype',
+      'type' => 'list_text',
+      'settings' => array(
+        'allowed_values' => array(
+          'Faculty' => 'Faculty',
+          'Emeritus' => 'Emeritus',
+          'Staff' => 'Staff',
+          'Student' => 'Student',
+        ),
+      ),
+    ),
   );
 }
 
@@ -429,6 +442,20 @@ function _apr_profile_appointments_installed_instances() {
       'display' => array(
         'default' => array(
           'label' => 'inline',
+        ),
+      ),
+    ),
+    'apr_profile_appointments_ptype' => array(
+      'label' => $t('Person Type'),
+      'field_name' => 'apr_profile_appointments_ptype',
+      'type' => 'list_text',
+      'widget' => array(
+        'type' => 'options_select',
+      ),
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'type' => 'list_default',
         ),
       ),
     ),
