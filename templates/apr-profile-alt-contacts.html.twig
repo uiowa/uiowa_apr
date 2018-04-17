@@ -1,0 +1,59 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of contact information from pci.alt_contacts[] array.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-alt-contacts"{{ attributes }}>
+  <div class="field-label">Contact Information</div>
+  <div class="field-items">
+    {% for key, item in data %}
+      <div class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        {% set output = '' %}
+        {% if item.type is not empty %}
+          {% set output = output ~ item.type ~ ': ' %}
+        {% endif %}
+        {% if item.room is not empty %}
+          {% set output = output ~ item.room %}
+          {% if item.building is not empty %}
+            {% set output = output ~ ' ' ~ item.building ~ '<br/>' %}
+          {% endif %}
+        {% elseif item.building is not empty %}
+          {% set output = output ~ item.building ~ '<br/>' %}
+        {% elseif item.address is not empty %}
+          {% set output = output ~ item.address ~ '<br/>' %}
+        {% endif %}
+        {% if item.city is not empty %}
+          {% set output = output ~ item.city %}
+          {% if item.state is not empty %}
+            {% set output = output ~ ', ' ~ item.state %}
+          {% endif %}
+          {% if item.zip is not empty %}
+            {% set output = output ~ ' ' ~ item.zip ~ '<br/>' %}
+          {% else %}
+            {% set output = output ~ '<br/>' %}
+          {% endif %}
+        {% elseif item.state is not empty %}
+          {% set output = output ~ item.state %}
+          {% if item.zip is not empty %}
+            {% set output = output ~ ' ' ~ item.zip ~ '<br/>' %}
+          {% else %}
+            {% set output = output ~ '<br/>' %}
+          {% endif %}
+        {% endif %}
+        {% if item.phone is not empty %}
+          {% set output = output ~ '<a href="tel:+1-' ~ item.phone ~ '">' ~ item.phone ~ '</a>' %}
+        {% endif %}
+        {{ output|raw }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}

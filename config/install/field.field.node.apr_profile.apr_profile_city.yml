@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.apr_profile_city
+    - node.type.apr_profile
+id: node.apr_profile.apr_profile_city
+field_name: apr_profile_city
+entity_type: node
+bundle: apr_profile
+label: 'City'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

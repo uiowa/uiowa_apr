@@ -1,0 +1,35 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+  enforced:
+    module:
+      - uiowa_apr
+id: paragraph.apr_profile_appointments_ptype
+field_name: apr_profile_appointments_ptype
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Faculty
+      label: Faculty
+    -
+      value: Emeritus
+      label: Emeritus
+    -
+      value: Staff
+      label: Staff
+    -
+      value: Student
+      label: Student
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

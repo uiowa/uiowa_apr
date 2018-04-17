@@ -1,0 +1,18 @@
+name: University of Iowa APR Profiles
+description: Displays web profiles from APR at the University of Iowa.
+package: UIowa
+
+type: module
+core: 8.x
+
+dependencies:
+  - drupal:views
+  - imagecache_external:imagecache_external
+  - paragraphs:paragraphs
+  - pathauto:pathauto
+
+configure: uiowa_apr.admin_uiowa_apr
+
+php: 5.6
+
+version: 8.x-1.0

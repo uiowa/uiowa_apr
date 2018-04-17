@@ -1,0 +1,189 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.apr_profile.apr_profile_address
+    - field.field.node.apr_profile.apr_profile_appointments
+    - field.field.node.apr_profile.apr_profile_building
+    - field.field.node.apr_profile.apr_profile_city
+    - field.field.node.apr_profile.apr_profile_credentials
+    - field.field.node.apr_profile.apr_profile_email
+    - field.field.node.apr_profile.apr_profile_first_name
+    - field.field.node.apr_profile.apr_profile_hawkid
+    - field.field.node.apr_profile.apr_profile_last_name
+    - field.field.node.apr_profile.apr_profile_middle_name
+    - field.field.node.apr_profile.apr_profile_person_type
+    - field.field.node.apr_profile.apr_profile_phone
+    - field.field.node.apr_profile.apr_profile_pref_first_name
+    - field.field.node.apr_profile.apr_profile_rank
+    - field.field.node.apr_profile.apr_profile_room
+    - field.field.node.apr_profile.apr_profile_state
+    - field.field.node.apr_profile.apr_profile_suffix
+    - field.field.node.apr_profile.apr_profile_working_title
+    - field.field.node.apr_profile.apr_profile_zip
+    - node.type.apr_profile
+  module:
+    - user
+id: node.apr_profile.teaser
+targetEntityType: node
+bundle: apr_profile
+mode: teaser
+content:
+  apr_profile_admin_perms:
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_alt_contacts:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_assets:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_awardhonor:
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_bio:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_centers:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_clinical_narrative:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_congrant:
+    weight: 25
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_creative_works:
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_education:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_education_postgrad:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_email:
+    weight: 5
+    region: content
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+  apr_profile_facdev:
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_intellcont:
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_last_modified:
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_liccert:
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_member:
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_office_hours:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_pasthist:
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_perform_exhibit:
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_present:
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_research_narrative:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_resprog:
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_schteach:
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_teaching_interests:
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_websites:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  links:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  apr_profile_address: true
+  apr_profile_appointments: true
+  apr_profile_building: true
+  apr_profile_city: true
+  apr_profile_credentials: true
+  apr_profile_email: true
+  apr_profile_first_name: true
+  apr_profile_hawkid: true
+  apr_profile_last_name: true
+  apr_profile_middle_name: true
+  apr_profile_person_type: true
+  apr_profile_phone: true
+  apr_profile_pref_first_name: true
+  apr_profile_rank: true
+  apr_profile_room: true
+  apr_profile_state: true
+  apr_profile_suffix: true
+  apr_profile_working_title: true
+  apr_profile_zip: true

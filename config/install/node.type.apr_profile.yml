@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+  enforced:
+    module:
+      - uiowa_apr
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'APR Profile'
+type: apr_profile
+description: 'Use <em>APR Profiles</em> for web profiles imported from the University of Iowa APR system.'
+help: ''
+new_revision: false
+preview_mode: 0
+display_submitted: false

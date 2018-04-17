@@ -1,0 +1,63 @@
+/**
+ * @file
+ * Default styling for the University of Iowa APR module.
+ *
+ * This styling is intended to provide a default layout for both the Views
+ * the default Views listings and profile nodes, leaving much of the styling
+ * up to the site itself.
+ */
+
+/* Default styling for the default Views listings. */
+.view-apr-profiles .item-list ul { padding: 0; }
+.view-apr-profiles .item-list ul.pager { margin: 1rem 0; }
+.view-apr-profiles .item-list ul li.views-row {
+    list-style-type: none;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e6e6e6;
+}
+.view-apr-profiles .item-list ul li:last-child { border-bottom: none; }
+.view-apr-profiles table td.views-field-apr-profile-email { width: 20%; }
+.view-apr-profiles table td.views-field-apr-profile-phone { width: 15%; }
+.view-apr-profiles table td.views-field-apr-profile-building { width: 20%; }
+.view-apr-profiles table td.views-field-apr-profile-email,
+.view-apr-profiles table td.views-field-apr-profile-phone {
+    white-space: nowrap;
+}
+
+/* Default styling for the profile nodes. */
+.node--type-apr-profile .field { padding-bottom: 1rem; }
+.node--type-apr-profile .field .field-label { font-weight: bold; }
+/*
+.node--type-apr-profile .field ul.field-items {
+    margin: 0;
+    padding: 0 0 0 1.25em;
+}
+.node--type-apr-profile .field ul.field-items li.field-item {
+    list-style: outside;
+    margin: 0;
+    padding: 0;
+}
+*/
+.node--type-apr-profile .field-name-apr-profile-assets,
+.node--type-apr-profile .field-name-apr-profile-admin-perms,
+.node--type-apr-profile .field-name-apr-profile-alt-contacts,
+.node--type-apr-profile .field-name-apr-profile-pasthist,
+.node--type-apr-profile .field-name-apr-profile-last-modified {
+    padding-bottom: 0;
+}
+.node--type-apr-profile .field-name-apr-profile-alt-contacts { padding-top: 1rem; }
+.node--type-apr-profile .field-name-apr-profile-intellcont .field-item,
+.node--type-apr-profile .field-name-apr-profile-present .field-item,
+.node--type-apr-profile .field-name-apr-profile-perform_exhibit .field-item,
+.node--type-apr-profile .field-name-apr-profile-creative_works .field-item,
+.node--type-apr-profile .field-name-apr-profile-congrant .field-item {
+    padding-bottom: 0;
+}
+.node--type-apr-profile .field-name-apr-profile-assets .field-item img {
+    float: right;
+    margin: 0 0 1rem 1rem;
+}
+.node--type-apr-profile .field-name-apr-profile-alt-contacts .field-items .field-item {
+    padding-bottom: 0.3rem;
+}
+

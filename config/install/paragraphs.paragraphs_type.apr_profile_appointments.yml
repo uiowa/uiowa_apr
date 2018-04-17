@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uiowa_apr
+id: apr_profile_appointments
+label: 'APR Profile Appointments'
+icon_uuid: null
+description: 'Paragraphs containing appointment data for profiles imported from the University of Iowa APR system.'
+behavior_plugins: {  }

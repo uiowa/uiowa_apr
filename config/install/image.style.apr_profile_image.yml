@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uiowa_apr
+name: apr_profile_image
+label: 'APR Profile Image'
+effects:
+  d9a0ebea-16c8-41aa-a67b-3807a3ee8d98:
+    uuid: d9a0ebea-16c8-41aa-a67b-3807a3ee8d98
+    id: image_scale
+    weight: 1
+    data:
+      width: 250
+      height: null
+      upscale: false

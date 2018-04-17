@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.apr_profile_person_type
+    - node.type.apr_profile
+  module:
+    - options
+id: node.apr_profile.apr_profile_person_type
+field_name: apr_profile_person_type
+entity_type: node
+bundle: apr_profile
+label: 'Person Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

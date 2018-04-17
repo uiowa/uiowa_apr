@@ -1,0 +1,231 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.apr_profile.apr_profile_address
+    - field.field.node.apr_profile.apr_profile_appointments
+    - field.field.node.apr_profile.apr_profile_building
+    - field.field.node.apr_profile.apr_profile_city
+    - field.field.node.apr_profile.apr_profile_credentials
+    - field.field.node.apr_profile.apr_profile_email
+    - field.field.node.apr_profile.apr_profile_first_name
+    - field.field.node.apr_profile.apr_profile_hawkid
+    - field.field.node.apr_profile.apr_profile_last_name
+    - field.field.node.apr_profile.apr_profile_middle_name
+    - field.field.node.apr_profile.apr_profile_person_type
+    - field.field.node.apr_profile.apr_profile_phone
+    - field.field.node.apr_profile.apr_profile_pref_first_name
+    - field.field.node.apr_profile.apr_profile_rank
+    - field.field.node.apr_profile.apr_profile_room
+    - field.field.node.apr_profile.apr_profile_state
+    - field.field.node.apr_profile.apr_profile_suffix
+    - field.field.node.apr_profile.apr_profile_working_title
+    - field.field.node.apr_profile.apr_profile_zip
+    - node.type.apr_profile
+  module:
+    - paragraphs
+    - path
+id: node.apr_profile.default
+targetEntityType: node
+bundle: apr_profile
+mode: default
+content:
+  apr_profile_address:
+    weight: 12
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_appointments:
+    type: entity_reference_paragraphs
+    weight: 19
+    settings:
+      title: Appointment
+      title_plural: Appointments
+      edit_mode: preview
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: apr_profile_appointments
+    third_party_settings: {  }
+    region: content
+  apr_profile_building:
+    weight: 11
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_city:
+    weight: 13
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_credentials:
+    weight: 7
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_email:
+    weight: 8
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: email_default
+    region: content
+  apr_profile_first_name:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_hawkid:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_last_name:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_middle_name:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_person_type:
+    weight: 18
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  apr_profile_phone:
+    weight: 9
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_pref_first_name:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_rank:
+    weight: 16
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_room:
+    weight: 10
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_state:
+    weight: 14
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_suffix:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_working_title:
+    weight: 17
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_zip:
+    weight: 15
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 101
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 103
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 104
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 102
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 100
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  promote: true

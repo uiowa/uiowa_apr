@@ -1,0 +1,34 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of centers information from pci.centers[] array.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-centers"{{ attributes }}>
+  <div class="field-label">Center, Program and Institute Affiliations</div>
+  <ul class="field-items">
+    {% for key, item in data %}
+      <li class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        {% set output = '' %}
+        {% if item.url is not empty %}
+          {% set output = output ~ '<a href="' ~ item.url ~ '">' %}
+        {% endif %}
+        {% if item.center is not empty %}
+          {% set output = output ~ item.center %}
+        {% endif %}
+        {% if item.url is not empty %}
+          {% set output = output ~ '</a>' %}
+        {% endif %}
+        {{ output|raw }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endif %}

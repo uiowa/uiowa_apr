@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.apr_profile_appointments
+    - node.type.apr_profile
+    - paragraphs.paragraphs_type.apr_profile_appointments
+  module:
+    - entity_reference_revisions
+id: node.apr_profile.apr_profile_appointments
+field_name: apr_profile_appointments
+entity_type: node
+bundle: apr_profile
+label: 'Appointments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      apr_profile_appointments: apr_profile_appointments
+    target_bundles_drag_drop:
+      apr_profile_appointments:
+        enabled: true
+        weight: 2
+field_type: entity_reference_revisions

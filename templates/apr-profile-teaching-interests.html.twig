@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of teaching interests information from pci.info.teaching_interests.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-teaching-interests"{{ attributes }}>
+  <div class="field-label">Teaching Interests</div>
+  <div class="field-items">
+    {% for key, item in data %}
+      <div class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        {{ item|raw }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}

@@ -1,0 +1,69 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_college
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_dept
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_div
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_ptype
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_rank
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_type
+    - paragraphs.paragraphs_type.apr_profile_appointments
+  enforced:
+    module:
+      - uiowa_apr
+id: paragraph.apr_profile_appointments.default
+targetEntityType: paragraph
+bundle: apr_profile_appointments
+mode: default
+content:
+  apr_profile_appointments_college:
+    weight: 3
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_appointments_dept:
+    weight: 2
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_appointments_div:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_appointments_ptype:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  apr_profile_appointments_rank:
+    weight: 1
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  apr_profile_appointments_type:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

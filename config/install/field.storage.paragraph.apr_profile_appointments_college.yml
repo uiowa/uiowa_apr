@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+  enforced:
+    module:
+      - uiowa_apr
+id: paragraph.apr_profile_appointments_college
+field_name: apr_profile_appointments_college
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: false
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

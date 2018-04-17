@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.apr_profile_appointments_college
+    - paragraphs.paragraphs_type.apr_profile_appointments
+id: paragraph.apr_profile_appointments.apr_profile_appointments_college
+field_name: apr_profile_appointments_college
+entity_type: paragraph
+bundle: apr_profile_appointments
+label: 'College'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,15 +1,22 @@
 <?php
 
 /**
- * Implements hook_disable().
+ * @file
+ * Installation functions for the University of Iowa APR Migration module.
  */
-function uiowa_apr_migration_disable() {
-  $people = Migration::getInstance('APRPeople');
-  $appointments = Migration::getInstance('APRPeopleAppointments');
 
-  $appointments->processRollback();
-  $people->processRollback();
+use Drupal\user\RoleInterface;
 
-  Migration::deregisterMigration('APRPeopleAppointments');
-  Migration::deregisterMigration('APRPeople');
+/**
+ * Implements hook_install().
+ */
+function uiowa_apr_migration_install() {
+
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function uiowa_apr_migration_uninstall() {
+
 }

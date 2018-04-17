@@ -1,0 +1,70 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uiowa_apr_migration
+id: apr_people_appointments
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: apr_people_migrations
+label: 'APR People Appointments'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  include_raw_data: true
+  headers:
+    Accept: application/json
+  urls: 'https://test.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1'
+  item_selector: 0
+  fields:
+    -
+      name: id
+      label: Appointment ID
+      selector: /admin_perms/id
+    -
+      name: type
+      label: Appointment Type
+      selector: /admin_perms/appointment_type
+    -
+      name: rank
+      label: Appointment Rank
+      selector: /admin_perms/rank
+    -
+      name: department
+      label: Appointment Department
+      selector: /admin_perms/dep
+    -
+      name: college
+      label: Appointment College
+      selector: /admin_perms/college
+    -
+      name: division
+      label: Appointment Division
+      selector: /admin_perms/div
+    -
+      name: person_type
+      label: Appointment Person Type
+      selector: /admin_perms/person_type
+  ids:
+      id:
+        type: string
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: apr_profile_appointments
+process:
+  apr_profile_appointments_type: type
+  apr_profile_appointments_rank: rank
+  apr_profile_appointments_dept: department
+  apr_profile_appointments_college: college
+  apr_profile_appointments_div: division
+  apr_profile_appointments_ptype: person_type
+#  type:
+#    plugin: default_value
+#    default_value: apr_profile_appointments
+migration_dependencies:
+  required: { }
+  optional: { }

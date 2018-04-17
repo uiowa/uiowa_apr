@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uiowa_apr_migration
+id: apr_people_migrations
+label: 'APR People Migrations'
+description: 'Migrations for the APR Profiles from the University of Iowa.'
+source_type: 'External JSON Feed'
+module: null
+shared_configuration: null

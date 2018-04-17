@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of education information from education[] array.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-education"{{ attributes }}>
+  <div class="field-label">Education</div>
+  <ul class="field-items">
+    {% for key, item in data %}
+      <li class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        {% set output = '' %}
+        {% if item.deg is not empty %}
+          {% set output = output ~ item.deg %}
+        {% elseif item.deg_title is not empty %}
+          {% set output = output ~ item.deg_title %}
+        {% endif %}
+        {% if item.major is not empty %}
+          {% set output = output ~ ' in ' ~ item.major %}
+        {% endif %}
+        {% if item.school is not empty %}
+          {% set output = output ~ ', ' ~ item.school %}
+        {% endif %}
+        {% if item.city is not empty %}
+          {% set output = output ~ ', ' ~ item.city %}
+        {% endif %}
+        {% if item.state is not empty %}
+          {% set output = output ~ ', ' ~ item.state %}
+        {% endif %}
+        {% if item.country is not empty %}
+          {% set output = output ~ ', ' ~ item.country %}
+        {% endif %}
+        {% if item.completed_date is not empty %}
+          {% set output = output ~ ', ' ~ item.completed_date|date("Y") %}
+        {% endif %}
+        {{ output }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endif %}

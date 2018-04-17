@@ -1,0 +1,36 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of office hours information from pci.office_hours[] array.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-office-hours"{{ attributes }}>
+  <div class="field-label">Office Hours</div>
+  <div class="field-items">
+    {% for key, item in data %}
+      <div class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        {% set output = '' %}
+        {% if item.day is not empty %}
+          {% set output = output ~ item.day ~ ': ' %}
+        {% endif %}
+        {% if item.from is not empty %}
+          {% set output = output ~ item.from %}
+          {% if (item.to is not empty) and (item.from != item.to) %}
+            {% set output = output ~ ' - ' ~ item.to %}
+          {% endif %}
+        {% elseif item.to is not empty %}
+          {% set output = output ~ item.to %}
+        {% endif %}
+        {{ output }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}

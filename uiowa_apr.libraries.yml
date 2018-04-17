@@ -1,0 +1,5 @@
+uiowa_apr_styling:
+  version: 1.x
+  css:
+    theme:
+      css/uiowa_apr.css: {}

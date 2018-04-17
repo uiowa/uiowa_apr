@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of last modified date information from last_modified_date.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-last-modified"{{ attributes }}>
+  <div class="field-items">
+    {% for key, item in data %}
+      {% set item = item // 1000 %}
+      <div class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        <strong>Last Modified Date:</strong> {{ item|date("F j, Y", "America/Chicago") }}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endif %}

@@ -1,0 +1,42 @@
+{#
+/**
+ * @file
+ * Default theme implementation for the APR Profile pseudo-fields.
+ *
+ * Available variables
+ * - data: Array of courses taught information from schteach[] array.
+ */
+#}
+
+{% if data is not empty %}
+
+<div class="field field-name-apr-profile-schteach"{{ attributes }}>
+  <div class="field-label">Courses Taught</div>
+  <ul class="field-items">
+    {% for key, item in data %}
+      <li class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
+        {% set output = '' %}
+        {% if item.title is not empty %}
+          {% set output = output ~ item.title %}
+        {% endif %}
+        {% if item.coursepre is not empty %}
+          {% set output = output ~ ', ' ~ item.coursepre %}
+        {% endif %}
+        {% if item.coursenum is not empty %}
+          {% set output = output ~ ':' ~ item.coursenum %}
+        {% endif %}
+        {% if item.term is not empty %}
+          {% set output = output ~ ', ' ~ item.term %}
+          {% if item.year is not empty %}
+            {% set output = output ~ ' ' ~ item.year %}
+          {% endif %}
+        {% elseif item.year is not empty %}
+          {% set output = output ~ item.year %}
+        {% endif %}
+        {{ output }}
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endif %}

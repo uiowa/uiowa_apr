@@ -4,31 +4,41 @@
    - API Key: iashdfi7sdf74evah23
    - Population ID: 1
 
-2. Return to the University of Iowa APR admin interface and click the 'Import' button in the 'Operations' fieldset to import unprocessed records from the source, plus any records marked for update.
-  For manual import, please use the drush migrate commands shown below.
+2. Under the Migration UI in Structure > Migrations, select 'List migrations' under the 'Operations' column to edit the APR People Migrations group. Click the 'Execute' button in the row for the APR People migration.
 
-3. To delete all profiles created by the import, click the 'Rollback' button in the 'Operations' fieldset.
-  For manual deletion, please use the drush migrate commands shown below.
+3. Migration Operations:
+   - To import new records, select 'Import' and click the 'Execute' button.
+   - To update existing records, check the 'Update' checkbox under the 'Options' fieldset below, then click the 'Execute' button.
+   - To delete existing records, select 'Rollback' and click the 'Execute' button.
+
+4. For manual operations, please use the drush migrate commands shown below.
 
 ### Drush Migrate Commands
 
 From the command line, manually perform the imports using the drush migrate commands:
 
-migrate-status (ms) List all migrations with current status.
+migrate-status (ms) - List all migrations with current status.
 ```
 > drush ms
 Group: apr_people      Total  Imported  Unprocessed  Status  Last imported
 APRPeople              99     0         99           Idle    2017-01-01 00:00:01
 APRPeopleAppointments  999    0         999          Idle    2017-01-01 00:00:01
 ```
-migrate-import (mi) Perform one or more migration processes
+migrate-import (mim) - Perform one or more migration processes
 ```
-> drush mi APRPeople
+> drush mim APRPeople
 Processed 99 (99 created, 0 updated, 0 failed, 0 ignored) in 0.6 sec (1963/min) - done with 'APRPeople'
-> drush mi APRPeopleAppointments
+> drush mim APRPeopleAppointments
 Processed 999 (999 created, 0 updated, 0 failed, 0 ignored) in 0.6 sec (1963/min) - done with 'APRPeopleAppointments'
 ```
-migrate-rollback (mr) Roll back the destination objects from a given migration
+migrate-import (mim) - WITH Update
+```
+> drush mim APRPeople --update
+Processed 99 (0 created, 99 updated, 0 failed, 0 ignored) in 0.6 sec (1963/min) - done with 'APRPeople'
+> drush mim APRPeopleAppointments --update
+Processed 999 (0 created, 999 updated, 0 failed, 0 ignored) in 0.6 sec (1963/min) - done with 'APRPeopleAppointments'
+```
+migrate-rollback (mr) - Roll back the destination objects from a given migration
 ```
 > drush mr APRPeople --force
 > drush mr APRPeopleAppointments --force

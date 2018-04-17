@@ -1,0 +1,164 @@
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - uiowa_apr_migration
+id: apr_people
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: apr_people_migrations
+label: 'APR People'
+source:
+  plugin: url
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  include_raw_data: true
+  headers:
+    Accept: application/json
+  urls: 'https://test.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1'
+  item_selector: 0
+  fields:
+    -
+      name: uid
+      label: UID
+      selector: /uid
+    -
+      name: hawkid
+      label: HawkID
+      selector: /hawkid
+    -
+      name: fname
+      label: First Name
+      selector: /fname
+    -
+      name: pfname
+      label: Preferred First Name
+      selector: /pfname
+    -
+      name: mname
+      label: Middle Name
+      selector: /mname
+    -
+      name: lname
+      label: Last Name
+      selector: /lname
+    -
+      name: suffix
+      label: Suffix
+      selector: /suffix
+    -
+      name: credentials
+      label: Credentials
+      selector: /credentials
+    -
+      name: email
+      label: Email
+      selector: /email
+    -
+      name: phone
+      label: Phone
+      selector: /phone
+    -
+      name: room
+      label: Room
+      selector: /room
+    -
+      name: building
+      label: Building
+      selector: /building
+    -
+      name: address
+      label: Address
+      selector: /address
+    -
+      name: city
+      label: City
+      selector: /city
+    -
+      name: state
+      label: State
+      selector: /state
+    -
+      name: zip
+      label: Zip
+      selector: /zip
+    -
+      name: rank
+      label: Rank
+      selector: /rank
+    -
+      name: working_title
+      label: Working Title
+      selector: /working_title
+    -
+      name: person_type
+      label: Person Type
+      selector: /person_type
+  ids:
+      uid:
+        type: string
+destination:
+  plugin: 'entity:node'
+  default_bundle: apr_profile
+process:
+  title:
+    plugin: concat
+    source:
+      - fname
+      - mname
+      - lname
+    delimiter: ' '
+  apr_profile_hawkid: hawkid
+  apr_profile_first_name: fname
+  apr_profile_pref_first_name: pfname
+  apr_profile_middle_name: mname
+  apr_profile_last_name: lname
+  apr_profile_suffix: suffix
+  apr_profile_credentials: credentials
+  apr_profile_email: email
+  apr_profile_phone: phone
+  apr_profile_room: room
+  apr_profile_building: building
+  apr_profile_address: address
+  apr_profile_city: city
+  apr_profile_state: state
+  apr_profile_zip: zip
+  apr_profile_rank: rank
+  apr_profile_working_title: working_title
+  apr_profile_person_type: person_type
+  apr_profile_appointments:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: id
+    -
+      plugin: migration_lookup
+      migration: apr_people_appointments
+      no_stub: true
+    -
+      plugin: iterator
+      process:
+        target_id: '0'
+        target_revision_id: '1'
+#  apr_people_appointments:
+#    plugin: migration
+#    migration: apr_people_appointments
+#    source: id
+#  apr_profile_appointments:
+#    plugin: iterator
+#    source:
+#      - '@apr_people_appointments'
+#    process:
+#      target_id: '0'
+#      target_revision_id: '1'
+#
+#  type:
+#    plugin: default_value
+#    default_value: apr_profile
+migration_dependencies:
+  required:
+    - apr_people_appointments
+  optional: { }

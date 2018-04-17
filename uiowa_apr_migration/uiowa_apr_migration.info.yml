@@ -1,0 +1,17 @@
+name: University of Iowa APR Migration
+description: Imports web profiles from APR at the University of Iowa.
+package: UIowa
+
+type: module
+core: 8.x
+
+dependencies:
+  - drupal:migrate
+  - entity_reference_revisions:entity_reference_revisions
+  - migrate_plus:migrate_plus
+  - migrate_tools:migrate_tools
+  - uiowa_apr
+
+php: 5.6
+
+version: 8.x-1.0

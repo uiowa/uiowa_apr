@@ -1,0 +1,15 @@
+uiowa_apr.admin_uiowa:
+  path: 'admin/config/uiowa'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'University of Iowa'
+  requirements:
+    _permission: 'administer site configuration'
+
+uiowa_apr.admin_uiowa_apr:
+  path: 'admin/config/uiowa/uiowa_apr'
+  defaults:
+    _form:  '\Drupal\uiowa_apr\Form\UIowaAPRConfigForm'
+    _title: 'University of Iowa APR'
+  requirements:
+    _permission: 'administer uiowa apr settings'
