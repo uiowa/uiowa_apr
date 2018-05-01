@@ -14,7 +14,8 @@ label: 'APR People'
 source:
   plugin: url
   data_fetcher_plugin: http
-  data_parser_plugin: json
+  # data_parser_plugin: json
+  data_parser_plugin: apr_json_parser
   include_raw_data: true
   track_changes: true
   headers:
@@ -98,6 +99,10 @@ source:
       name: person_type
       label: Person Type
       selector: person_type
+    -
+      name: appt_id
+      label: Appointment ID
+      selector: /admin_perms      
   ids:
       uid:
         type: string
@@ -167,23 +172,22 @@ process:
   apr_profile_person_type: person_type
   apr_profile_appointments:
     plugin: sub_process
-    source: apr_profile_appointments
+    source: appt_id
     process:
       temporary_ids:
         plugin: migration_lookup
         migration: apr_people_appointments
-        no_stub: true
         source: id
-      target_id:
+      target_id: 
         plugin: extract
         source: '@temporary_ids'
         index:
-          - '0'
+          - 0
       target_revision_id:
         plugin: extract
         source: '@temporary_ids'
         index:
-          - '1'
+          - 1
 #  apr_profile_appointments:
 #    -
 #      plugin: migration_lookup

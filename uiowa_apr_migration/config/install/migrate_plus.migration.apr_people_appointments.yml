@@ -14,41 +14,42 @@ label: 'APR People Appointments'
 source:
   plugin: url
   data_fetcher_plugin: http
-  data_parser_plugin: json
+  # data_parser_plugin: json
+  data_parser_plugin: apr_appt_json_parser
   include_raw_data: true
   headers:
     Accept: application/json
   urls: 'https://test.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1'
-  item_selector: 0
+  # item_selector: 0
   fields:
     -
       name: id
       label: Appointment ID
-      selector: admin_perms/0/id
+      selector: /id
     -
       name: type
       label: Appointment Type
-      selector: admin_perms/0/appointment_type
+      selector: /appointment_type
     -
       name: rank
       label: Appointment Rank
-      selector: admin_perms/0/rank
+      selector: /rank
     -
       name: department
       label: Appointment Department
-      selector: admin_perms/0/dep
+      selector: /dep
     -
       name: college
       label: Appointment College
-      selector: admin_perms/0/college
+      selector: /college
     -
       name: division
       label: Appointment Division
-      selector: admin_perms/0/division
+      selector: /division
     -
       name: person_type
       label: Appointment Person Type
-      selector: admin_perms/0/person_type
+      selector: /person_type
   ids:
       id:
         type: string
