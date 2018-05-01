@@ -24,47 +24,88 @@ source:
     -
       name: id
       label: Appointment ID
-      selector: /admin_perms/id
+      selector: admin_perms/0/id
     -
       name: type
       label: Appointment Type
-      selector: /admin_perms/appointment_type
+      selector: admin_perms/0/appointment_type
     -
       name: rank
       label: Appointment Rank
-      selector: /admin_perms/rank
+      selector: admin_perms/0/rank
     -
       name: department
       label: Appointment Department
-      selector: /admin_perms/dep
+      selector: admin_perms/0/dep
     -
       name: college
       label: Appointment College
-      selector: /admin_perms/college
+      selector: admin_perms/0/college
     -
       name: division
       label: Appointment Division
-      selector: /admin_perms/div
+      selector: admin_perms/0/division
     -
       name: person_type
       label: Appointment Person Type
-      selector: /admin_perms/person_type
+      selector: admin_perms/0/person_type
   ids:
       id:
         type: string
 destination:
   plugin: 'entity_reference_revisions:paragraph'
-  default_bundle: apr_profile_appointments
 process:
+  type:
+    plugin: default_value
+    default_value: apr_profile_appointments
+#  admin_perms:
+#    plugin: sub_process
+#    source: admin_perms
+#    process:
+#      apr_profile_appointments_id:
+#        -
+#          plugin: skip_on_empty
+#          method: process
+#          source: admin_perms
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - id
+#      apr_profile_appointments_type:
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - appointment_type
+#      apr_profile_appointments_rank:
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - rank
+#      apr_profile_appointments_dept:
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - dep
+#      apr_profile_appointments_college:
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - college
+#      apr_profile_appointments_div:
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - division
+#      apr_profile_appointments_ptype:
+#        plugin: extract
+#        source: admin_perms
+#        index:
+#          - person_type
+  apr_profile_appointments_id: id
   apr_profile_appointments_type: type
   apr_profile_appointments_rank: rank
   apr_profile_appointments_dept: department
   apr_profile_appointments_college: college
   apr_profile_appointments_div: division
   apr_profile_appointments_ptype: person_type
-#  type:
-#    plugin: default_value
-#    default_value: apr_profile_appointments
-migration_dependencies:
-  required: { }
-  optional: { }
+migration_dependencies: null

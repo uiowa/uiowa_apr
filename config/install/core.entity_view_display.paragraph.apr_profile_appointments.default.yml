@@ -5,6 +5,7 @@ dependencies:
     - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_college
     - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_dept
     - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_div
+    - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_id
     - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_ptype
     - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_rank
     - field.field.paragraph.apr_profile_appointments.apr_profile_appointments_type
@@ -66,4 +67,5 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-hidden: {  }
+hidden:
+  apr_profile_appointments_id: true

@@ -16,6 +16,7 @@ source:
   data_fetcher_plugin: http
   data_parser_plugin: json
   include_raw_data: true
+  track_changes: true
   headers:
     Accept: application/json
   urls: 'https://test.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1'
@@ -24,93 +25,128 @@ source:
     -
       name: uid
       label: UID
-      selector: /uid
+      selector: uid
     -
       name: hawkid
       label: HawkID
-      selector: /hawkid
+      selector: hawkid
     -
       name: fname
       label: First Name
-      selector: /fname
+      selector: fname
     -
       name: pfname
       label: Preferred First Name
-      selector: /pfname
+      selector: pfname
     -
       name: mname
       label: Middle Name
-      selector: /mname
+      selector: mname
     -
       name: lname
       label: Last Name
-      selector: /lname
+      selector: lname
     -
       name: suffix
       label: Suffix
-      selector: /suffix
+      selector: suffix
     -
       name: credentials
       label: Credentials
-      selector: /credentials
+      selector: credentials
     -
       name: email
       label: Email
-      selector: /email
+      selector: email
     -
       name: phone
       label: Phone
-      selector: /phone
+      selector: phone
     -
       name: room
       label: Room
-      selector: /room
+      selector: room
     -
       name: building
       label: Building
-      selector: /building
+      selector: building
     -
       name: address
       label: Address
-      selector: /address
+      selector: address
     -
       name: city
       label: City
-      selector: /city
+      selector: city
     -
       name: state
       label: State
-      selector: /state
+      selector: state
     -
       name: zip
       label: Zip
-      selector: /zip
+      selector: zip
     -
       name: rank
       label: Rank
-      selector: /rank
+      selector: rank
     -
       name: working_title
       label: Working Title
-      selector: /working_title
+      selector: working_title
     -
       name: person_type
       label: Person Type
-      selector: /person_type
+      selector: person_type
   ids:
       uid:
         type: string
+  defaults:
+    blankspace: ' '
 destination:
   plugin: 'entity:node'
-  default_bundle: apr_profile
 process:
+  type:
+    plugin: default_value
+    default_value: apr_profile
+  firstname:
+    -
+      plugin: get
+      source:
+        - pfname
+        - fname
+    -
+      plugin: callback
+      callable: array_filter
+    -
+      plugin: callback
+      callable: current
+  middlename:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: mname
+    -
+      plugin: concat
+      source:
+        - defaults/blankspace
+        - mname
+  lastname:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: lname
+    -
+      plugin: concat
+      source:
+        - defaults/blankspace
+        - lname
   title:
     plugin: concat
     source:
-      - fname
-      - mname
-      - lname
-    delimiter: ' '
+      - '@firstname'
+      - '@middlename'
+      - '@lastname'
   apr_profile_hawkid: hawkid
   apr_profile_first_name: fname
   apr_profile_pref_first_name: pfname
@@ -130,23 +166,62 @@ process:
   apr_profile_working_title: working_title
   apr_profile_person_type: person_type
   apr_profile_appointments:
-    -
-      plugin: skip_on_empty
-      method: process
-      source: id
-    -
-      plugin: migration_lookup
-      migration: apr_people_appointments
-      no_stub: true
-    -
-      plugin: iterator
-      process:
-        target_id: '0'
-        target_revision_id: '1'
+    plugin: sub_process
+    source: apr_profile_appointments
+    process:
+      temporary_ids:
+        plugin: migration_lookup
+        migration: apr_people_appointments
+        no_stub: true
+        source: id
+      target_id:
+        plugin: extract
+        source: '@temporary_ids'
+        index:
+          - '0'
+      target_revision_id:
+        plugin: extract
+        source: '@temporary_ids'
+        index:
+          - '1'
+#  apr_profile_appointments:
+#    -
+#      plugin: migration_lookup
+#      migration: apr_people_appointments
+#      no_stub: true
+#      source: id
+#    -
+#      plugin: sub_process
+#      process:
+#        target_id: '0'
+#        target_revision_id: '1'
+#
+#  apr_profile_appointments/target_id:
+#    -
+#      plugin: migration_lookup
+#      migration: apr_people_appointments
+#      no_stub: true
+#      source: id
+#    -
+#      plugin: extract
+#      index:
+#        - '0'
+#  apr_profile_appointments/target_revision_id:
+#    -
+#      plugin: migration_lookup
+#      migration: apr_people_appointments
+#      no_stub: true
+#      source: id
+#    -
+#      plugin: extract
+#      index:
+#        - '1'
+#
 #  apr_people_appointments:
 #    plugin: migration
 #    migration: apr_people_appointments
-#    source: id
+#    no_stub: true
+#    source: apr_profile_appointments_id
 #  apr_profile_appointments:
 #    plugin: iterator
 #    source:
@@ -154,11 +229,16 @@ process:
 #    process:
 #      target_id: '0'
 #      target_revision_id: '1'
-#
-#  type:
-#    plugin: default_value
-#    default_value: apr_profile
+  promote:
+    plugin: default_value
+    default_value: 0
+  status:
+    plugin: default_value
+    default_value: 1
+  sticky:
+    plugin: default_value
+    default_value: 0
 migration_dependencies:
   required:
     - apr_people_appointments
-  optional: { }
+  optional: {  }

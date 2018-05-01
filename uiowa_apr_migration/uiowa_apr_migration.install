@@ -5,7 +5,9 @@
  * Installation functions for the University of Iowa APR Migration module.
  */
 
-use Drupal\user\RoleInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\MigrateExecutable;
+use Drupal\migrate\MigrateMessage;
 
 /**
  * Implements hook_install().
@@ -18,5 +20,11 @@ function uiowa_apr_migration_install() {
  * Implements hook_uninstall().
  */
 function uiowa_apr_migration_uninstall() {
-
+  $manager = Drupal::service('plugin.manager.migration');
+  $migration_ids = ['apr_people', 'apr_people_appointments'];
+  foreach ($migration_ids as $migration_id) {
+    $migration = $manager->createInstance($migration_id);
+    $executable = new MigrateExecutable($migration, new MigrateMessage());
+    $executable->rollback();
+  }
 }

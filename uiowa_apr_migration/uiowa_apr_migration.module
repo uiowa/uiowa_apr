@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\migrate\Plugin\MigrationMapInterface;
+use Drupal\migrate\MigrateExecutable;
+use Drupal\migrate\MigrateMessage;
+
+/**
+ * Implements hook_cron().
+ */
+function uiowa_apr_migration_cron() {
+  // Get API Key and Population ID from config
+  $config = \Drupal::config('uiowa_apr.settings');
+  $api_key = $config->get('uiowa_apr.api_key');
+  $population_id = $config->get('uiowa_apr.population_id');
+
+  // Get migration objects
+  $manager = Drupal::service('plugin.manager.migration');
+  $people = $manager->createInstance('apr_people');
+  $appointments = $manager->createInstance('apr_people_appointments');
+
+  // Check if API key and population ID are set
+  if(!empty($api_key) && !empty($population_id)){
+    $executable = new MigrateExecutable($appointments, new MigrateMessage());
+    if ($appointments->getIdMap()->processedCount() > 0) {
+      // Rollback existing appointments if appointments already exist
+      $executable->rollback();
+    }
+    $executable->import();
+    // Update people, does not require update flag due to source track_changes
+    $executable = new MigrateExecutable($people, new MigrateMessage());
+    $executable->import();
+  }
+}

@@ -11,12 +11,12 @@
 {% if data is not empty %}
 
 <div class="field field-name-apr-profile-education"{{ attributes }}>
-  <div class="field-label">Education</div>
+  <h2 class="field-header">Education</h2>
   <ul class="field-items">
     {% for key, item in data %}
       <li class="field-item {{ loop.index is odd ? 'odd' : 'even' }}">
         {% set output = '' %}
-        {% if item.deg is not empty %}
+        {% if (item.deg is not empty) and (item.deg != 'Other') %}
           {% set output = output ~ item.deg %}
         {% elseif item.deg_title is not empty %}
           {% set output = output ~ item.deg_title %}

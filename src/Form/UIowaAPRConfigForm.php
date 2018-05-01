@@ -59,39 +59,6 @@ class UIowaAPRConfigForm extends ConfigFormBase {
     return parent::submitForm($form, $form_state);
   }
 
-/* REMOVE ME ONCE CRON FUNCTIONS ARE ADDED
-  public function uiowa_apr_config_form_import_migration(array &$form, FormStateInterface $form_state) {
-    // Get migration objects
-    $people = \Drupal::service('plugin.manager.migration')->getInstance('APRPeople');
-    $appointments = \Drupal::service('plugin.manager.migration')->getInstance('APRPeopleAppointments');
-
-    if ($appointments->processedCount() > 0) {
-      // Rollback existing appointments if appointments already exist
-      $rollback = $appointments->rollback();
-    }
-    if ($people->processedCount() > 0) {
-      // Prepare update of existing profiles if profiles already exist
-      $update = $people->getIdMap()->prepareUpdate();
-    }
-
-    $executable = new MigrateExecutable($people, new MigrateMessage());
-    $executable->import();
-    $executable = new MigrateExecutable($appointments, new MigrateMessage());
-    $executable->import();
-  }
-
-  public function uiowa_apr_config_form_rollback_migration(array &$form, FormStateInterface $form_state) {
-    // Get migration objects
-    $people = \Drupal::service('plugin.manager.migration')->getInstance('APRPeople');
-    $appointments = \Drupal::service('plugin.manager.migration')->getInstance('APRPeopleAppointments');
-
-    $executable = new MigrateExecutable($people, new MigrateMessage());
-    $executable->rollback();
-    $executable = new MigrateExecutable($appointments, new MigrateMessage());
-    $executable->rollback();
-  }
-*/
-
   /**
    * {@inheritdoc}
    */
