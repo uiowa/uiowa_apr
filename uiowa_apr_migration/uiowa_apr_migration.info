@@ -1,7 +1,7 @@
 name = University of Iowa APR Migration
 description = Imports web profiles from APR at the University of Iowa.
 core = 7.x
-version = 7.x-1.0
+version = 7.x-2.0
 package = UIowa
 
 dependencies[] = migrate

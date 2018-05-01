@@ -134,10 +134,10 @@ class APRPeopleItemJSON extends MigrateItemJSON {
           else {
             $item->full_name = $item->fname;
           }
-          if (!empty($item->mname)) $item->full_name .= ' '.substr($item->mname,0,1).'.';
+          if (!empty($item->mname)) $item->full_name .= ' '.$item->mname;
           if (!empty($item->lname)) $item->full_name .= ' '.$item->lname;
-          if (!empty($item->suffix)) $item->full_name .= ', '.$item->suffix;
-          if (!empty($item->credentials)) $item->full_name .= ', '.$item->credentials;
+//          if (!empty($item->suffix)) $item->full_name .= ', '.$item->suffix;
+//          if (!empty($item->credentials)) $item->full_name .= ', '.$item->credentials;
           $this->data[$item->uid] = $item;
         }
       }

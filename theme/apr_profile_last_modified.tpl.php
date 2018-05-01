@@ -24,7 +24,7 @@ date_default_timezone_set('America/Chicago');
     <?php foreach ($data as $delta => $item): ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
-          $output = "<strong>Last Modified Date:</strong> " . date('F j, Y', ($item / 1000));
+          $output = "Last Modified Date: " . date('F j, Y', ($item / 1000));
           print $output;
         ?>
       </div>

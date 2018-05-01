@@ -16,7 +16,7 @@
 <?php if (!empty($data)): ?>
 
 <div class="field field-name-apr-profile-centers"<?php print $attributes; ?>>
-  <div class="field-label">Center, Program and Institute Affiliations</div>
+  <h2 class="field-header">Center, Program and Institute Affiliations</h2>
   <ul class="field-items">
     <?php foreach ($data as $delta => $item): ?>
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">

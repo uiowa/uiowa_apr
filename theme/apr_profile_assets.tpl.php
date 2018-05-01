@@ -16,7 +16,7 @@
 <?php if (!empty($data)): ?>
 
 <div class="field field-name-apr-profile-assets"<?php print $attributes; ?>>
-  <div class="field-label"></div>
+  <h2 class="field-header"></h2>
   <div class="field-items">
     <?php foreach ($data as $delta => $item): ?>
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">

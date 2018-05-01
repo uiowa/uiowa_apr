@@ -8,6 +8,7 @@
  */
 
 /* Default styling for the default Views listings. */
+.view-apr-profiles { line-height: 1.5; }
 .view-apr-profiles .item-list ul { padding: 0; }
 .view-apr-profiles .item-list ul.pager { margin: 1rem 0; }
 .view-apr-profiles .item-list ul li.views-row {
@@ -25,7 +26,7 @@
 }
 
 /* Default styling for the profile nodes. */
-.node-apr-profile .field { padding-bottom: 1rem; }
+.node-apr-profile { line-height: 1.5; }
 .node-apr-profile .field-name-apr-profile-assets,
 .node-apr-profile .field-name-apr-profile-admin-perms,
 .node-apr-profile .field-name-apr-profile-alt-contacts,
@@ -33,7 +34,7 @@
 .node-apr-profile .field-name-apr-profile-last-modified {
     padding-bottom: 0;
 }
-.node-apr-profile .field-name-apr-profile-alt-contacts { padding-top: 1rem; }
+.node-apr-profile .field-name-apr-profile-last-modified { padding-top: 1rem; }
 .node-apr-profile .field-name-apr-profile-intellcont .field-item,
 .node-apr-profile .field-name-apr-profile-present .field-item,
 .node-apr-profile .field-name-apr-profile-perform_exhibit .field-item,

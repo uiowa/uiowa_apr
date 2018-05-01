@@ -16,13 +16,13 @@
 <?php if (!empty($data)): ?>
 
 <div class="field field-name-apr-profile-education-postgrad"<?php print $attributes; ?>>
-  <div class="field-label">Education (Post Graduate)</div>
+  <h2 class="field-header">Education (Post Graduate)</h2>
   <ul class="field-items">
     <?php foreach ($data as $delta => $item): ?>
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['deg'])) $output .= $item['deg'];
+          if (!empty($item['deg']) && ($item['deg'] !== 'Other')) $output .= $item['deg'];
           else if (!empty($item['desc'])) $output .= $item['desc'];
           if (!empty($item['major'])) $output .= " in " . $item['major'] . "";
           if (!empty($item['school'])) $output .= ", " . $item['school'];

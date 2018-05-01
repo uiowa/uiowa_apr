@@ -1,7 +1,7 @@
 name = University of Iowa APR Profiles
 description = Provides web profile displays from APR at the University of Iowa.
 core = 7.x
-version = 7.x-1.0
+version = 7.x-2.0
 package = UIowa
 configure = admin/config/uiowa/uiowa_apr
 

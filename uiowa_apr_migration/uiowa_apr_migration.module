@@ -32,14 +32,14 @@ function uiowa_apr_migration_migrate_api() {
 function uiowa_apr_migration_cron() {
   // Get API Key and Population ID location
   $api_key = variable_get('uiowa_apr_api_key', '');
-  $population = variable_get('uiowa_apr_population_id', '');
+  $population_id = variable_get('uiowa_apr_population_id', '');
 
   // Get migration objects
   $people = Migration::getInstance('APRPeople');
   $appointments = Migration::getInstance('APRPeopleAppointments');
 
   // Check if API key and population ID are set
-  if(!empty($api_key) && !empty($population)){
+  if(!empty($api_key) && !empty($population_id)){
     if ($appointments->processedCount() > 0) {
       // Rollback existing appointments if appointments already exist
       $rollback = $appointments->processRollback();
