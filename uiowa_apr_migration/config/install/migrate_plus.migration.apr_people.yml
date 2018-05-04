@@ -14,13 +14,12 @@ label: 'APR People'
 source:
   plugin: url
   data_fetcher_plugin: http
-  # data_parser_plugin: json
-  data_parser_plugin: apr_json_parser
+  data_parser_plugin: json_apr_people
   include_raw_data: true
   track_changes: true
   headers:
     Accept: application/json
-  urls: 'https://test.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1'
+#  urls: ''
   item_selector: 0
   fields:
     -
@@ -100,9 +99,9 @@ source:
       label: Person Type
       selector: person_type
     -
-      name: appt_id
+      name: appointment_id
       label: Appointment ID
-      selector: /admin_perms      
+      selector: /admin_perms
   ids:
       uid:
         type: string
@@ -172,67 +171,22 @@ process:
   apr_profile_person_type: person_type
   apr_profile_appointments:
     plugin: sub_process
-    source: appt_id
+    source: appointment_id
     process:
       temporary_ids:
         plugin: migration_lookup
         migration: apr_people_appointments
         source: id
-      target_id: 
+      target_id:
         plugin: extract
         source: '@temporary_ids'
         index:
-          - 0
+          - '0'
       target_revision_id:
         plugin: extract
         source: '@temporary_ids'
         index:
-          - 1
-#  apr_profile_appointments:
-#    -
-#      plugin: migration_lookup
-#      migration: apr_people_appointments
-#      no_stub: true
-#      source: id
-#    -
-#      plugin: sub_process
-#      process:
-#        target_id: '0'
-#        target_revision_id: '1'
-#
-#  apr_profile_appointments/target_id:
-#    -
-#      plugin: migration_lookup
-#      migration: apr_people_appointments
-#      no_stub: true
-#      source: id
-#    -
-#      plugin: extract
-#      index:
-#        - '0'
-#  apr_profile_appointments/target_revision_id:
-#    -
-#      plugin: migration_lookup
-#      migration: apr_people_appointments
-#      no_stub: true
-#      source: id
-#    -
-#      plugin: extract
-#      index:
-#        - '1'
-#
-#  apr_people_appointments:
-#    plugin: migration
-#    migration: apr_people_appointments
-#    no_stub: true
-#    source: apr_profile_appointments_id
-#  apr_profile_appointments:
-#    plugin: iterator
-#    source:
-#      - '@apr_people_appointments'
-#    process:
-#      target_id: '0'
-#      target_revision_id: '1'
+          - '1'
   promote:
     plugin: default_value
     default_value: 0

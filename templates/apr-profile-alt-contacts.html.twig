@@ -47,7 +47,7 @@
             {% set output = output ~ '<br/>' %}
           {% endif %}
         {% endif %}
-        {% if item.phone is not empty %}
+        {% if (item.phone is not empty) and (item.phone != '--') %}
           {% set output = output ~ '<a href="tel:+1-' ~ item.phone ~ '">' ~ item.phone ~ '</a>' %}
         {% endif %}
         {{ output|raw }}

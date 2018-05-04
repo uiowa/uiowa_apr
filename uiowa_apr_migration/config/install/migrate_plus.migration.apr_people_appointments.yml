@@ -14,13 +14,13 @@ label: 'APR People Appointments'
 source:
   plugin: url
   data_fetcher_plugin: http
-  # data_parser_plugin: json
-  data_parser_plugin: apr_appt_json_parser
+  data_parser_plugin: json_apr_appointments
   include_raw_data: true
+  track_changes: true
   headers:
     Accept: application/json
-  urls: 'https://test.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1'
-  # item_selector: 0
+#  urls: ''
+  item_selector: ''
   fields:
     -
       name: id
@@ -59,49 +59,6 @@ process:
   type:
     plugin: default_value
     default_value: apr_profile_appointments
-#  admin_perms:
-#    plugin: sub_process
-#    source: admin_perms
-#    process:
-#      apr_profile_appointments_id:
-#        -
-#          plugin: skip_on_empty
-#          method: process
-#          source: admin_perms
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - id
-#      apr_profile_appointments_type:
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - appointment_type
-#      apr_profile_appointments_rank:
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - rank
-#      apr_profile_appointments_dept:
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - dep
-#      apr_profile_appointments_college:
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - college
-#      apr_profile_appointments_div:
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - division
-#      apr_profile_appointments_ptype:
-#        plugin: extract
-#        source: admin_perms
-#        index:
-#          - person_type
   apr_profile_appointments_id: id
   apr_profile_appointments_type: type
   apr_profile_appointments_rank: rank

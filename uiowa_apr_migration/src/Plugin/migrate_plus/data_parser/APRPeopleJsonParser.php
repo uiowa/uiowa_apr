@@ -9,12 +9,12 @@ use Drupal\migrate\Row;
  * Obtain JSON data for migration.
  *
  * @DataParser(
- *   id = "apr_json_parser",
+ *   id = "json_apr_people",
  *   title = @Translation("JSON Parser for APR People")
  * )
  */
-class AprJsonParser extends Json {
- 
+class APRPeopleJsonParser extends Json {
+
   /**
    * Retrieves the JSON data and returns it as an array.
    *
@@ -28,7 +28,7 @@ class AprJsonParser extends Json {
    */
   protected function getSourceData($url) {
     $response = $this->getDataFetcherPlugin()->getResponseContent($url);
- 
+
     // Convert objects to associative arrays.
     $source_data = json_decode($response, TRUE);
 
@@ -38,17 +38,18 @@ class AprJsonParser extends Json {
     }
 
     foreach ($source_data as $key => $person) {
-      //creating a new field for each records that will contain the array of appointment ids (['appt_id'])
-      $source_data[$key]['appt_id'] = array(); // new array
-      foreach ($person['admin_perms'] as $key1 => $person_appt) { 
-        // adding each appointment id to the array
-        $source_data[$key]['appt_id'][] = $person_appt['id'];
+      // Create a new field for each record that will contain the array of appointment_ids (['appointment_id'])
+      $source_data[$key]['appointment_id'] = [];
+      foreach ($person['admin_perms'] as $appointment) {
+        // Add each appointment_id to the array.
+        $source_data[$key]['appointment_id'][] = $appointment['id'];
       }
     }
     $modified_data = $this->prepareRows($source_data);
+
     return $modified_data;
   }
- 
+
   /**
    * Modify any of the rows in the file.
    *
@@ -61,5 +62,5 @@ class AprJsonParser extends Json {
   protected function prepareRows(array $source_data) {
     return $source_data;
   }
- 
+
 }

@@ -1,8 +1,31 @@
 <?php
 
 use Drupal\migrate\Plugin\MigrationMapInterface;
+use Drupal\migrate\MigrateException;
 use Drupal\migrate\MigrateExecutable;
 use Drupal\migrate\MigrateMessage;
+
+/**
+ * Implements hook_migration_plugins_alter().
+ */
+function uiowa_apr_migration_migration_plugins_alter(&$definitions) {
+  // Get API Key and Population ID from config
+  $config = \Drupal::config('uiowa_apr.settings');
+  $api_key = $config->get('uiowa_apr.api_key');
+  $population_id = $config->get('uiowa_apr.population_id');
+
+  // Check if API key and population ID are set
+  if (!empty($api_key) && !empty($population_id)) {
+    $migration_ids = ['apr_people', 'apr_people_appointments'];
+    foreach ($migration_ids as $migration_id) {
+      // Build URL path from config variables.
+      $definitions[$migration_id]['source']['urls'] = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.$api_key.'&population_id='.$population_id;
+    }
+  }
+  else {
+    throw new MigrateException('Migration source not found. No API and/or Population ID.');
+  }
+}
 
 /**
  * Implements hook_cron().
@@ -13,21 +36,19 @@ function uiowa_apr_migration_cron() {
   $api_key = $config->get('uiowa_apr.api_key');
   $population_id = $config->get('uiowa_apr.population_id');
 
-  // Get migration objects
-  $manager = Drupal::service('plugin.manager.migration');
-  $people = $manager->createInstance('apr_people');
-  $appointments = $manager->createInstance('apr_people_appointments');
-
   // Check if API key and population ID are set
-  if(!empty($api_key) && !empty($population_id)){
-    $executable = new MigrateExecutable($appointments, new MigrateMessage());
-    if ($appointments->getIdMap()->processedCount() > 0) {
-      // Rollback existing appointments if appointments already exist
-      $executable->rollback();
+  if (!empty($api_key) && !empty($population_id)) {
+    $manager = Drupal::service('plugin.manager.migration');
+    $migration_ids = ['apr_people_appointments', 'apr_people'];
+    foreach ($migration_ids as $migration_id) {
+      $migration = $manager->createInstance($migration_id);
+      $executable = new MigrateExecutable($migration, new MigrateMessage());
+      // Update existing entries if entries already exist
+      $migration->getIdMap()->prepareUpdate();
+      $executable->import();
     }
-    $executable->import();
-    // Update people, does not require update flag due to source track_changes
-    $executable = new MigrateExecutable($people, new MigrateMessage());
-    $executable->import();
+  }
+  else {
+    throw new MigrateException('Cron migrate failed. No API and/or Population ID.');
   }
 }
