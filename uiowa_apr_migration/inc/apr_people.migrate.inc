@@ -85,7 +85,7 @@ class APRPeopleNodeMigration extends Migration {
 
   public function preImport() {
     parent::preImport();
-    if (!variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')){
+    if (!variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')) {
       throw new MigrateException('No API and/or Population ID');
     }
 

@@ -39,7 +39,7 @@ function uiowa_apr_migration_cron() {
   $appointments = Migration::getInstance('APRPeopleAppointments');
 
   // Check if API key and population ID are set
-  if(!empty($api_key) && !empty($population_id)){
+  if (!empty($api_key) && !empty($population_id)) {
     if ($appointments->processedCount() > 0) {
       // Rollback existing appointments if appointments already exist
       $rollback = $appointments->processRollback();

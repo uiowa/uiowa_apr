@@ -29,7 +29,7 @@ function uiowa_apr_config_form($form, &$form_state) {
     '#required' => TRUE,
   );
 
-  if(!empty(variable_get('uiowa_apr_api_key', '')) && !empty(variable_get('uiowa_apr_population_id', '')) && module_exists('uiowa_apr_migration')){
+  if (!empty(variable_get('uiowa_apr_api_key', '')) && !empty(variable_get('uiowa_apr_population_id', '')) && module_exists('uiowa_apr_migration')) {
     $form['uiowa_apr_operations_fieldset'] = array(
       '#type' => 'fieldset',
       '#title' => t('Operations'),

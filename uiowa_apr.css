@@ -27,26 +27,28 @@
 
 /* Default styling for the profile nodes. */
 .node-apr-profile { line-height: 1.5; }
-.node-apr-profile .field-name-apr-profile-assets,
+.node-apr-profile .field { padding-bottom: 1rem; }
 .node-apr-profile .field-name-apr-profile-admin-perms,
 .node-apr-profile .field-name-apr-profile-alt-contacts,
-.node-apr-profile .field-name-apr-profile-pasthist,
-.node-apr-profile .field-name-apr-profile-last-modified {
+.node-apr-profile .field-name-apr-profile-assets,
+.node-apr-profile .field-name-apr-profile-last-modified,
+.node-apr-profile .field-name-apr-profile-pasthist {
     padding-bottom: 0;
 }
-.node-apr-profile .field-name-apr-profile-last-modified { padding-top: 1rem; }
-.node-apr-profile .field-name-apr-profile-intellcont .field-item,
-.node-apr-profile .field-name-apr-profile-present .field-item,
-.node-apr-profile .field-name-apr-profile-perform_exhibit .field-item,
-.node-apr-profile .field-name-apr-profile-creative_works .field-item,
-.node-apr-profile .field-name-apr-profile-congrant .field-item {
+.node-apr-profile .field-name-apr-profile-email { padding-bottom: 1rem; }
+.node-apr-profile .field-name-apr-profile-admin-perms,
+.node-apr-profile .field-name-apr-profile-alt-contacts .field-items .field-item {
+    padding-bottom: 0.3rem;
+}
+.node-apr-profile .field-name-apr-profile-alt-contacts { padding-top: 1rem; }
+.node-apr-profile .field-name-apr-profile-intellcont .field-items .field-item,
+.node-apr-profile .field-name-apr-profile-congrant .field-items .field-item,
+.node-apr-profile .field-name-apr-profile-creative_works .field-items .field-item,
+.node-apr-profile .field-name-apr-profile-perform_exhibit .field-items .field-item,
+.node-apr-profile .field-name-apr-profile-present .field-items .field-item {
     padding-bottom: 0;
 }
 .node-apr-profile .field-name-apr-profile-assets .field-item img {
     float: right;
     margin: 0 0 1rem 1rem;
 }
-.node-apr-profile .field-name-apr-profile-alt-contacts .field-items .field-item {
-    padding-bottom: 0.3rem;
-}
-
