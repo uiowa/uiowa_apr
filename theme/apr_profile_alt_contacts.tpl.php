@@ -40,7 +40,7 @@
             if (!empty($item['zip'])) $output .= " " . $item['zip'] . "<br/>";
             else $output .= "<br/>";
           }
-          if (!empty($item['phone'])) $output .= "<a href='tel:+1-" . $item['phone'] . "'>" . $item['phone'] . "</a>";
+          if (!empty($item['phone']) && ($item['phone'] !== '--')) $output .= "<a href='tel:+1-" . $item['phone'] . "'>" . $item['phone'] . "</a>";
           print $output;
         ?>
       </div>
