@@ -10,7 +10,7 @@
    - To import new records, select 'Import' and click the 'Execute' button.*
    - To update existing records, check the 'Update' checkbox under the 'Options' fieldset below, then click the 'Execute' button.*
    - To delete existing records, select 'Rollback' and click the 'Execute' button.
-   - * NOTE: Importing or updating the APR People migration first will also import/update the APR People Appointments migration.
+   - *NOTE: Importing or updating the APR People migration first will also import/update the APR People Appointments migration.
 
 4. For manual operations from command line, please use the drush migrate commands shown below.
 
