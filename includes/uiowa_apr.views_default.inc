@@ -318,7 +318,7 @@ function uiowa_apr_views_default_views() {
   /* Display: A-Z Page */
   $handler = $view->new_display('page', 'A-Z Page', 'page_apr_profiles_atoz');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'People A-Z';
+  $handler->display->display_options['title'] = 'People';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['exposed_form']['options']['reset_button'] = TRUE;
@@ -470,7 +470,7 @@ function uiowa_apr_views_default_views() {
   /* Display: Tippie A-Z Page */
   $handler = $view->new_display('page', 'Tippie A-Z Page', 'page_apr_profiles_atoz_tippie');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'People A-Z';
+  $handler->display->display_options['title'] = 'People';
   $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['display_description'] = 'The A-Z Page view designed specifically for Tippie College of Business';
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
@@ -654,7 +654,7 @@ function uiowa_apr_views_default_views() {
   /* Display: Faculty / Staff A-Z Page */
   $handler = $view->new_display('page', 'Faculty / Staff A-Z Page', 'page_apr_profiles_faculty_staff');
   $handler->display->display_options['defaults']['title'] = FALSE;
-  $handler->display->display_options['title'] = 'Faculty & Staff A-Z';
+  $handler->display->display_options['title'] = 'People';
   $handler->display->display_options['enabled'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
