@@ -914,7 +914,7 @@ display:
       display_extenders: {  }
       path: people
       display_description: ''
-      title: 'People A-Z'
+      title: People
       defaults:
         title: false
         pager: false
@@ -1071,7 +1071,7 @@ display:
       display_extenders: {  }
       path: people
       display_description: 'The A-Z Page view designed specifically for Tippie College of Business'
-      title: 'People A-Z'
+      title: People
       defaults:
         title: false
         pager: false
@@ -1798,7 +1798,7 @@ display:
       display_extenders: {  }
       path: people
       display_description: ''
-      title: 'Faculty & Staff A-Z'
+      title: People
       defaults:
         title: false
         pager: false

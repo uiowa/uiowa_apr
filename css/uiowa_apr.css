@@ -17,6 +17,7 @@
     border-bottom: 1px solid #e6e6e6;
 }
 .view-apr-profiles .item-list ul li:last-child { border-bottom: none; }
+.view-apr-profiles table caption { display: none; }
 .view-apr-profiles table td.views-field-apr-profile-email { width: 20%; }
 .view-apr-profiles table td.views-field-apr-profile-phone { width: 15%; }
 .view-apr-profiles table td.views-field-apr-profile-building { width: 20%; }
