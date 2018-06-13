@@ -85,106 +85,111 @@ function uiowa_apr_field_extra_fields() {
       'apr_profile_assets' => array(
         'label' => t('Assets'),
         'description' => t('Assets.'),
-        'weight' => 74,
+        'weight' => 73,
       ),
       'apr_profile_admin_perms' => array(
         'label' => t('Appointments'),
         'description' => t('Appointments.'),
-        'weight' => 75,
+        'weight' => 74,
       ),
       'apr_profile_pasthist' => array(
         'label' => t('Past History'),
         'description' => t('Past History.'),
-        'weight' => 76,
+        'weight' => 75,
       ),
       'apr_profile_alt_contacts' => array(
         'label' => t('Contact Information'),
         'description' => t('Contact Information.'),
-        'weight' => 77,
+        'weight' => 76,
       ),
       'apr_profile_email' => array(
         'label' => t('Email'),
         'description' => t('Email.'),
-        'weight' => 78,
+        'weight' => 77,
       ),
       'apr_profile_websites' => array(
         'label' => t('Websites'),
         'description' => t('Websites.'),
-        'weight' => 79,
+        'weight' => 78,
       ),
       'apr_profile_office_hours' => array(
         'label' => t('Office Hours'),
         'description' => t('Office Hours.'),
-        'weight' => 80,
+        'weight' => 79,
       ),
       'apr_profile_bio' => array(
         'label' => t('Biography'),
         'description' => t('Biography.'),
-        'weight' => 81,
+        'weight' => 80,
       ),
       'apr_profile_education' => array(
         'label' => t('Education'),
         'description' => t('Education.'),
-        'weight' => 82,
+        'weight' => 81,
       ),
       'apr_profile_education_postgrad' => array(
         'label' => t('Education (Post Graduate)'),
         'description' => t('Education (Post Graduate).'),
-        'weight' => 83,
+        'weight' => 82,
       ),
       'apr_profile_centers' => array(
         'label' => t('Center, Program and Institute Affiliations'),
         'description' => t('Center, Program and Institute Affiliations.'),
-        'weight' => 84,
+        'weight' => 83,
       ),
       'apr_profile_resprog' => array(
         'label' => t('Areas of Research Interest'),
         'description' => t('Areas of Research Interest.'),
-        'weight' => 85,
+        'weight' => 84,
       ),
       'apr_profile_teaching_interests' => array(
         'label' => t('Teaching Interests'),
         'description' => t('Teaching Interests.'),
-        'weight' => 86,
+        'weight' => 85,
       ),
       'apr_profile_research_narrative' => array(
         'label' => t('Research Narrative'),
         'description' => t('Research Narrative.'),
-        'weight' => 87,
+        'weight' => 86,
       ),
       'apr_profile_clinical_narrative' => array(
         'label' => t('Clinical Narrative'),
         'description' => t('Clinical Narrative.'),
-        'weight' => 88,
+        'weight' => 87,
       ),
       'apr_profile_liccert' => array(
         'label' => t('Licensures and Certifications'),
         'description' => t('Licensures and Certifications.'),
-        'weight' => 89,
+        'weight' => 88,
       ),
       'apr_profile_facdev' => array(
         'label' => t('Professional Development Activities'),
         'description' => t('Professional Development Activities.'),
-        'weight' => 90,
+        'weight' => 89,
       ),
       'apr_profile_member' => array(
         'label' => t('Professional Memberships'),
         'description' => t('Professional Memberships.'),
-        'weight' => 91,
+        'weight' => 90,
       ),
       'apr_profile_awardhonor' => array(
         'label' => t('Awards and Honors'),
         'description' => t('Awards and Honors.'),
-        'weight' => 92,
+        'weight' => 91,
       ),
       'apr_profile_schteach' => array(
         'label' => t('Courses Taught'),
         'description' => t('Courses Taught.'),
-        'weight' => 93,
+        'weight' => 92,
       ),
       'apr_profile_intellcont' => array(
         'label' => t('Publications'),
         'description' => t('Publications.'),
+        'weight' => 93,
+      ),
+      'apr_profile_editrev' => array(
+        'label' => t('Review and Editorial Work'),
+        'description' => t('Review and Editorial Work.'),
         'weight' => 94,
       ),
       'apr_profile_present' => array(
@@ -520,6 +525,21 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
+          case 'apr_profile_editrev':
+            $data = array();
+            if (count($person['editrev']) > 0) {
+              foreach ($person['editrev'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_editrev',
+                '#markup' => theme('apr_profile_editrev', array('data' => $data)),
+              );
+            }
+            break;
+
           case 'apr_profile_present':
             $data = array();
             if (count($person['present']) > 0) {
@@ -705,6 +725,11 @@ function uiowa_apr_theme() {
     'apr_profile_intellcont' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_intellcont',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_editrev' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_editrev',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_present' => array(
