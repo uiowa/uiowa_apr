@@ -23,9 +23,9 @@ source:
   item_selector: 0
   fields:
     -
-      name: uid
-      label: UID
-      selector: uid
+      name: userid
+      label: UserID
+      selector: userid
     -
       name: hawkid
       label: HawkID
@@ -103,7 +103,7 @@ source:
       label: Appointment ID
       selector: /admin_perms
   ids:
-      uid:
+      userid:
         type: string
   defaults:
     blankspace: ' '

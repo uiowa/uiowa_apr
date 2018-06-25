@@ -75,4 +75,4 @@ content:
 hidden:
   created: true
   status: true
-  uid: true
+  userid: true

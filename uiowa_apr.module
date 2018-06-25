@@ -64,43 +64,43 @@ function uiowa_apr_entity_extra_field_info() {
       'apr_profile_admin_perms' => [
         'label' => t('Appointments'),
         'description' => t('Appointments.'),
-        'weight' => 75,
+        'weight' => 74,
         'visible' => TRUE,
       ],
       'apr_profile_alt_contacts' => [
         'label' => t('Contact Information'),
         'description' => t('Contact Information.'),
-        'weight' => 77,
+        'weight' => 76,
         'visible' => TRUE,
       ],
       'apr_profile_assets' => [
         'label' => t('Assets'),
         'description' => t('Assets.'),
-        'weight' => 74,
+        'weight' => 73,
         'visible' => TRUE,
       ],
       'apr_profile_awardhonor' => [
         'label' => t('Awards and Honors'),
         'description' => t('Awards and Honors.'),
-        'weight' => 92,
+        'weight' => 91,
         'visible' => TRUE,
       ],
       'apr_profile_bio' => [
         'label' => t('Biography'),
         'description' => t('Biography.'),
-        'weight' => 81,
+        'weight' => 80,
         'visible' => TRUE,
       ],
       'apr_profile_centers' => [
         'label' => t('Center, Program and Institute Affiliations'),
         'description' => t('Center, Program and Institute Affiliations.'),
-        'weight' => 84,
+        'weight' => 83,
         'visible' => TRUE,
       ],
       'apr_profile_clinical_narrative' => [
         'label' => t('Clinical Narrative'),
         'description' => t('Clinical Narrative.'),
-        'weight' => 88,
+        'weight' => 87,
         'visible' => TRUE,
       ],
       'apr_profile_congrant' => [
@@ -115,34 +115,40 @@ function uiowa_apr_entity_extra_field_info() {
         'weight' => 97,
         'visible' => TRUE,
       ],
+      'apr_profile_editrev' => [
+        'label' => t('Review and Editorial Work'),
+        'description' => t('Review and Editorial Work.'),
+        'weight' => 94,
+        'visible' => TRUE,
+      ],
       'apr_profile_education' => [
         'label' => t('Education'),
         'description' => t('Education.'),
-        'weight' => 82,
+        'weight' => 81,
         'visible' => TRUE,
       ],
       'apr_profile_education_postgrad' => [
         'label' => t('Education (Post Graduate)'),
         'description' => t('Education (Post Graduate).'),
-        'weight' => 83,
+        'weight' => 82,
         'visible' => TRUE,
       ],
       'apr_profile_email' => [
         'label' => t('Email'),
         'description' => t('Email.'),
-        'weight' => 78,
+        'weight' => 77,
         'visible' => FALSE,
       ],
       'apr_profile_facdev' => [
         'label' => t('Professional Development Activities'),
         'description' => t('Professional Development Activities.'),
-        'weight' => 90,
+        'weight' => 89,
         'visible' => TRUE,
       ],
       'apr_profile_intellcont' => [
         'label' => t('Publications'),
         'description' => t('Publications.'),
-        'weight' => 94,
+        'weight' => 93,
         'visible' => TRUE,
       ],
       'apr_profile_last_modified' => [
@@ -154,25 +160,25 @@ function uiowa_apr_entity_extra_field_info() {
       'apr_profile_liccert' => [
         'label' => t('Licensures and Certifications'),
         'description' => t('Licensures and Certifications.'),
-        'weight' => 89,
+        'weight' => 88,
         'visible' => TRUE,
       ],
       'apr_profile_member' => [
         'label' => t('Professional Memberships'),
         'description' => t('Professional Memberships.'),
-        'weight' => 91,
+        'weight' => 90,
         'visible' => TRUE,
       ],
       'apr_profile_office_hours' => [
         'label' => t('Office Hours'),
         'description' => t('Office Hours.'),
-        'weight' => 80,
+        'weight' => 79,
         'visible' => TRUE,
       ],
       'apr_profile_pasthist' => [
         'label' => t('Past History'),
         'description' => t('Past History.'),
-        'weight' => 76,
+        'weight' => 75,
         'visible' => TRUE,
       ],
       'apr_profile_perform_exhibit' => [
@@ -190,31 +196,31 @@ function uiowa_apr_entity_extra_field_info() {
       'apr_profile_research_narrative' => [
         'label' => t('Research Narrative'),
         'description' => t('Research Narrative.'),
-        'weight' => 87,
+        'weight' => 86,
         'visible' => TRUE,
       ],
       'apr_profile_resprog' => [
         'label' => t('Areas of Research Interest'),
         'description' => t('Areas of Research Interest.'),
-        'weight' => 85,
+        'weight' => 84,
         'visible' => TRUE,
       ],
       'apr_profile_schteach' => [
         'label' => t('Courses Taught'),
         'description' => t('Courses Taught.'),
-        'weight' => 93,
+        'weight' => 92,
         'visible' => TRUE,
       ],
       'apr_profile_teaching_interests' => [
         'label' => t('Teaching Interests'),
         'description' => t('Teaching Interests.'),
-        'weight' => 86,
+        'weight' => 85,
         'visible' => TRUE,
       ],
       'apr_profile_websites' => [
         'label' => t('Websites'),
         'description' => t('Websites.'),
-        'weight' => 79,
+        'weight' => 78,
         'visible' => TRUE,
       ],
     ],
@@ -359,6 +365,21 @@ function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewD
               }
               $build[$field_name] = [
                 '#theme' => 'apr_profile_creative_works',
+                '#data' => $data,
+              ];
+            }
+            break;
+
+          case 'apr_profile_editrev':
+            $data = [];
+            if (count($person['editrev']) > 0) {
+              foreach ($person['editrev'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              }
+              $build[$field_name] = [
+                '#theme' => 'apr_profile_editrev',
                 '#data' => $data,
               ];
             }
@@ -706,6 +727,20 @@ function uiowa_apr_theme($existing, $type, $theme, $path) {
           'type' => NULL,
           'include_on_profile' => NULL,
           'formatted' => NULL,
+        ],
+      ],
+    ],
+    'apr_profile_editrev' => [
+      'variables' => [
+        'data' => [
+          'id' => NULL,
+          'hawkid' => NULL,
+          'start_date' => NULL,
+          'end_date' => NULL,
+          'title' => NULL,
+          'role' => NULL,
+          'numhours_yearly' => NULL,
+          'include_on_profile' => NULL,
         ],
       ],
     ],

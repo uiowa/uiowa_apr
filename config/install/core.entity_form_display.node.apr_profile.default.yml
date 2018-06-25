@@ -218,7 +218,7 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  uid:
+  userid:
     type: entity_reference_autocomplete
     weight: 100
     region: content

@@ -9,8 +9,10 @@
 - Added cron functions for updates and imports to uiowa_apr_migration module.
 - Added rollback of all imports upon uninstall of uiowa_apr_migration module.
 - Added Migrate Plus JSON data parsers to handle source JSON.
+- Added editrev section.
 
 ### Changed
+- Changed from using UID to UserID as unique identifier.
 - Changed div class='field-label' to h2 class='field-header' to avoid style conflicts in template files.
 - Changed template files to handle where Education or Education (PostGrad) degree was equal to 'Other'.
 - Changed creation of node title during migration changed to firstname (or preferred firstname) middlename lastname, removed suffix and credentials.

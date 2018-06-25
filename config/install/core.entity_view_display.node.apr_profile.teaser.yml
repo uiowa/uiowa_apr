@@ -66,12 +66,17 @@ content:
     settings: {  }
     third_party_settings: {  }
   apr_profile_congrant:
-    weight: 25
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
   apr_profile_creative_works:
-    weight: 24
+    weight: 25
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  apr_profile_editrev:
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -103,7 +108,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   apr_profile_last_modified:
-    weight: 26
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -128,12 +133,12 @@ content:
     settings: {  }
     third_party_settings: {  }
   apr_profile_perform_exhibit:
-    weight: 23
+    weight: 24
     region: content
     settings: {  }
     third_party_settings: {  }
   apr_profile_present:
-    weight: 22
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
