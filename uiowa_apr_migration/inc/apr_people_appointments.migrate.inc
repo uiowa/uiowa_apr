@@ -88,7 +88,7 @@ class APRPeopleAppointmentsItemJSON extends MigrateItemJSON {
         // Let's index the array by the ID for easy retrieval.
         foreach ($data as $item) {
           foreach ($item->admin_perms as $appt) {
-            $appt->apr_profile = $item->uid;
+            $appt->apr_profile = $item->userid;
             $this->data[$appt->id] = $appt;
           }
         }

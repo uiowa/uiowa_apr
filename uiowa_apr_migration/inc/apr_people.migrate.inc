@@ -113,7 +113,7 @@ class APRPeopleListJSON extends MigrateListJSON {
   protected function getIDsFromJSON(array $data) {
     $ids = array();
     foreach ($data as $item) {
-      $ids[] = $item['uid'];
+      $ids[] = $item['userid'];
     }
     return $ids;
   }
@@ -138,7 +138,7 @@ class APRPeopleItemJSON extends MigrateItemJSON {
           if (!empty($item->lname)) $item->full_name .= ' '.$item->lname;
 //          if (!empty($item->suffix)) $item->full_name .= ', '.$item->suffix;
 //          if (!empty($item->credentials)) $item->full_name .= ', '.$item->credentials;
-          $this->data[$item->uid] = $item;
+          $this->data[$item->userid] = $item;
         }
       }
       else {

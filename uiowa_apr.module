@@ -82,45 +82,55 @@ function apr_profile_form($node, $form_state) {
 function uiowa_apr_field_extra_fields() {
   $extra['node']['apr_profile'] = array(
     'display' => array(
-      'apr_profile_assets' => array(
-        'label' => t('Assets'),
-        'description' => t('Assets.'),
-        'weight' => 73,
-      ),
       'apr_profile_admin_perms' => array(
         'label' => t('Appointments'),
         'description' => t('Appointments.'),
         'weight' => 74,
-      ),
-      'apr_profile_pasthist' => array(
-        'label' => t('Past History'),
-        'description' => t('Past History.'),
-        'weight' => 75,
       ),
       'apr_profile_alt_contacts' => array(
         'label' => t('Contact Information'),
         'description' => t('Contact Information.'),
         'weight' => 76,
       ),
-      'apr_profile_email' => array(
-        'label' => t('Email'),
-        'description' => t('Email.'),
-        'weight' => 77,
+      'apr_profile_assets' => array(
+        'label' => t('Assets'),
+        'description' => t('Assets.'),
+        'weight' => 73,
       ),
-      'apr_profile_websites' => array(
-        'label' => t('Websites'),
-        'description' => t('Websites.'),
-        'weight' => 78,
-      ),
-      'apr_profile_office_hours' => array(
-        'label' => t('Office Hours'),
-        'description' => t('Office Hours.'),
-        'weight' => 79,
+      'apr_profile_awardhonor' => array(
+        'label' => t('Awards and Honors'),
+        'description' => t('Awards and Honors.'),
+        'weight' => 91,
       ),
       'apr_profile_bio' => array(
         'label' => t('Biography'),
         'description' => t('Biography.'),
         'weight' => 80,
+      ),
+      'apr_profile_centers' => array(
+        'label' => t('Center, Program and Institute Affiliations'),
+        'description' => t('Center, Program and Institute Affiliations.'),
+        'weight' => 83,
+      ),
+      'apr_profile_clinical_narrative' => array(
+        'label' => t('Clinical Narrative'),
+        'description' => t('Clinical Narrative.'),
+        'weight' => 87,
+      ),
+      'apr_profile_congrant' => array(
+        'label' => t('Grants and Contracts'),
+        'description' => t('Grants and Contracts.'),
+        'weight' => 98,
+      ),
+      'apr_profile_creative_works' => array(
+        'label' => t('Creative Works'),
+        'description' => t('Creative Works.'),
+        'weight' => 97,
+      ),
+      'apr_profile_editrev' => array(
+        'label' => t('Review and Editorial Work'),
+        'description' => t('Review and Editorial Work.'),
+        'weight' => 94,
       ),
       'apr_profile_education' => array(
         'label' => t('Education'),
@@ -132,90 +142,80 @@ function uiowa_apr_field_extra_fields() {
         'description' => t('Education (Post Graduate).'),
         'weight' => 82,
       ),
-      'apr_profile_centers' => array(
-        'label' => t('Center, Program and Institute Affiliations'),
-        'description' => t('Center, Program and Institute Affiliations.'),
-        'weight' => 83,
-      ),
-      'apr_profile_resprog' => array(
-        'label' => t('Areas of Research Interest'),
-        'description' => t('Areas of Research Interest.'),
-        'weight' => 84,
-      ),
-      'apr_profile_teaching_interests' => array(
-        'label' => t('Teaching Interests'),
-        'description' => t('Teaching Interests.'),
-        'weight' => 85,
-      ),
-      'apr_profile_research_narrative' => array(
-        'label' => t('Research Narrative'),
-        'description' => t('Research Narrative.'),
-        'weight' => 86,
-      ),
-      'apr_profile_clinical_narrative' => array(
-        'label' => t('Clinical Narrative'),
-        'description' => t('Clinical Narrative.'),
-        'weight' => 87,
-      ),
-      'apr_profile_liccert' => array(
-        'label' => t('Licensures and Certifications'),
-        'description' => t('Licensures and Certifications.'),
-        'weight' => 88,
+      'apr_profile_email' => array(
+        'label' => t('Email'),
+        'description' => t('Email.'),
+        'weight' => 77,
       ),
       'apr_profile_facdev' => array(
         'label' => t('Professional Development Activities'),
         'description' => t('Professional Development Activities.'),
         'weight' => 89,
       ),
-      'apr_profile_member' => array(
-        'label' => t('Professional Memberships'),
-        'description' => t('Professional Memberships.'),
-        'weight' => 90,
-      ),
-      'apr_profile_awardhonor' => array(
-        'label' => t('Awards and Honors'),
-        'description' => t('Awards and Honors.'),
-        'weight' => 91,
-      ),
-      'apr_profile_schteach' => array(
-        'label' => t('Courses Taught'),
-        'description' => t('Courses Taught.'),
-        'weight' => 92,
-      ),
       'apr_profile_intellcont' => array(
         'label' => t('Publications'),
         'description' => t('Publications.'),
         'weight' => 93,
       ),
-      'apr_profile_editrev' => array(
-        'label' => t('Review and Editorial Work'),
-        'description' => t('Review and Editorial Work.'),
-        'weight' => 94,
+      'apr_profile_last_modified' => array(
+        'label' => t('Last Modified Date'),
+        'description' => t('Last Modified Date.'),
+        'weight' => 99,
       ),
-      'apr_profile_present' => array(
-        'label' => t('Presentations'),
-        'description' => t('Presentations.'),
-        'weight' => 95,
+      'apr_profile_liccert' => array(
+        'label' => t('Licensures and Certifications'),
+        'description' => t('Licensures and Certifications.'),
+        'weight' => 88,
+      ),
+      'apr_profile_member' => array(
+        'label' => t('Professional Memberships'),
+        'description' => t('Professional Memberships.'),
+        'weight' => 90,
+      ),
+      'apr_profile_office_hours' => array(
+        'label' => t('Office Hours'),
+        'description' => t('Office Hours.'),
+        'weight' => 79,
+      ),
+      'apr_profile_pasthist' => array(
+        'label' => t('Past History'),
+        'description' => t('Past History.'),
+        'weight' => 75,
       ),
       'apr_profile_perform_exhibit' => array(
         'label' => t('Performances and Exhibits'),
         'description' => t('Performances and Exhibits.'),
         'weight' => 96,
       ),
-      'apr_profile_creative_works' => array(
-        'label' => t('Creative Works'),
-        'description' => t('Creative Works.'),
-        'weight' => 97,
+      'apr_profile_present' => array(
+        'label' => t('Presentations'),
+        'description' => t('Presentations.'),
+        'weight' => 95,
       ),
-      'apr_profile_congrant' => array(
-        'label' => t('Grants and Contracts'),
-        'description' => t('Grants and Contracts.'),
-        'weight' => 98,
+      'apr_profile_research_narrative' => array(
+        'label' => t('Research Narrative'),
+        'description' => t('Research Narrative.'),
+        'weight' => 86,
       ),
-      'apr_profile_last_modified' => array(
-        'label' => t('Last Modified Date'),
-        'description' => t('Last Modified Date.'),
-        'weight' => 99,
+      'apr_profile_resprog' => array(
+        'label' => t('Areas of Research Interest'),
+        'description' => t('Areas of Research Interest.'),
+        'weight' => 84,
+      ),
+      'apr_profile_schteach' => array(
+        'label' => t('Courses Taught'),
+        'description' => t('Courses Taught.'),
+        'weight' => 92,
+      ),
+      'apr_profile_teaching_interests' => array(
+        'label' => t('Teaching Interests'),
+        'description' => t('Teaching Interests.'),
+        'weight' => 85,
+      ),
+      'apr_profile_websites' => array(
+        'label' => t('Websites'),
+        'description' => t('Websites.'),
+        'weight' => 78,
       ),
     ),
   );
@@ -242,19 +242,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
 
       foreach ($extra['node'][$node->type]['display'] as $field_name => $field_info) {
         switch ($field_name) {
-          case 'apr_profile_assets':
-            $data = array();
-            if (count($person['assets']) > 0) {
-              foreach ($person['assets'] as $i => $item) {
-                $data[] = $item;
-              }
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_assets',
-                '#markup' => theme('apr_profile_assets', array('data' => $data)),
-              );
-            }
-            break;
-
           case 'apr_profile_admin_perms':
             $data = array();
             if (count($person['pci']['admin_perms']) > 0) {
@@ -264,21 +251,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_admin_perms',
                 '#markup' => theme('apr_profile_admin_perms', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_pasthist':
-            $data = array();
-            if (count($person['pasthist']) > 0) {
-              foreach ($person['pasthist'] as $i => $item) {
-                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
-                  $data[] = $item;
-                }
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_pasthist',
-                '#markup' => theme('apr_profile_pasthist', array('data' => $data)),
               );
             }
             break;
@@ -298,53 +270,113 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
-          case 'apr_profile_email':
+          case 'apr_profile_assets':
             $data = array();
-            if (!empty($person['pci']['info']['email'])) {
-              $data[] = $person['pci']['info']['email'];
+            if (count($person['assets']) > 0) {
+              foreach ($person['assets'] as $i => $item) {
+                $data[] = $item;
+              }
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_email',
-                '#markup' => theme('apr_profile_email', array('data' => $data)),
+                '#field_name' => 'apr_profile_assets',
+                '#markup' => theme('apr_profile_assets', array('data' => $data)),
               );
             }
             break;
 
-          case 'apr_profile_websites':
+          case 'apr_profile_awardhonor':
             $data = array();
-            if (count($person['pci']['websites']) > 0) {
-              foreach ($person['pci']['websites'] as $i => $item) {
-                $data[] = $item;
-              }
+            if (count($person['awardhonor']) > 0) {
+              foreach ($person['awardhonor'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_websites',
-                '#markup' => theme('apr_profile_websites', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_office_hours':
-            $data = array();
-            if (count($person['pci']['office_hours']) > 0) {
-              foreach ($person['pci']['office_hours'] as $i => $item) {
-                $data[] = $item;
-              }
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_office_hours',
-                '#markup' => theme('apr_profile_office_hours', array('data' => $data)),
+                '#field_name' => 'apr_profile_awardhonor',
+                '#markup' => theme('apr_profile_awardhonor', array('data' => $data)),
               );
             }
             break;
 
           case 'apr_profile_bio':
-          $data = array();
-          if (!empty($person['pci']['info']['bio'])) {
-            $data[] = $person['pci']['info']['bio'];
-            $node->content[$field_name] = array(
-              '#field_name' => 'apr_profile_bio',
-              '#markup' => theme('apr_profile_bio', array('data' => $data)),
-            );
-          }
-          break;
+            $data = array();
+            if (!empty($person['pci']['info']['bio'])) {
+              $data[] = $person['pci']['info']['bio'];
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_bio',
+                '#markup' => theme('apr_profile_bio', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_centers':
+            $data = array();
+            if (count($person['pci']['centers']) > 0) {
+              foreach ($person['pci']['centers'] as $i => $item) {
+                $data[] = $item;
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_centers',
+                '#markup' => theme('apr_profile_centers', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_clinical_narrative':
+            $data = array();
+            if (!empty($person['pci']['info']['clinical_narrative'])) {
+              $data[] = $person['pci']['info']['clinical_narrative'];
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_clinical_narrative',
+                '#markup' => theme('apr_profile_clinical_narrative', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_congrant':
+            $data = array();
+            if (count($person['congrant']) > 0) {
+              foreach ($person['congrant'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_congrant',
+                '#markup' => theme('apr_profile_congrant', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_creative_works':
+            $data = array();
+            if (count($person['creative_works']) > 0) {
+              foreach ($person['creative_works'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_creative_works',
+                '#markup' => theme('apr_profile_creative_works', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_editrev':
+            $data = array();
+            if (count($person['editrev']) > 0) {
+              foreach ($person['editrev'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_editrev',
+                '#markup' => theme('apr_profile_editrev', array('data' => $data)),
+              );
+            }
+            break;
 
           case 'apr_profile_education':
             $data = array();
@@ -376,81 +408,18 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
-          case 'apr_profile_centers':
+          case 'apr_profile_email':
             $data = array();
-            if (count($person['pci']['centers']) > 0) {
-              foreach ($person['pci']['centers'] as $i => $item) {
-                $data[] = $item;
-              };
+            if (!empty($person['pci']['info']['email'])) {
+              $data[] = $person['pci']['info']['email'];
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_centers',
-                '#markup' => theme('apr_profile_centers', array('data' => $data)),
+                '#field_name' => 'apr_profile_email',
+                '#markup' => theme('apr_profile_email', array('data' => $data)),
               );
             }
             break;
 
-          case 'apr_profile_resprog':
-            $data = array();
-            if (count($person['resprog']) > 0) {
-              foreach ($person['resprog'] as $i => $item) {
-                $data[] = $item;
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_resprog',
-                '#markup' => theme('apr_profile_resprog', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_teaching_interests':
-            $data = array();
-            if (!empty($person['pci']['info']['teaching_interests'])) {
-              $data[] = $person['pci']['info']['teaching_interests'];
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_teaching_interests',
-                '#markup' => theme('apr_profile_teaching_interests', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_research_narrative':
-            $data = array();
-            if (!empty($person['pci']['info']['research_narrative'])) {
-              $data[] = $person['pci']['info']['research_narrative'];
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_research_narrative',
-                '#markup' => theme('apr_profile_research_narrative', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_clinical_narrative':
-            $data = array();
-            if (!empty($person['pci']['info']['clinical_narrative'])) {
-              $data[] = $person['pci']['info']['clinical_narrative'];
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_clinical_narrative',
-                '#markup' => theme('apr_profile_clinical_narrative', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_liccert':
-            $data = array();
-            if (count($person['liccert']) > 0) {
-              foreach ($person['liccert'] as $i => $item) {
-                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
-                  $data[] = $item;
-                }
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_liccert',
-                '#markup' => theme('apr_profile_liccert', array('data' => $data)),
-              );
-            }
-            break;
-
-            case 'apr_profile_facdev':
+          case 'apr_profile_facdev':
             $data = array();
             if (count($person['facdev']) > 0) {
               foreach ($person['facdev'] as $i => $item) {
@@ -461,51 +430,6 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
               $node->content[$field_name] = array(
                 '#field_name' => 'apr_profile_facdev',
                 '#markup' => theme('apr_profile_facdev', array('data' => $data)),
-              );
-            }
-            break;
-
-            case 'apr_profile_member':
-            $data = array();
-            if (count($person['member']) > 0) {
-              foreach ($person['member'] as $i => $item) {
-                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
-                  $data[] = $item;
-                }
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_member',
-                '#markup' => theme('apr_profile_member', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_awardhonor':
-            $data = array();
-            if (count($person['awardhonor']) > 0) {
-              foreach ($person['awardhonor'] as $i => $item) {
-                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
-                  $data[] = $item;
-                }
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_awardhonor',
-                '#markup' => theme('apr_profile_awardhonor', array('data' => $data)),
-              );
-            }
-            break;
-
-          case 'apr_profile_schteach':
-            $data = array();
-            if (count($person['schteach']) > 0) {
-              foreach ($person['schteach'] as $i => $item) {
-                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
-                  $data[] = $item;
-                }
-              };
-              $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_schteach',
-                '#markup' => theme('apr_profile_schteach', array('data' => $data)),
               );
             }
             break;
@@ -525,32 +449,71 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
-          case 'apr_profile_editrev':
+          case 'apr_profile_last_modified':
+              $data = array();
+              if (!empty($person['last_modified_date'])) {
+                $data[] = $person['last_modified_date'];
+                $node->content[$field_name] = array(
+                  '#field_name' => 'apr_profile_last_modified',
+                  '#markup' => theme('apr_profile_last_modified', array('data' => $data)),
+                );
+              }
+              break;
+
+          case 'apr_profile_liccert':
             $data = array();
-            if (count($person['editrev']) > 0) {
-              foreach ($person['editrev'] as $i => $item) {
+            if (count($person['liccert']) > 0) {
+              foreach ($person['liccert'] as $i => $item) {
                 if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_editrev',
-                '#markup' => theme('apr_profile_editrev', array('data' => $data)),
+                '#field_name' => 'apr_profile_liccert',
+                '#markup' => theme('apr_profile_liccert', array('data' => $data)),
               );
             }
             break;
 
-          case 'apr_profile_present':
+          case 'apr_profile_member':
             $data = array();
-            if (count($person['present']) > 0) {
-              foreach ($person['present'] as $i => $item) {
+            if (count($person['member']) > 0) {
+              foreach ($person['member'] as $i => $item) {
                 if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_present',
-                '#markup' => theme('apr_profile_present', array('data' => $data)),
+                '#field_name' => 'apr_profile_member',
+                '#markup' => theme('apr_profile_member', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_office_hours':
+            $data = array();
+            if (count($person['pci']['office_hours']) > 0) {
+              foreach ($person['pci']['office_hours'] as $i => $item) {
+                $data[] = $item;
+              }
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_office_hours',
+                '#markup' => theme('apr_profile_office_hours', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_pasthist':
+            $data = array();
+            if (count($person['pasthist']) > 0) {
+              foreach ($person['pasthist'] as $i => $item) {
+                if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
+                  $data[] = $item;
+                }
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_pasthist',
+                '#markup' => theme('apr_profile_pasthist', array('data' => $data)),
               );
             }
             break;
@@ -570,43 +533,80 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
             }
             break;
 
-          case 'apr_profile_creative_works':
+          case 'apr_profile_present':
             $data = array();
-            if (count($person['creative_works']) > 0) {
-              foreach ($person['creative_works'] as $i => $item) {
+            if (count($person['present']) > 0) {
+              foreach ($person['present'] as $i => $item) {
                 if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_creative_works',
-                '#markup' => theme('apr_profile_creative_works', array('data' => $data)),
+                '#field_name' => 'apr_profile_present',
+                '#markup' => theme('apr_profile_present', array('data' => $data)),
               );
             }
             break;
 
-          case 'apr_profile_congrant':
+          case 'apr_profile_research_narrative':
             $data = array();
-            if (count($person['congrant']) > 0) {
-              foreach ($person['congrant'] as $i => $item) {
+            if (!empty($person['pci']['info']['research_narrative'])) {
+              $data[] = $person['pci']['info']['research_narrative'];
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_research_narrative',
+                '#markup' => theme('apr_profile_research_narrative', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_resprog':
+            $data = array();
+            if (count($person['resprog']) > 0) {
+              foreach ($person['resprog'] as $i => $item) {
+                $data[] = $item;
+              };
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_resprog',
+                '#markup' => theme('apr_profile_resprog', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_schteach':
+            $data = array();
+            if (count($person['schteach']) > 0) {
+              foreach ($person['schteach'] as $i => $item) {
                 if (!empty($item['include_on_profile']) && $item['include_on_profile'] == 'Yes') {
                   $data[] = $item;
                 }
               };
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_congrant',
-                '#markup' => theme('apr_profile_congrant', array('data' => $data)),
+                '#field_name' => 'apr_profile_schteach',
+                '#markup' => theme('apr_profile_schteach', array('data' => $data)),
               );
             }
             break;
 
-          case 'apr_profile_last_modified':
+          case 'apr_profile_teaching_interests':
             $data = array();
-            if (!empty($person['last_modified_date'])) {
-              $data[] = $person['last_modified_date'];
+            if (!empty($person['pci']['info']['teaching_interests'])) {
+              $data[] = $person['pci']['info']['teaching_interests'];
               $node->content[$field_name] = array(
-                '#field_name' => 'apr_profile_last_modified',
-                '#markup' => theme('apr_profile_last_modified', array('data' => $data)),
+                '#field_name' => 'apr_profile_teaching_interests',
+                '#markup' => theme('apr_profile_teaching_interests', array('data' => $data)),
+              );
+            }
+            break;
+
+          case 'apr_profile_websites':
+            $data = array();
+            if (count($person['pci']['websites']) > 0) {
+              foreach ($person['pci']['websites'] as $i => $item) {
+                $data[] = $item;
+              }
+              $node->content[$field_name] = array(
+                '#field_name' => 'apr_profile_websites',
+                '#markup' => theme('apr_profile_websites', array('data' => $data)),
               );
             }
             break;
@@ -622,19 +622,9 @@ function uiowa_apr_node_view($node, $view_mode, $langcode) {
 function uiowa_apr_theme() {
   $path = drupal_get_path('module', 'uiowa_apr');
   return array(
-    'apr_profile_assets' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_assets',
-      'variables' => array('data' => NULL),
-    ),
     'apr_profile_admin_perms' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_admin_perms',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_pasthist' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_pasthist',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_alt_contacts' => array(
@@ -642,24 +632,44 @@ function uiowa_apr_theme() {
       'template' => 'theme/apr_profile_alt_contacts',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_email' => array(
+    'apr_profile_assets' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_email',
+      'template' => 'theme/apr_profile_assets',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_websites' => array(
+    'apr_profile_awardhonor' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_websites',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_office_hours' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_office_hours',
+      'template' => 'theme/apr_profile_awardhonor',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_bio' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_bio',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_centers' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_centers',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_clinical_narrative' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_clinical_narrative',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_congrant' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_congrant',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_creative_works' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_creative_works',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_editrev' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_editrev',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_education' => array(
@@ -672,34 +682,9 @@ function uiowa_apr_theme() {
       'template' => 'theme/apr_profile_education_postgrad',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_centers' => array(
+    'apr_profile_email' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_centers',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_resprog' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_resprog',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_teaching_interests' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_teaching_interests',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_research_narrative' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_research_narrative',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_clinical_narrative' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_clinical_narrative',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_liccert' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_liccert',
+      'template' => 'theme/apr_profile_email',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_facdev' => array(
@@ -707,34 +692,34 @@ function uiowa_apr_theme() {
       'template' => 'theme/apr_profile_facdev',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_member' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_member',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_awardhonor' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_awardhonor',
-      'variables' => array('data' => NULL),
-    ),
-    'apr_profile_schteach' => array(
-      'path' => $path,
-      'template' => 'theme/apr_profile_schteach',
-      'variables' => array('data' => NULL),
-    ),
     'apr_profile_intellcont' => array(
       'path' => $path,
       'template' => 'theme/apr_profile_intellcont',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_editrev' => array(
+    'apr_profile_last_modified' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_editrev',
+      'template' => 'theme/apr_profile_last_modified',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_present' => array(
+    'apr_profile_liccert' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_present',
+      'template' => 'theme/apr_profile_liccert',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_member' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_member',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_office_hours' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_office_hours',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_pasthist' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_pasthist',
       'variables' => array('data' => NULL),
     ),
     'apr_profile_perform_exhibit' => array(
@@ -742,19 +727,34 @@ function uiowa_apr_theme() {
       'template' => 'theme/apr_profile_perform_exhibit',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_creative_works' => array(
+    'apr_profile_present' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_creative_works',
+      'template' => 'theme/apr_profile_present',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_congrant' => array(
+    'apr_profile_research_narrative' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_congrant',
+      'template' => 'theme/apr_profile_research_narrative',
       'variables' => array('data' => NULL),
     ),
-    'apr_profile_last_modified' => array(
+    'apr_profile_resprog' => array(
       'path' => $path,
-      'template' => 'theme/apr_profile_last_modified',
+      'template' => 'theme/apr_profile_resprog',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_schteach' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_schteach',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_teaching_interests' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_teaching_interests',
+      'variables' => array('data' => NULL),
+    ),
+    'apr_profile_websites' => array(
+      'path' => $path,
+      'template' => 'theme/apr_profile_websites',
       'variables' => array('data' => NULL),
     ),
   );
