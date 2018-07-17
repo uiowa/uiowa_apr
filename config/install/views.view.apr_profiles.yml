@@ -781,7 +781,7 @@ display:
           field: combine
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Global: Category'
           operator: '='
           value: ''
           group: 1
@@ -801,7 +801,7 @@ display:
             placeholder: null
           is_grouped: true
           group_info:
-            label: 'By Category'
+            label: Category
             description: ''
             identifier: category
             optional: true
@@ -1998,7 +1998,7 @@ display:
           field: combine
           relationship: none
           group_type: group
-          admin_label: ''
+          admin_label: 'Global: Category'
           operator: '='
           value: ''
           group: 1
@@ -2018,7 +2018,7 @@ display:
             placeholder: null
           is_grouped: true
           group_info:
-            label: 'By Category'
+            label: Category
             description: ''
             identifier: category
             optional: true
@@ -2032,7 +2032,7 @@ display:
                 title: Faculty
                 operator: contains
                 value: Faculty
-              3:
+              2:
                 title: Staff
                 operator: contains
                 value: Staff
