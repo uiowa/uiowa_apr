@@ -277,17 +277,18 @@ function uiowa_apr_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Global: Combine fields filter */
+  /* Filter criterion: Global: Category */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Global: Category';
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Combine fields filter';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
   $handler->display->display_options['filters']['combine']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['combine']['group_info']['label'] = 'Combine fields filter';
+  $handler->display->display_options['filters']['combine']['group_info']['label'] = 'Category';
   $handler->display->display_options['filters']['combine']['group_info']['identifier'] = 'combine';
   $handler->display->display_options['filters']['combine']['group_info']['group_items'] = array(
     1 => array(
@@ -790,17 +791,18 @@ function uiowa_apr_views_default_views() {
     1 => 0,
     3 => 0,
   );
-  /* Filter criterion: Global: Combine fields filter */
+  /* Filter criterion: Global: Category */
   $handler->display->display_options['filters']['combine']['id'] = 'combine';
   $handler->display->display_options['filters']['combine']['table'] = 'views';
   $handler->display->display_options['filters']['combine']['field'] = 'combine';
+  $handler->display->display_options['filters']['combine']['ui_name'] = 'Global: Category';
   $handler->display->display_options['filters']['combine']['exposed'] = TRUE;
   $handler->display->display_options['filters']['combine']['expose']['operator_id'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['label'] = 'Combine fields filter';
   $handler->display->display_options['filters']['combine']['expose']['operator'] = 'combine_op';
   $handler->display->display_options['filters']['combine']['expose']['identifier'] = 'combine';
   $handler->display->display_options['filters']['combine']['is_grouped'] = TRUE;
-  $handler->display->display_options['filters']['combine']['group_info']['label'] = 'Combine fields filter';
+  $handler->display->display_options['filters']['combine']['group_info']['label'] = 'Category';
   $handler->display->display_options['filters']['combine']['group_info']['identifier'] = 'combine';
   $handler->display->display_options['filters']['combine']['group_info']['group_items'] = array(
     1 => array(
@@ -808,7 +810,7 @@ function uiowa_apr_views_default_views() {
       'operator' => 'contains',
       'value' => 'Faculty',
     ),
-    3 => array(
+    2 => array(
       'title' => 'Staff',
       'operator' => 'contains',
       'value' => 'Staff',
