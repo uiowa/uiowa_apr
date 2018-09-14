@@ -775,8 +775,8 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        combine:
-          id: combine
+        category:
+          id: category
           table: views
           field: combine
           relationship: none
@@ -787,12 +787,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: combine_op
-            label: 'Combine fields filter'
+            operator_id: category_op
+            label: Category
             description: null
             use_operator: false
-            operator: combine_op
-            identifier: combine
+            operator: category_op
+            identifier: category
             required: false
             remember: false
             multiple: false
@@ -1992,8 +1992,8 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: string
-        combine:
-          id: combine
+        category:
+          id: category
           table: views
           field: combine
           relationship: none
@@ -2004,12 +2004,12 @@ display:
           group: 1
           exposed: true
           expose:
-            operator_id: combine_op
-            label: 'Combine fields filter'
+            operator_id: category_op
+            label: Category
             description: null
             use_operator: false
-            operator: combine_op
-            identifier: combine
+            operator: category_op
+            identifier: category
             required: false
             remember: false
             multiple: false
