@@ -27,13 +27,12 @@
           elseif (!empty($item['rank'])) {
             $output .= $item['rank'];
           }
-          if (!empty($item['rank']) && ($item['rank'] == 'Staff' || $item['rank'] == 'Student')) {
-            if (!empty($item['college'])) $output .= ", " . $item['college'];
+          if ((!empty($item['title']) || !empty($item['rank'])) && !empty($item['person_type'])) {
+            if ($item['person_type'] == 'Staff' || $item['person_type'] == 'Student') $output .= ", ";
+            else $output .= " of ";
           }
-          else {
-            if (!empty($item['dep'])) $output .= " of " . $item['dep'];
-            if (!empty($item['college'])) $output .= ", " . $item['college'];
-          }
+          if (!empty($item['dep'])) $output .= $item['dep'];
+          if (!empty($item['college'])) $output .= ", " . $item['college'];
           print $output;
         ?>
       </div>
