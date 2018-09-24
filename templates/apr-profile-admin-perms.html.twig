@@ -20,17 +20,18 @@
         {% elseif item.rank is not empty %}
           {% set output = output ~ item.rank %}
         {% endif %}
-        {% if (item.rank is not empty) and ((item.rank == 'Staff') or (item.rank == 'Student')) %}
-          {% if item.college is not empty %}
-            {% set output = output ~ ', ' ~ item.college %}
+        {% if (((item.title is not empty) or (item.rank is not empty)) and item.person_type is not empty) %}
+          {% if (item.person_type == 'Staff' or item.person_type == 'Student') %}
+            {% set output = output ~ ', ' %}
+          {% else %}
+            {% set output = output ~ ' of ' %}
           {% endif %}
-        {% else %}
-          {% if item.dep is not empty %}
-            {% set output = output ~ ' of ' ~ item.dep %}
-          {% endif %}
-          {% if item.college is not empty %}
-            {% set output = output ~ ', ' ~ item.college %}
-          {% endif %}
+        {% endif %}
+        {% if item.dep is not empty %}
+          {% set output = output ~ item.dep %}
+        {% endif %}
+        {% if item.college is not empty %}
+          {% set output = output ~ ', ' ~ item.college %}
         {% endif %}
         {{ output }}
       </div>
