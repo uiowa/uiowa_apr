@@ -16,7 +16,7 @@
 <?php if (!empty($data)): ?>
 
 <div class="field field-name-apr-profile-schteach"<?php print $attributes; ?>>
-  <h2 class="field-header">Courses Taught</h2>
+  <h2 class="field-header">Selected Courses Taught</h2>
   <ul class="field-items">
     <?php foreach ($data as $delta => $item): ?>
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
