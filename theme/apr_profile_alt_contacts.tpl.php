@@ -29,7 +29,7 @@
           } else if (!empty($item['building'])) {
             $output .= $item['building'] . "<br/>";
           }
-          else if (!empty($item['address'])) $output .= $item['address'] . "<br/>";
+          if (!empty($item['address'])) $output .= $item['address'] . "<br/>";
           if (!empty($item['city'])) {
             $output .= $item['city'];
             if (!empty($item['state'])) $output .= ", " . $item['state'];

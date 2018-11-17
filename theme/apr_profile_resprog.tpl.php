@@ -22,8 +22,11 @@
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['title'])) $output .= $item['title'];
-          if (!empty($item['desc'])) $output .= ": " . $item['desc'];
+          if (!empty($item['title'])) {
+            $output .= $item['title'];
+            if (!empty($item['desc'])) $output .= ": " . $item['desc'];
+          }
+          elseif (!empty($item['desc'])) $output .= $item['desc'];
           print $output;
         ?>
       </li>

@@ -128,16 +128,16 @@ class APRPeopleItemJSON extends MigrateItemJSON {
       if ($data) {
         // Let's index the array by the ID for easy retrieval.
         foreach ($data as $item) {
-          if (!empty($item->pfname)) {
-            $item->full_name = $item->pfname;
+          $item->full_name = '';
+          if (!empty($item->fname)) {
+            $item->full_name .= $item->fname . ' ';
+            if (!empty($item->pfname)) $item->full_name .= ' (' . $item->pfname . ') ';
           }
-          else {
-            $item->full_name = $item->fname;
+          elseif (!empty($item->pfname)) {
+            $item->full_name .= $item->pfname . ' ';
           }
-          if (!empty($item->mname)) $item->full_name .= ' '.$item->mname;
-          if (!empty($item->lname)) $item->full_name .= ' '.$item->lname;
-//          if (!empty($item->suffix)) $item->full_name .= ', '.$item->suffix;
-//          if (!empty($item->credentials)) $item->full_name .= ', '.$item->credentials;
+          if (!empty($item->mname)) $item->full_name .= substr($item->mname,0,1) . ' ';
+          if (!empty($item->lname)) $item->full_name .= $item->lname;
           $this->data[$item->userid] = $item;
         }
       }
