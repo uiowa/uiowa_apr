@@ -107,49 +107,78 @@ source:
         type: string
   defaults:
     blankspace: ' '
+    lparen: '('
+    rparen: ')'
 destination:
   plugin: 'entity:node'
 process:
   type:
     plugin: default_value
     default_value: apr_profile
+#  firstname:
+#    -
+#      plugin: get
+#      source:
+#        - pfname
+#        - fname
+#    -
+#      plugin: callback
+#      callable: array_filter
+#    -
+#      plugin: callback
+#      callable: current
   firstname:
     -
-      plugin: get
+      plugin: skip_on_empty
+      method: process
+      source: fname
+    -
+      plugin: concat
       source:
-        - pfname
         - fname
+        - defaults/blankspace
+  pfirstname:
     -
-      plugin: callback
-      callable: array_filter
+      plugin: skip_on_empty
+      method: process
+      source: pfname
     -
-      plugin: callback
-      callable: current
+      plugin: concat
+      source:
+        - defaults/lparen
+        - pfname
+        - defaults/rparen
+        - defaults/blankspace
   middlename:
     -
       plugin: skip_on_empty
       method: process
       source: mname
     -
+      plugin: substr
+      length: 1
+      source: mname
+  middleinitial:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: '@middlename'
+    -
       plugin: concat
       source:
+        - '@middlename'
         - defaults/blankspace
-        - mname
   lastname:
     -
       plugin: skip_on_empty
       method: process
       source: lname
-    -
-      plugin: concat
-      source:
-        - defaults/blankspace
-        - lname
   title:
     plugin: concat
     source:
       - '@firstname'
-      - '@middlename'
+      - '@pfirstname'
+      - '@middleinitial'
       - '@lastname'
   apr_profile_hawkid: hawkid
   apr_profile_first_name: fname

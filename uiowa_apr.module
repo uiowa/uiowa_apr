@@ -240,7 +240,7 @@ function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewD
     $hawkid = $entity->get('apr_profile_hawkid')->value;
 
     if (!empty('api_key') && !empty('population_id') && !empty('hawkid')) {
-      $source = 'https://test.its.uiowa.edu/facadmin/api/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$hawkid;
+      $source = 'https://apps.its.uiowa.edu/facadmin/api/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$hawkid;
       $client = \Drupal::httpClient();
       $request = $client->get($source, ['headers' => ['Accept' => 'application/json']]);
       $response = $request->getBody()->getContents();
@@ -957,4 +957,13 @@ function uiowa_apr_views_pre_render(ViewExecutable $view) {
 
     $view->result = $new_result;
   }
+
+  /* Hide the exposed filter is the view is empty */
+/*
+  if ($view->id() == 'apr_profiles') {
+    if (empty($view->result) && empty($view->getExposedInput())) {
+      $view->exposed_widgets = NULL;
+    }
+  }
+*/
 }

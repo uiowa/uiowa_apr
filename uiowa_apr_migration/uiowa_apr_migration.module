@@ -19,7 +19,7 @@ function uiowa_apr_migration_migration_plugins_alter(&$definitions) {
     $migration_ids = ['apr_people', 'apr_people_appointments'];
     foreach ($migration_ids as $migration_id) {
       // Build URL path from config variables.
-      $definitions[$migration_id]['source']['urls'] = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.$api_key.'&population_id='.$population_id;
+      $definitions[$migration_id]['source']['urls'] = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.$api_key.'&population_id='.$population_id;
     }
   }
   else {

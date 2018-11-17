@@ -26,7 +26,8 @@
           {% endif %}
         {% elseif item.building is not empty %}
           {% set output = output ~ item.building ~ '<br/>' %}
-        {% elseif item.address is not empty %}
+        {% endif %}
+        {% if item.address is not empty %}
           {% set output = output ~ item.address ~ '<br/>' %}
         {% endif %}
         {% if item.city is not empty %}

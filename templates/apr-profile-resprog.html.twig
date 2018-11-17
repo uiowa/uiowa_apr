@@ -18,9 +18,11 @@
         {% set output = '' %}
         {% if item.title is not empty %}
           {% set output = output ~ item.title %}
-        {% endif %}
-        {% if item.desc is not empty %}
-          {% set output = output ~ ': ' ~ item.desc %}
+          {% if item.desc is not empty %}
+            {% set output = output ~ ': ' ~ item.desc %}
+          {% endif %}
+        {% elseif item.desc is not empty %}
+          {% set output = output ~ item.desc %}
         {% endif %}
         {{ output }}
       </li>
