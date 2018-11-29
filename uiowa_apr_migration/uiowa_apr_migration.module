@@ -11,15 +11,16 @@ use Drupal\migrate\MigrateMessage;
 function uiowa_apr_migration_migration_plugins_alter(&$definitions) {
   // Get API Key and Population ID from config
   $config = \Drupal::config('uiowa_apr.settings');
+  $api_root = $config->get('uiowa_apr.api_root');
   $api_key = $config->get('uiowa_apr.api_key');
   $population_id = $config->get('uiowa_apr.population_id');
 
-  // Check if API key and population ID are set
-  if (!empty($api_key) && !empty($population_id)) {
+  // Check if API root, API key and population ID are set
+  if (!empty($api_root) && !empty($api_key) && !empty($population_id)) {
     $migration_ids = ['apr_people', 'apr_people_appointments'];
     foreach ($migration_ids as $migration_id) {
       // Build URL path from config variables.
-      $definitions[$migration_id]['source']['urls'] = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.$api_key.'&population_id='.$population_id;
+      $definitions[$migration_id]['source']['urls'] = $api_root.'/listing/?key='.$api_key.'&population_id='.$population_id;
     }
   }
   else {
@@ -33,11 +34,12 @@ function uiowa_apr_migration_migration_plugins_alter(&$definitions) {
 function uiowa_apr_migration_cron() {
   // Get API Key and Population ID from config
   $config = \Drupal::config('uiowa_apr.settings');
+  $api_root = $config->get('uiowa_apr.api_root');
   $api_key = $config->get('uiowa_apr.api_key');
   $population_id = $config->get('uiowa_apr.population_id');
 
   // Check if API key and population ID are set
-  if (!empty($api_key) && !empty($population_id)) {
+  if (!empty($api_root) && !empty($api_key) && !empty($population_id)) {
     $manager = Drupal::service('plugin.manager.migration');
     $migration_ids = ['apr_people_appointments', 'apr_people'];
     foreach ($migration_ids as $migration_id) {

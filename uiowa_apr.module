@@ -235,12 +235,13 @@ function uiowa_apr_entity_extra_field_info() {
 function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   if ($entity->bundle() == 'apr_profile' && $view_mode == 'full') {
     $config = \Drupal::config('uiowa_apr.settings');
+    $api_root = $config->get('uiowa_apr.api_root');
     $api_key = $config->get('uiowa_apr.api_key');
     $population_id = $config->get('uiowa_apr.population_id');
     $hawkid = $entity->get('apr_profile_hawkid')->value;
 
-    if (!empty('api_key') && !empty('population_id') && !empty('hawkid')) {
-      $source = 'https://apps.its.uiowa.edu/facadmin/api/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$hawkid;
+    if (!empty('api_root') && !empty('api_key') && !empty('population_id') && !empty('hawkid')) {
+      $source = $api_root.'/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$hawkid;
       $client = \Drupal::httpClient();
       $request = $client->get($source, ['headers' => ['Accept' => 'application/json']]);
       $response = $request->getBody()->getContents();
@@ -308,7 +309,7 @@ function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewD
           case 'apr_profile_bio':
             $data = [];
             if (!empty($person['pci']['info']['bio'])) {
-              $data[] = $person['pci']['info']['bio'];
+              $data[] = nl2br($person['pci']['info']['bio']);
               $build[$field_name] = [
                 '#theme' => 'apr_profile_bio',
                 '#data' => $data,

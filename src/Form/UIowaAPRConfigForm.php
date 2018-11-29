@@ -21,6 +21,13 @@ class UIowaAPRConfigForm extends ConfigFormBase {
     $form = parent::buildForm($form, $form_state);
     $config = $this->config('uiowa_apr.settings');
 
+    $form['uiowa_apr_api_root'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('API Root'),
+      '#default_value' => $config->get('uiowa_apr.api_root'),
+      '#description' => $this->t('Enter the API Root from the APR Feed URL. This is the full API path without parameters and query string. Do NOT include trailing slash.'),
+    ];
+
     $form['uiowa_apr_api_key'] = [
       '#type' => 'textfield',
       '#title' => $this->t('API Key'),
@@ -53,6 +60,7 @@ class UIowaAPRConfigForm extends ConfigFormBase {
     drupal_set_message(t('All caches have been cleared.'), 'status');
 
     $config = $this->config('uiowa_apr.settings');
+    $config->set('uiowa_apr.api_root', rtrim($form_state->getValue('uiowa_apr_api_root'), DIRECTORY_SEPARATOR));
     $config->set('uiowa_apr.api_key', $form_state->getValue('uiowa_apr_api_key'));
     $config->set('uiowa_apr.population_id', $form_state->getValue('uiowa_apr_population_id'));
     $config->save();

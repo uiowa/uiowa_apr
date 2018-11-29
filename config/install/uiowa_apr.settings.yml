@@ -1,3 +1,4 @@
 uiowa_apr:
+  api_root: 'https://apps.its.uiowa.edu/facadmin/api'
   api_key: 'iashdfi7sdf74evah23'
   population_id: '1'
