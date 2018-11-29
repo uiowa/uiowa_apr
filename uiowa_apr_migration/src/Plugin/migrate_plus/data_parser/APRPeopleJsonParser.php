@@ -3,7 +3,6 @@
 namespace Drupal\uiowa_apr_migration\Plugin\migrate_plus\data_parser;
 
 use Drupal\migrate_plus\Plugin\migrate_plus\data_parser\Json;
-use Drupal\migrate\Row;
 
 /**
  * Obtain JSON data for migration.
@@ -38,7 +37,8 @@ class APRPeopleJsonParser extends Json {
     }
 
     foreach ($source_data as $key => $person) {
-      // Create a new field for each record that will contain the array of appointment_ids (['appointment_id'])
+      // Create a new field for each record that will contain the array
+      // of appointment_ids (['appointment_id'])
       $source_data[$key]['appointment_id'] = [];
       foreach ($person['admin_perms'] as $appointment) {
         // Add each appointment_id to the array.

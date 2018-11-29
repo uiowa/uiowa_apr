@@ -1,7 +1,10 @@
 <?php
 
-use Drupal\node\Entity\NodeType;
-use Drupal\Component\Serialization\Json;
+/**
+ * @file
+ * Provides web profile displays from APR system at the University of Iowa.
+ */
+
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -241,7 +244,7 @@ function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewD
     $hawkid = $entity->get('apr_profile_hawkid')->value;
 
     if (!empty('api_root') && !empty('api_key') && !empty('population_id') && !empty('hawkid')) {
-      $source = $api_root.'/info/?key='.$api_key.'&population_id='.$population_id.'&format=json&hawkid='.$hawkid;
+      $source = $api_root . '/info/?key=' . $api_key . '&population_id=' . $population_id . '&format=json&hawkid=' . $hawkid;
       $client = \Drupal::httpClient();
       $request = $client->get($source, ['headers' => ['Accept' => 'application/json']]);
       $response = $request->getBody()->getContents();
@@ -942,29 +945,27 @@ function uiowa_apr_theme($existing, $type, $theme, $path) {
 
 /**
  * Implements hook_views_pre_render().
- * Display only one result in views, do not display duplicates
  */
 function uiowa_apr_views_pre_render(ViewExecutable $view) {
   if ($view->id() == 'apr_profiles') {
     $unique_nids = [];
     $new_result = [];
 
+    // Display only one result in views, do not display duplicates.
     foreach ($view->result as $row) {
-        if (!in_array($row->nid, $unique_nids)) {
-          $new_result[] = $row;
-          $unique_nids[] = $row->nid;
-        }
+      if (!in_array($row->nid, $unique_nids)) {
+        $new_result[] = $row;
+        $unique_nids[] = $row->nid;
+      }
     }
 
     $view->result = $new_result;
   }
 
   /* Hide the exposed filter is the view is empty */
-/*
   if ($view->id() == 'apr_profiles') {
     if (empty($view->result) && empty($view->getExposedInput())) {
       $view->exposed_widgets = NULL;
     }
   }
-*/
 }

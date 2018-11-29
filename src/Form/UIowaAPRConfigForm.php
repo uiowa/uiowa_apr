@@ -5,6 +5,9 @@ namespace Drupal\uiowa_apr\Form;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ * The configuration form for the APR module.
+ */
 class UIowaAPRConfigForm extends ConfigFormBase {
 
   /**

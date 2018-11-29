@@ -3,7 +3,6 @@
 namespace Drupal\uiowa_apr_migration\Plugin\migrate_plus\data_parser;
 
 use Drupal\migrate_plus\Plugin\migrate_plus\data_parser\Json;
-use Drupal\migrate\Row;
 
 /**
  * Obtain JSON data for migration.
