@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_last_modified.tpl.php
+ * @file
  * Default theme implementation for the last_modified_date field.
  *
  * @see uiowa_apr_node_view()

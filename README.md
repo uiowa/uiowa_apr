@@ -1,7 +1,8 @@
 # University of Iowa APR Module
 
-1. Enter the API Key and Population ID under the University of Iowa APR admin interface. For instance, if the URL of the data feed is https://apps.its.uiowa.edu/facadmin/api/listing/?key=iashdfi7sdf74evah23&population_id=1 then use the following values:
-   - API Key: iashdfi7sdf74evah23
+1. Enter the API Key and Population ID under the University of Iowa APR admin interface. For instance, if the URL of the data feed is https://apps.its.uiowa.edu/facadmin/api/listing/?key=abc123def456ghi789&population_id=1 then use the following values:
+   - API Root: https://apps.its.uiowa.edu/facadmin/api
+   - API Key: abc123def456ghi789
    - Population ID: 1
 
 2. Return to the University of Iowa APR admin interface and click the 'Import' button in the 'Operations' fieldset to import unprocessed records from the source, plus any records marked for update.

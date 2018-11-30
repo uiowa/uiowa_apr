@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_editrev.tpl.php
+ * @file
  * Default theme implementation for the review and editorial work fields.
  *
  * @see uiowa_apr_node_view()
@@ -24,14 +24,18 @@
           $output = "";
           if (!empty($item['role'])) {
             $output .= $item['role'];
-            if (!empty($item['title'])) $output .= ", " . $item['title'];
-          } else if (!empty($item['title'])) {
+            if (!empty($item['title'])) {
+              $output .= ", " . $item['title'];
+            }
+          } elseif (!empty($item['title'])) {
             $output .= $item['title'];
           }
           if (!empty($item['start_date'])) {
             $output .= ", " . date("F Y", strtotime($item['start_date']));
-            if (!empty($item['end_date']) && (date("F Y", strtotime($item['start_date'])) !== date("F Y", strtotime($item['end_date'])))) $output .= " - " . date("F Y", strtotime($item['end_date']));
-          } else if (!empty($item['end_date'])) {
+            if (!empty($item['end_date']) && (date("F Y", strtotime($item['start_date'])) !== date("F Y", strtotime($item['end_date'])))) {
+              $output .= " - " . date("F Y", strtotime($item['end_date']));
+            }
+          } elseif (!empty($item['end_date'])) {
             $output .= ", " . date("F Y", strtotime($item['end_date']));
           }
           print $output;

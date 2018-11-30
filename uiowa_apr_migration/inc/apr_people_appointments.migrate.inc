@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Using migrate to import web profile nodes from APR for the University of Iowa APR module.
+ * Using migrate to import profile data from the University of Iowa APR module.
  */
 
 /**
@@ -19,8 +19,7 @@ class APRPeopleAppointmentsFieldCollectionMigration extends Migration {
     $this->dependencies = array('APRPeople');
 
     // Source url.
-    $source_url = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
-//    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
+    $source_url = variable_get('uiowa_apr_api_root') . '/listing/?key=' . variable_get('uiowa_apr_api_key') . '&population_id=' . variable_get('uiowa_apr_population_id');
 
     $fields = array(
       'apr_profile_appointments_id' => t('APR Appointment ID'),
@@ -50,7 +49,7 @@ class APRPeopleAppointmentsFieldCollectionMigration extends Migration {
           'length' => 255,
           'description' => 'Appointment ID',
           'not null' => TRUE,
-          )
+        ),
       ),
       MigrateDestinationFieldCollection::getKeySchema()
     );
@@ -64,10 +63,18 @@ class APRPeopleAppointmentsFieldCollectionMigration extends Migration {
     $this->addFieldMapping('apr_profile_appointments_jobcode', 'job_code');
     $this->addFieldMapping('apr_profile_appointments_ptype', 'person_type');
   }
+
 }
 
+/**
+ * Extends MigrateListJSON to get ID values from JSON feed.
+ */
 class APRPeopleAppointmentsListJSON extends MigrateListJSON {
-  protected function getIDsFromJSON(array $data) {
+
+  /**
+   * Parse JSON feed and retrieve ID values.
+   */
+  protected function getIdsFromJson(array $data) {
     $ids = array();
     foreach ($data as $item) {
       foreach ($item['admin_perms'] as $appt) {
@@ -76,16 +83,24 @@ class APRPeopleAppointmentsListJSON extends MigrateListJSON {
     }
     return $ids;
   }
+
 }
 
+/**
+ * Extends MigrateItemJSON to get data from JSON feed.
+ */
 class APRPeopleAppointmentsItemJSON extends MigrateItemJSON {
   protected $data = array();
+
+  /**
+   * Retrieve data item indexed by ID.
+   */
   public function getItem($id) {
-    // We cache the parsed JSON at $this->data.
+    // Cache the parsed JSON at $this->data.
     if (empty($this->data)) {
       $data = $this->loadJSONUrl($this->itemUrl);
       if ($data) {
-        // Let's index the array by the ID for easy retrieval.
+        // Index the array by the ID for easy retrieval.
         foreach ($data as $item) {
           foreach ($item->admin_perms as $appt) {
             $appt->apr_profile = $item->userid;
@@ -97,7 +112,7 @@ class APRPeopleAppointmentsItemJSON extends MigrateItemJSON {
         // Error-handling here....
       }
     }
-    // Return the requested item
+    // Return the requested item.
     if (isset($this->data[$id])) {
       return $this->data[$id];
     }
@@ -105,4 +120,5 @@ class APRPeopleAppointmentsItemJSON extends MigrateItemJSON {
       return NULL;
     }
   }
+
 }

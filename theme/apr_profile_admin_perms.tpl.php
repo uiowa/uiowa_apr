@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_admin_perms.tpl.php
+ * @file
  * Default theme implementation for the appointment fields.
  *
  * @see uiowa_apr_node_view()
@@ -23,16 +23,22 @@
           $output = "";
           if (!empty($item['title'])) {
             $output .= $item['title'];
-          }
-          elseif (!empty($item['rank'])) {
+          } elseif (!empty($item['rank'])) {
             $output .= $item['rank'];
           }
           if ((!empty($item['title']) || !empty($item['rank'])) && !empty($item['person_type'])) {
-            if ($item['person_type'] == 'Staff' || $item['person_type'] == 'Student') $output .= ", ";
-            else $output .= " of ";
+            if ($item['person_type'] == 'Staff' || $item['person_type'] == 'Student') {
+             $output .= ", ";
+            } else {
+              $output .= " of ";
+            }
           }
-          if (!empty($item['dep'])) $output .= $item['dep'];
-          if (!empty($item['college'])) $output .= ", " . $item['college'];
+          if (!empty($item['dep'])) {
+            $output .= $item['dep'];
+          }
+          if (!empty($item['college'])) {
+            $output .= ", " . $item['college'];
+          }
           print $output;
         ?>
       </div>

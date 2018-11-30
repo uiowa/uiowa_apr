@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_teaching_interests.tpl.php
+ * @file
  * Default theme implementation for the teaching interests fields.
  *
  * @see uiowa_apr_node_view()

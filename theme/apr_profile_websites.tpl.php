@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_websites.tpl.php
+ * @file
  * Default theme implementation for the website fields.
  *
  * @see uiowa_apr_node_view()
@@ -22,17 +22,19 @@
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['url'])) $output .= "<a href='" . $item['url'] . "'>";
+          if (!empty($item['url'])) {
+            $output .= "<a href='" . $item['url'] . "'>";
+          }
           if (!empty($item['desc'])) {
             $output .= $item['desc'];
-          }
-          elseif (!empty($item['type'])) {
+          } elseif (!empty($item['type'])) {
             $output .= $item['type'];
-          }
-          else {
+          } else {
             $output .= $item['url'];
           }
-          if (!empty($item['url'])) $output .= "</a>";
+          if (!empty($item['url'])) {
+            $output .= "</a>";
+          }
           print $output;
         ?>
       </div>

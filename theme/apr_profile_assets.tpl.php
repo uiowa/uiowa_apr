@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_assets.tpl.php
+ * @file
  * Default theme implementation for the assets fields.
  *
  * @see uiowa_apr_node_view()
@@ -26,7 +26,7 @@
             $node = menu_get_object();
             $output = theme('imagecache_external', array(
               'path' => $item['uri'],
-              'style_name'=> 'apr_profile_image',
+              'style_name' => 'apr_profile_image',
               'alt' => $node->title,
             ));
           }

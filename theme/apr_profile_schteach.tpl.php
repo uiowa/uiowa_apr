@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_schteach.tpl.php
+ * @file
  * Default theme implementation for the courses taught fields.
  *
  * @see uiowa_apr_node_view()
@@ -22,13 +22,21 @@
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['title'])) $output .= $item['title'];
-          if (!empty($item['coursepre'])) $output .= ", " . $item['coursepre'];
-          if (!empty($item['coursenum'])) $output .= ":" . $item['coursenum'];
+          if (!empty($item['title'])) {
+            $output .= $item['title'];
+          }
+          if (!empty($item['coursepre'])) {
+            $output .= ", " . $item['coursepre'];
+          }
+          if (!empty($item['coursenum'])) {
+            $output .= ":" . $item['coursenum'];
+          }
           if (!empty($item['term'])) {
             $output .= ", " . $item['term'];
-            if (!empty($item['year'])) $output .= " " . $item['year'];
-          } else if (!empty($item['year'])) {
+            if (!empty($item['year'])) {
+              $output .= " " . $item['year'];
+            }
+          } elseif (!empty($item['year'])) {
             $output .= $item['year'];
           }
           print $output;

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_present.tpl.php
+ * @file
  * Default theme implementation for the presentations fields.
  *
  * @see uiowa_apr_node_view()
@@ -22,7 +22,9 @@
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['formatted'])) $output .= $item['formatted'];
+          if (!empty($item['formatted'])) {
+            $output .= $item['formatted'];
+          }
           print $output;
         ?>
       </li>

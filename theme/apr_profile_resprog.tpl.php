@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_resprog.tpl.php
+ * @file
  * Default theme implementation for the areas of research interest fields.
  *
  * @see uiowa_apr_node_view()
@@ -24,9 +24,12 @@
           $output = "";
           if (!empty($item['title'])) {
             $output .= $item['title'];
-            if (!empty($item['desc'])) $output .= ": " . $item['desc'];
+            if (!empty($item['desc'])) {
+              $output .= ": " . $item['desc'];
+            }
+          } elseif (!empty($item['desc'])) {
+            $output .= $item['desc'];
           }
-          elseif (!empty($item['desc'])) $output .= $item['desc'];
           print $output;
         ?>
       </li>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_clinical_narrative.tpl.php
+ * @file
  * Default theme implementation for the clinical narrative fields.
  *
  * @see uiowa_apr_node_view()

@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Installation functions for the University of Iowa APR Migration module.
+ */
+
+/**
  * Implements hook_disable().
  */
 function uiowa_apr_migration_disable() {

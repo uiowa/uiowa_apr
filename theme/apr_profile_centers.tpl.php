@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_centers.tpl.php
+ * @file
  * Default theme implementation for the centers fields.
  *
  * @see uiowa_apr_node_view()
@@ -22,9 +22,15 @@
       <li class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['url'])) $output .= "<a href='" . $item['url'] . "'>";
-          if (!empty($item['center'])) $output .= $item['center'];
-          if (!empty($item['url'])) $output .= "</a>";
+          if (!empty($item['url'])) {
+            $output .= "<a href='" . $item['url'] . "'>";
+          }
+          if (!empty($item['center'])) {
+            $output .= $item['center'];
+          }
+          if (!empty($item['url'])) {
+            $output .= "</a>";
+          }
           print $output;
         ?>
       </li>

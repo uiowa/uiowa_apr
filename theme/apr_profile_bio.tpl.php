@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_bio.tpl.php
+ * @file
  * Default theme implementation for the bio field.
  *
  * @see uiowa_apr_node_view()

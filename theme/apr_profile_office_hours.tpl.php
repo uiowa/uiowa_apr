@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_office_hours.tpl.php
+ * @file
  * Default theme implementation for the office hours fields.
  *
  * @see uiowa_apr_node_view()
@@ -22,11 +22,15 @@
       <div class="field-item <?php print $delta % 2 ? 'odd' : 'even'; ?>">
         <?php
           $output = "";
-          if (!empty($item['day'])) $output .= $item['day'] . ": ";
+          if (!empty($item['day'])) {
+            $output .= $item['day'] . ": ";
+          }
           if (!empty($item['from'])) {
             $output .= $item['from'];
-            if (!empty($item['to']) && ($item['from'] !== $item['to'])) $output .= " - " . $item['to'];
-          } else if (!empty($item['to'])) {
+            if (!empty($item['to']) && ($item['from'] !== $item['to'])) {
+              $output .= " - " . $item['to'];
+            }
+          } elseif (!empty($item['to'])) {
             $output .= $item['to'];
           }
           print $output;

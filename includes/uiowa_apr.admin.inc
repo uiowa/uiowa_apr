@@ -11,6 +11,15 @@
  * @see uiowa_apr_menu()
  */
 function uiowa_apr_config_form($form, &$form_state) {
+  $form['uiowa_apr_api_root'] = array(
+    '#type' => 'textfield',
+    '#title' => t('API Root'),
+    '#default_value' => variable_get('uiowa_apr_api_root'),
+    '#description' => t('Enter the API Root from the APR Feed URL. This is the full API path without parameters and query string. Do NOT include trailing slash.'),
+    '#size' => 60,
+    '#required' => TRUE,
+  );
+
   $form['uiowa_apr_api_key'] = array(
     '#type' => 'textfield',
     '#title' => t('API Key'),
@@ -29,7 +38,7 @@ function uiowa_apr_config_form($form, &$form_state) {
     '#required' => TRUE,
   );
 
-  if (!empty(variable_get('uiowa_apr_api_key', '')) && !empty(variable_get('uiowa_apr_population_id', '')) && module_exists('uiowa_apr_migration')) {
+  if (!empty(variable_get('uiowa_apr_api_root', '')) && !empty(variable_get('uiowa_apr_api_key', '')) && !empty(variable_get('uiowa_apr_population_id', '')) && module_exists('uiowa_apr_migration')) {
     $form['uiowa_apr_operations_fieldset'] = array(
       '#type' => 'fieldset',
       '#title' => t('Operations'),
@@ -60,6 +69,15 @@ function uiowa_apr_config_form($form, &$form_state) {
 }
 
 /**
+ * Validation handler for uiowa_apr_config_form().
+ */
+function uiowa_apr_config_form_validate($form, &$form_state) {
+  if (!empty($form_state['values']['uiowa_apr_api_root'])) {
+    $form_state['values']['uiowa_apr_api_root'] = rtrim($form_state['values']['uiowa_apr_api_root'], DIRECTORY_SEPARATOR);
+  }
+}
+
+/**
  * Additional submit handler for uiowa_apr_config_form().
  */
 function uiowa_apr_config_form_submit($form, &$form_state) {
@@ -71,16 +89,16 @@ function uiowa_apr_config_form_submit($form, &$form_state) {
  * Additional migration handler for uiowa_apr_config_form().
  */
 function uiowa_apr_config_form_import_migration($form, &$form_state) {
-  // Get migration objects
+  // Get migration objects.
   $people = Migration::getInstance('APRPeople');
   $appointments = Migration::getInstance('APRPeopleAppointments');
 
   if ($appointments->processedCount() > 0) {
-    // Rollback existing appointments if appointments already exist
+    // Rollback existing appointments if appointments already exist.
     $rollback = $appointments->processRollback();
   }
   if ($people->processedCount() > 0) {
-    // Prepare update of existing profiles if profiles already exist
+    // Prepare update of existing profiles if profiles already exist.
     $update = $people->prepareUpdate();
   }
   $result = $people->processImport();
@@ -91,7 +109,7 @@ function uiowa_apr_config_form_import_migration($form, &$form_state) {
  * Additional migration handler for uiowa_apr_config_form().
  */
 function uiowa_apr_config_form_rollback_migration($form, &$form_state) {
-  // Get migration objects
+  // Get migration objects.
   $people = Migration::getInstance('APRPeople');
   $appointments = Migration::getInstance('APRPeopleAppointments');
 

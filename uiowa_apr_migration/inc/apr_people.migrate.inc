@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Using migrate to import web profile nodes from APR for the University of Iowa APR module.
+ * Using migrate to import profile data from the University of Iowa APR module.
  */
 
 /**
@@ -18,8 +18,7 @@ class APRPeopleNodeMigration extends Migration {
     $this->description = t('Import APR Profile nodes.');
 
     // Source url.
-    $source_url = 'https://apps.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
-//    $source_url = 'https://test.its.uiowa.edu/facadmin/api/listing/?key='.variable_get('uiowa_apr_api_key').'&population_id='.variable_get('uiowa_apr_population_id');
+    $source_url = variable_get('uiowa_apr_api_root') . '/listing/?key=' . variable_get('uiowa_apr_api_key') . '&population_id=' . variable_get('uiowa_apr_population_id');
 
     $fields = array(
       'apr_profile_id' => t('APR Profile ID'),
@@ -57,7 +56,7 @@ class APRPeopleNodeMigration extends Migration {
           'length' => 255,
           'description' => 'APR Profile ID',
           'not null' => TRUE,
-          )
+        ),
       ),
       MigrateDestinationNode::getKeySchema()
     );
@@ -83,9 +82,12 @@ class APRPeopleNodeMigration extends Migration {
     $this->addFieldMapping('apr_profile_person_type', 'person_type');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function preImport() {
     parent::preImport();
-    if (!variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')) {
+    if (!variable_get('uiowa_apr_api_root') && !variable_get('uiowa_apr_api_key') && !variable_get('uiowa_apr_population_id')) {
       throw new MigrateException('No API and/or Population ID');
     }
 
@@ -107,37 +109,59 @@ class APRPeopleNodeMigration extends Migration {
         ->execute();
     }
   }
+
 }
 
+/**
+ * Extends MigrateListJSON to get ID values from JSON feed.
+ */
 class APRPeopleListJSON extends MigrateListJSON {
-  protected function getIDsFromJSON(array $data) {
+
+  /**
+   * Parse JSON feed and retrieve ID values.
+   */
+  protected function getIdsFromJson(array $data) {
     $ids = array();
     foreach ($data as $item) {
       $ids[] = $item['userid'];
     }
     return $ids;
   }
+
 }
 
+/**
+ * Extends MigrateItemJSON to get data from JSON feed.
+ */
 class APRPeopleItemJSON extends MigrateItemJSON {
   protected $data = array();
+
+  /**
+   * Retrieve data item indexed by ID.
+   */
   public function getItem($id) {
-    // We cache the parsed JSON at $this->data.
+    // Cache the parsed JSON at $this->data.
     if (empty($this->data)) {
       $data = $this->loadJSONUrl($this->itemUrl);
       if ($data) {
-        // Let's index the array by the ID for easy retrieval.
+        // Index the array by the ID for easy retrieval.
         foreach ($data as $item) {
           $item->full_name = '';
           if (!empty($item->fname)) {
             $item->full_name .= $item->fname . ' ';
-            if (!empty($item->pfname)) $item->full_name .= ' (' . $item->pfname . ') ';
+            if (!empty($item->pfname)) {
+              $item->full_name .= '(' . $item->pfname . ') ';
+            }
           }
           elseif (!empty($item->pfname)) {
             $item->full_name .= $item->pfname . ' ';
           }
-          if (!empty($item->mname)) $item->full_name .= substr($item->mname,0,1) . ' ';
-          if (!empty($item->lname)) $item->full_name .= $item->lname;
+          if (!empty($item->mname)) {
+            $item->full_name .= substr($item->mname, 0, 1) . ' ';
+          }
+          if (!empty($item->lname)) {
+            $item->full_name .= $item->lname;
+          }
           $this->data[$item->userid] = $item;
         }
       }
@@ -145,7 +169,7 @@ class APRPeopleItemJSON extends MigrateItemJSON {
         // Error-handling here....
       }
     }
-    // Return the requested item
+    // Return the requested item.
     if (isset($this->data[$id])) {
       return $this->data[$id];
     }
@@ -153,4 +177,5 @@ class APRPeopleItemJSON extends MigrateItemJSON {
       return NULL;
     }
   }
+
 }

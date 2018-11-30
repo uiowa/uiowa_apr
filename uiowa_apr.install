@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Installation functions for the University of Iowa APR module.
+ */
+
+/**
  * Implements hook_install().
  */
 function uiowa_apr_install() {
@@ -24,6 +29,7 @@ function uiowa_apr_install() {
 function uiowa_apr_uninstall() {
   node_type_cache_reset();
   node_types_rebuild();
+  variable_del('uiowa_apr_api_root');
   variable_del('uiowa_apr_api_key');
   variable_del('uiowa_apr_population_id');
 
@@ -40,6 +46,9 @@ function uiowa_apr_uninstall() {
   field_purge_batch(500);
 }
 
+/**
+ * Private function to define custom fields.
+ */
 function _apr_profile_installed_fields() {
   $t = get_t();
   return array(
@@ -198,6 +207,9 @@ function _apr_profile_installed_fields() {
   );
 }
 
+/**
+ * Private function to define custom field instances.
+ */
 function _apr_profile_installed_instances() {
   $t = get_t();
   return array(
@@ -364,6 +376,9 @@ function _apr_profile_installed_instances() {
   );
 }
 
+/**
+ * Private function to define custom field instances for appointments.
+ */
 function _apr_profile_appointments_installed_instances() {
   $t = get_t();
   return array(
@@ -462,6 +477,9 @@ function _apr_profile_appointments_installed_instances() {
   );
 }
 
+/**
+ * Function to add custom fields.
+ */
 function add_custom_fields() {
   foreach (_apr_profile_installed_fields() as $field) {
     field_create_field($field);
@@ -478,6 +496,9 @@ function add_custom_fields() {
   }
 }
 
+/**
+ * Function to delete custom fields.
+ */
 function delete_custom_fields() {
   foreach (array_keys(_apr_profile_installed_fields()) as $field) {
     field_delete_field($field);

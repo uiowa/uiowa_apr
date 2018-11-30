@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_research_narrative.tpl.php
+ * @file
  * Default theme implementation for the research narrative fields.
  *
  * @see uiowa_apr_node_view()

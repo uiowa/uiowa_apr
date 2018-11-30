@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @file apr_profile_email.tpl.php
+ * @file
  * Default theme implementation for the email field.
  *
  * @see uiowa_apr_node_view()
