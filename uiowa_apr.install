@@ -5,8 +5,6 @@
  * Installation functions for the University of Iowa APR module.
  */
 
-use Drupal\user\RoleInterface;
-
 /**
  * Implements hook_install().
  */

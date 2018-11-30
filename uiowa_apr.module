@@ -59,7 +59,7 @@ function uiowa_apr_page_attachments(array &$attachments) {
 }
 
 /**
- * {@inheritdoc}
+ * Implements hook_entity_extra_field_info().
  */
 function uiowa_apr_entity_extra_field_info() {
   $extra['node']['apr_profile'] = [
@@ -233,7 +233,7 @@ function uiowa_apr_entity_extra_field_info() {
 }
 
 /**
- * {@inheritdoc}
+ * Implements hook_node_view().
  */
 function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
   if ($entity->bundle() == 'apr_profile' && $view_mode == 'full') {
@@ -628,7 +628,7 @@ function uiowa_apr_node_view(array &$build, EntityInterface $entity, EntityViewD
 }
 
 /**
- * {@inheritdoc}
+ * Implements hook_theme().
  */
 function uiowa_apr_theme($existing, $type, $theme, $path) {
   $path = drupal_get_path('module', 'uiowa_apr') . '/templates';
