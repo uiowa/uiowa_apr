@@ -1,6 +1,6 @@
-name: University of Iowa APR Profiles
+name: UIowa APR Profiles
 description: Displays web profiles from APR at the University of Iowa.
-package: UIowa
+package: University of Iowa
 
 type: module
 core: 8.x
