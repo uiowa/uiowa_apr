@@ -6,6 +6,7 @@ type: module
 core: 8.x
 
 dependencies:
+  - drupal:telephone
   - drupal:views
   - imagecache_external:imagecache_external
   - paragraphs:paragraphs

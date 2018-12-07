@@ -49,7 +49,7 @@
           {% endif %}
         {% endif %}
         {% if (item.phone is not empty) and (item.phone != '--') %}
-          {% set output = output ~ '<a href="tel:+1-' ~ item.phone ~ '">' ~ item.phone ~ '</a>' %}
+          {% set output = output ~ '<a href="tel:+1-' ~ item.phone ~ '">' ~ item.phone|trim|replace({'(': '', ')': '', ' ': '-', '.': '-'}) ~ '</a>' %}
         {% endif %}
         {{ output|raw }}
       </div>

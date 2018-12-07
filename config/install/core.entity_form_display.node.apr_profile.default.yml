@@ -25,6 +25,7 @@ dependencies:
   module:
     - paragraphs
     - path
+    - telephone
 id: node.apr_profile.default
 targetEntityType: node
 bundle: apr_profile
@@ -123,10 +124,9 @@ content:
   apr_profile_phone:
     weight: 9
     settings:
-      size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
+    type: telephone_default
     region: content
   apr_profile_pref_first_name:
     weight: 3
@@ -186,13 +186,13 @@ content:
     region: content
   created:
     type: datetime_timestamp
-    weight: 101
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }
   path:
     type: path
-    weight: 103
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -200,12 +200,12 @@ content:
     type: boolean_checkbox
     settings:
       display_label: true
-    weight: 104
+    weight: 24
     region: content
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 102
+    weight: 22
     region: content
     settings:
       display_label: true
@@ -217,6 +217,15 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 20
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    region: content
     third_party_settings: {  }
   userid:
     type: entity_reference_autocomplete
