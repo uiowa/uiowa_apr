@@ -7,6 +7,7 @@
 
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\views\ViewExecutable;
 
@@ -941,6 +942,19 @@ function uiowa_apr_theme($existing, $type, $theme, $path) {
       ],
     ],
   ];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function uiowa_apr_form_node_form_alter(&$form, FormStateInterface &$form_state, $form_id) {
+  // Get the node entity from the form.
+  $entity = $form_state->getFormObject()->getEntity();
+
+  // Disable the node title.
+  if ($entity->bundle() == 'apr_profile') {
+    $form['title']['widget'][0]['value']['#attributes']['disabled'] = TRUE;
+  }
 }
 
 /**

@@ -6,7 +6,7 @@ uiowa_apr.admin_uiowa:
   weight: 50
 
 uiowa_apr.admin_uiowa_apr:
-  title: 'University of Iowa APR'
+  title: 'UIowa APR settings'
   description: 'Configuration for the University of Iowa APR module.'
   route_name: uiowa_apr.admin_uiowa_apr
   parent: uiowa_apr.admin_uiowa

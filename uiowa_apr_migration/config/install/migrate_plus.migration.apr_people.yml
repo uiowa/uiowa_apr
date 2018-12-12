@@ -107,6 +107,7 @@ source:
         type: string
   defaults:
     blankspace: ' '
+    comma: ','
     lparen: '('
     rparen: ')'
 destination:
@@ -173,6 +174,17 @@ process:
       plugin: skip_on_empty
       method: process
       source: lname
+  suff:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: suffix
+    -
+      plugin: concat
+      source:
+        - defaults/comma
+        - defaults/blankspace
+        - suffix
   title:
     plugin: concat
     source:
@@ -180,6 +192,7 @@ process:
       - '@pfirstname'
       - '@middleinitial'
       - '@lastname'
+      - '@suff'
   apr_profile_hawkid: hawkid
   apr_profile_first_name: fname
   apr_profile_pref_first_name: pfname

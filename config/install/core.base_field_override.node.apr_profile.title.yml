@@ -7,7 +7,7 @@ id: node.apr_profile.title
 field_name: title
 entity_type: node
 bundle: apr_profile
-label: Name
+label: 'Full Name'
 description: ''
 required: true
 translatable: false
