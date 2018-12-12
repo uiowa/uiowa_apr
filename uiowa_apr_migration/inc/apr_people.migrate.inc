@@ -22,7 +22,7 @@ class APRPeopleNodeMigration extends Migration {
 
     $fields = array(
       'apr_profile_id' => t('APR Profile ID'),
-      'title' => t('Name'),
+      'title' => t('Full Name'),
       'apr_profile_hawkid' => t('HawkID'),
       'apr_profile_first_name' => t('First Name'),
       'apr_profile_pref_first_name' => t('Preferred First Name'),
@@ -161,6 +161,9 @@ class APRPeopleItemJSON extends MigrateItemJSON {
           }
           if (!empty($item->lname)) {
             $item->full_name .= $item->lname;
+          }
+          if (!empty($item->suffix)) {
+            $item->full_name .= ', ' . $item->suffix;
           }
           $this->data[$item->userid] = $item;
         }

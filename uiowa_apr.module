@@ -21,8 +21,8 @@ function uiowa_apr_help($path, $arg) {
 function uiowa_apr_permission() {
   return array(
     'administer uiowa apr' => array(
-      'title' => t('Administer University of Iowa APR'),
-      'description' => t('Perform administration tasks for the University of Iowa APR module.'),
+      'title' => t('Administer UIowa APR migration settings'),
+      'description' => t('Configure the feed migration settings for the University of Iowa APR module.'),
     ),
   );
 }
@@ -43,7 +43,7 @@ function uiowa_apr_menu() {
   );
 
   $items['admin/config/uiowa/uiowa_apr'] = array(
-    'title' => 'University of Iowa APR',
+    'title' => 'UIowa APR settings',
     'description' => 'Configuration for the University of Iowa APR module.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('uiowa_apr_config_form'),
@@ -65,7 +65,7 @@ function uiowa_apr_node_info() {
       'base' => 'apr_profile',
       'description' => t('Use <em>APR Profiles</em> for web profiles imported from the University of Iowa APR system.'),
       'has_title' => TRUE,
-      'title_label' => t('Name'),
+      'title_label' => t('Full Name'),
     ),
   );
 }
@@ -796,6 +796,18 @@ function uiowa_apr_image_default_styles() {
   );
 
   return $styles;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uiowa_apr_form_alter(&$form, &$form_state, $form_id) {
+  switch ($form_id) {
+    case 'apr_profile_node_form':
+      // Disable the node title.
+      $form['title']['#disabled'] = TRUE;
+      break;
+  }
 }
 
 /**
