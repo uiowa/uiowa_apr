@@ -49,6 +49,5 @@ migrate-rollback (mr) - Roll back the destination objects from a given migration
 ## Maintainers
 
 Current maintainers:
- * Mark Ahrens - https://drupal.org/user/1145210
  * Mark Bennett - https://drupal.org/user/2506978
- * Alina Shybayeva - https://drupal.org/user/3302789
+
