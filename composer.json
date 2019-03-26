@@ -1,0 +1,6 @@
+{
+  "name": "uiowa/uiowa_apr",
+  "description": "Displays web profiles from APR at the University of Iowa.",
+  "type": "drupal-custom-module",
+  "require": {}
+}
